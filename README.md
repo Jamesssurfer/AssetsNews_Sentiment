@@ -6,7 +6,7 @@ OHLC price snapshot for one specific tradable instrument.
 
 - **Gold** (COMEX, most-liquid contract auto-resolved)
 - **Oil** (`CL=F`)
-- **US Dollar** (`DX=F`, dollar index futures)
+- **US Dollar** (`DX-Y.NYB`, ICE US Dollar Index)
 - **S&P 500** (`ES=F`, E-mini futures)
 - **Nasdaq** (`NQ=F`, E-mini futures)
 - **Bitcoin** (`BTC-USD`)
@@ -88,7 +88,7 @@ informal, social-media-adjacent language more than the other five.
 |---|---|---|
 | Gold | Auto-resolved COMEX contract | Ported from the gold basis pipeline: whichever near-term contract has the highest volume right now, not a generic continuous ticker. |
 | Oil | `CL=F` | Static continuous ticker — the liquid-contract resolution logic is Gold-specific (COMEX month codes and exchange suffix) and wasn't generalized here to avoid guessing at conventions for NYMEX that haven't been verified. |
-| US Dollar | `DX=F` | Futures, not the cash `DX-Y.NYB` index — same reasoning as the index futures below. |
+| US Dollar | `DX-Y.NYB` | `DX=F` (originally used here) doesn't exist as a Yahoo symbol — confirmed via a live 404, "Quote not found for symbol: DX=F". Switched to `DX-Y.NYB` (the ICE US Dollar Index) after verifying it directly on Yahoo Finance, where it shows active intraday quotes. The cash-hours-gap concern behind the futures picks below doesn't apply the same way here: DXY is calculated from a continuously-traded FX basket, not tied to one exchange's cash session. |
 | S&P 500 | `ES=F` | E-mini futures, not `^GSPC`/`SPY` — the cash index only trades ~13:30–20:00 UTC, so most of this scanner's 4-hourly windows would otherwise show empty OHLC. |
 | Nasdaq | `NQ=F` | Same reasoning as `ES=F`. |
 | Bitcoin | `BTC-USD` | Trades 24/7 — no session-gap issue at all. |
@@ -102,7 +102,8 @@ informal, social-media-adjacent language more than the other five.
   settlement-grade precision the gold basis pipeline uses for its actual
   basis/arbitrage calculation — don't hold these OHLC numbers to that bar.
 - **Futures still have session gaps, just far fewer than cash equities.**
-  Even `ES=F`/`NQ=F`/`DX=F` have brief daily maintenance windows. A run that
+  Even `ES=F`/`NQ=F` have brief daily maintenance windows, and `DX-Y.NYB` can
+  too even though it doesn't have the equity-cash-hours problem. A run that
   lands in one will show `ohlc_bars_used` less than 4, or all-`None` if the
   window was fully closed — the dashboard shows "No price data this window"
   rather than a misleading zero.
