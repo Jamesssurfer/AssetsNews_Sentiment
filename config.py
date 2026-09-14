@@ -74,9 +74,17 @@ BUCKETS = {
     "us_dollar": {
         "label": "US Dollar",
         "sentiment_model": "finbert",
-        "ticker": "DX=F",  # dollar index futures, not the cash DX-Y.NYB --
-                            # picked for the same near-24h-coverage reason as
-                            # the index futures below.
+        "ticker": "DX-Y.NYB",  # ICE US Dollar Index. "DX=F" (originally used
+                                # here) doesn't exist as a Yahoo symbol at all
+                                # (confirmed via a live 404: "Quote not found
+                                # for symbol: DX=F") -- switched to this after
+                                # checking Yahoo Finance directly. The
+                                # cash-hours-gap concern that motivated using
+                                # a futures ticker for the two equity indices
+                                # below doesn't apply to DXY the same way: it's
+                                # calculated from a continuously-traded FX
+                                # basket, not tied to a single exchange's cash
+                                # session, and shows active intraday quotes.
         "ticker_resolution": "static",
         "bullish_queries": [
             "dollar strengthens",
