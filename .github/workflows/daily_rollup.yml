@@ -1,0 +1,36 @@
+name: Daily sentiment rollup
+
+on:
+  schedule:
+    - cron: "45 20 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  rollup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run daily rollup
+        run: python daily_rollup.py
+
+      - name: Rebuild dashboard
+        run: python dashboard.py
+
+      - name: Commit and push results
+        run: |
+          git config user.name "asset-sentiment-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/asset_sentiment_log.xlsx index.html
+          git diff --cached --quiet || git commit -m "Daily rollup: $(date -u +'%Y-%m-%d')"
+          git push
