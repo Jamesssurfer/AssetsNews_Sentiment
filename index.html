@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asset Sentiment & Price</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="vendor/chart.umd.js"></script>
+<style>
+  :root {
+    --bg: #14161c;
+    --panel: #1b1e27;
+    --text: #e7e5de;
+    --muted: #8a8f9c;
+    --rule: #2a2e3a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans", -apple-system, sans-serif;
+    line-height: 1.5;
+  }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  header {
+    padding: 2rem 1.5rem 1rem;
+    max-width: 880px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--rule);
+  }
+  header h1 { font-size: 1.4rem; font-weight: 600; margin: 0 0 0.3rem; }
+  header p { color: var(--muted); margin: 0; font-size: 0.9rem; }
+  main { max-width: 880px; margin: 0 auto; padding: 1.5rem; }
+  .panel {
+    background: var(--panel);
+    border-left: 3px solid var(--accent, var(--muted));
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .panel-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; }
+  .panel-head h2 { font-size: 1.05rem; margin: 0; font-weight: 600; }
+  .timestamp { color: var(--muted); font-size: 0.8rem; }
+  .score-row { display: flex; align-items: baseline; gap: 0.75rem; margin: 0.6rem 0 0.3rem; }
+  .score { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 2.1rem; font-weight: 600; }
+  .delta { color: var(--muted); font-size: 0.85rem; }
+  .price-line { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.85rem; margin-bottom: 0.75rem; }
+  .breakdown { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 0.75rem; font-size: 0.88rem; }
+  .breakdown .label { color: var(--muted); margin-right: 0.5rem; }
+  .breakdown .value { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  .chart-label { display: block; margin-top: 0.5rem; }
+  .trend-chart { width: 100%; max-height: 140px; margin: 0.4rem 0 1rem; }
+  .headlines { margin-top: 1rem; }
+  .headlines .label { color: var(--muted); font-size: 0.8rem; display: block; margin-bottom: 0.3rem; }
+  .headlines ul { margin: 0; padding-left: 1.1rem; font-size: 0.9rem; }
+  .headlines li { margin-bottom: 0.25rem; }
+  .headlines a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .headlines a:hover { border-bottom-color: var(--text); }
+  .muted { color: var(--muted); }
+  .small { font-size: 0.8rem; }
+  table.daily-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.5rem; }
+  table.daily-table th, table.daily-table td {
+    text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--rule);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  table.daily-table th { font-family: "IBM Plex Sans", sans-serif; color: var(--muted); font-weight: 500; }
+  footer { max-width: 880px; margin: 0 auto; padding: 1rem 1.5rem 2.5rem; color: var(--muted); font-size: 0.78rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Asset sentiment &amp; price</h1>
+  <p>Last scan: 2026-09-14T03:58:56+00:00 UTC · Positive score = bullish pressure · Negative = bearish pressure</p>
+</header>
+<main>
+  
+    <section class="panel" style="--accent: #C9A227">
+      <div class="panel-head">
+        <h2>Gold</h2>
+        <span class="timestamp">as of 2026-09-14T03:58:56+00:00</span>
+      </div>
+
+      <div class="score-row">
+        <div class="score">-2.31</div>
+        
+      </div>
+
+      <div class="price-line"><span class="muted">No price data this window (market likely closed) &mdash; GC=F</span></div>
+
+      <div class="breakdown">
+        <div>
+          <span class="label">Bullish coverage</span>
+          <span class="value">39 articles, tone -0.19 (finbert)</span>
+        </div>
+        <div>
+          <span class="label">Bearish coverage</span>
+          <span class="value">40 articles, tone +0.09 (finbert)</span>
+        </div>
+      </div>
+
+      <span class="label chart-label">Composite score, last 1 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-74917" height="120"></canvas>
+      <script>
+        new Chart(document.getElementById("chart-74917"), {
+          type: "line",
+          data: {
+            labels: ["09-14 03h"],
+            datasets: [
+              {
+                data: [-2.309],
+                borderColor: "#C9A227",
+                borderWidth: 1.5,
+                pointRadius: 2,
+                pointBackgroundColor: "#C9A227",
+                tension: 0.15,
+                fill: false,
+              },
+              {
+                data: [0],
+                borderColor: "#8a8f9c",
+                borderWidth: 1,
+                borderDash: [4, 4],
+                pointRadius: 0,
+                fill: false,
+              },
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+            scales: {
+              x: {
+                display: true,
+                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+              y: {
+                display: true,
+                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+            },
+          }
+        });
+      </script>
+
+      <div class="headlines">
+        <span class="label">Top bullish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOMTFVdFU1RW5zWmFVMFF4ejVVWi1FVWZhYzBIT3RCN2ZybWY2cmV5ZnlEY21HRW5oZE1oeUd3TzkwNzhqRE5vR2UxeWZxUzcyVzNjN3JQMnFXdEdFYWUxU0p1SVBPZDlRSUVZTkRJdEw1cHFlVGE0cm0xU05URjMyRE12YmpvbkFvMUt3cVRNZ1FiOUd0NV9jelN3elBqd0tieU1ycjFxY0h6QWZKZlNjcGQ2aGk?oc=5" target="_blank" rel="noopener">Gold Price Climbs to $4,620 as Safe-Haven Demand Returns Across Global Markets - CryptoRank</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNMUxKaHZFbTh1MERIbGtIeU1xSXlETnIwNXZ2eVZMeEw0SlM1ZGpsRjJIb2UzNWZGMl8zQXoyQV9mUnRHSXBUYXBoSmhFdDJ6WG8tc3RKVkloeFoyYW9BaUNqUWFMM1d0UGdFRzVOMEwtZVFXVUtHWmhEZlZuMVVGN1FXYjRTMVp3OFdVM25JSG1BbXZaS1BrSkdBdzZYVE8xU3E3Qm56dVI3UlBUTHV2eVh4cWM?oc=5" target="_blank" rel="noopener">Gold surges by most in six months as dollar drops; copper rises to new record (GLD:NYSEARCA) - Seeking Alpha</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiV0FVX3lxTE9PWVJtWlh5TmhEaEQxdkFxNmR5OE5BM1c4QURIOWozVnZwbHdMcndfejh5NGduQkZXaG15Q05GMzhBbzJsM1VaZGlPdnJRYWNwUXFiZmU1SQ?oc=5" target="_blank" rel="noopener">Gold surges toward $4,500 as investors seek safe haven from economic risks - AzerNews</a></li></ul>
+      </div>
+
+      <div class="headlines">
+        <span class="label">Top bearish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxQWjZmSkNZV2p0c3pfYWd1Y2U0NnVtdlNaTGdEU3dDbEZ1QTV2WVZCUXp2bmZFVE5ETHByVmc4R1lBUFlDU2JsejNyNkNCcEk3R2lUQUpPbnl5ZS1aeWZGN0lISTVocl9leXVOdTBrN2dKdGJyVl85N0pUQlFtaEZvTXF3V2MzU0xNcTFydU5fNWZsamhnNDVqSThhVEVuaHYweTI5c1g3ZDlDOWplQl8zVGJqa3JnZw?oc=5" target="_blank" rel="noopener">Founders Metals (TSXV:FDR) Falls 5.65% as Profit-Taking Tests Strong Antino Gold Momentum - kalkine.ca</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTFBjVEpXV05CRmJaSnAzU2NsQzJYV3pnQno1UzE2M05HdVpUMVNoMXVfNkU0UG1MYXlJQi1QUU5RMDc4MlRVLWktYi1OMUczbE80U19lLUxNV0hfTzRXa2lNRUhpU25lbnowNFE?oc=5" target="_blank" rel="noopener">Gold ETF Trading Jumps 83%, Holdings Climb To Record 4,189 Tonnes - Yellow.com</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxOMExQRGhrZkRfVzVScmRCNVNJRE5UY2lvMEtSempTckduN2xwU20ycFd0TEZZSDJZZUdQYmdOa2pKcFpqWEQ3TkRsNEZ4Z1M3REtJTUo0S1VrSUVueGFaMm41R0R1VTNsRDNFcHQtNXFQcjN0X0Q4YkVzUjljUTdHUEpsbHA1U3lkdW9IbF82dEtxdC03NUFqMUFkY3lBYzjSAZgBQVVfeXFMT1ZFLW1wbm11dmppazdlbkVvX1Y1Qm1pclI0NTFRQmM5a29yci0wa3l2OWhjMXhBTWI2TXdSbXZMczhMaHdTR0J0UTZLa2loNGxTUG5HTlFhVjFZNzZ6clFQSXVaYTY2MnByQzVZMENFdHEyazBrOTV0cU9ncFh3ZEl5amlrYXZEb19iRlZ3Yl84QTAxXzNMTzE?oc=5" target="_blank" rel="noopener">Kremlin begins record-breaking gold sell-off from central bank reserves - The New Voice of Ukraine</a></li></ul>
+      </div>
+    </section>
+    
+
+    <section class="panel" style="--accent: #8A5A3B">
+      <div class="panel-head">
+        <h2>Oil</h2>
+        <span class="timestamp">as of 2026-09-14T03:58:56+00:00</span>
+      </div>
+
+      <div class="score-row">
+        <div class="score">+3.38</div>
+        
+      </div>
+
+      <div class="price-line"><span class="muted">No price data this window (market likely closed) &mdash; CL=F</span></div>
+
+      <div class="breakdown">
+        <div>
+          <span class="label">Bullish coverage</span>
+          <span class="value">40 articles, tone -0.00 (finbert)</span>
+        </div>
+        <div>
+          <span class="label">Bearish coverage</span>
+          <span class="value">40 articles, tone +0.17 (finbert)</span>
+        </div>
+      </div>
+
+      <span class="label chart-label">Composite score, last 1 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-70667" height="120"></canvas>
+      <script>
+        new Chart(document.getElementById("chart-70667"), {
+          type: "line",
+          data: {
+            labels: ["09-14 03h"],
+            datasets: [
+              {
+                data: [3.385],
+                borderColor: "#8A5A3B",
+                borderWidth: 1.5,
+                pointRadius: 2,
+                pointBackgroundColor: "#8A5A3B",
+                tension: 0.15,
+                fill: false,
+              },
+              {
+                data: [0],
+                borderColor: "#8a8f9c",
+                borderWidth: 1,
+                borderDash: [4, 4],
+                pointRadius: 0,
+                fill: false,
+              },
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+            scales: {
+              x: {
+                display: true,
+                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+              y: {
+                display: true,
+                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+            },
+          }
+        });
+      </script>
+
+      <div class="headlines">
+        <span class="label">Top bullish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxOa0xDNl91YjR4WVVvTXU5UlVvMnVQWUs0SDVCRFZFV0VxWVJzLVdsTWZuN1RiSjkxamJwdUkyVUdzZndiTXlITFdQWEVrSzJmSjN1bkczVjhhRktQSHR1UlMzMUtRalJZbmtLbDAtX0FJb1Ntb213dXFxeHMtVXh0NG5sd2ctUVdMWUJDQmF4R1U4V0hQZXQ0WVJDbVBWZDItbXAwbGxiWVFFSGs?oc=5" target="_blank" rel="noopener">Oil's roundtrip back to $100. Why China could determine what happens next - CNBC</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPdndjemtyTkduUUpSVnR6aXJUNXBBR0JNd1FaaURNWmtvWm9WTkZUME50Qk1NVDUtdEtqcWE2R0xvUGRKNHBWZDMtblpaY1h1TE5zcmgycU5kS29mYU02N1BOdThBMUhUMDM0T1FScDZRY0JzYlRXTTJVajFYbkh3Rmp0MDFDeVZQcFhKSjhpaklySjZrVWJCZVoyWkw?oc=5" target="_blank" rel="noopener">Oil prices surge 15% as Strait of Hormuz disruptions tighten supply - Offshore Technology</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxOWVA1SW1tV2w4aGhCRy0zdE51bWRyRTNXalZRZThIQUI0RHBJd29hcXlxWDB2eGtlSkswR0pxSVBWVzVmZGNCb1kwbkRZbnRvS0s2ZGNtdXk3T0lfeUFGaWVRMXdiMlFvazlzQUhEekZ1d0FNeFcyQlpCMk5jelhVbThiaDBzSGRnRWZvSXFSU29ydjRCSU9PMXdCTmY?oc=5" target="_blank" rel="noopener">OPEC+ keeps oil production goals for October unchanged - dailysabah.com</a></li></ul>
+      </div>
+
+      <div class="headlines">
+        <span class="label">Top bearish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE5Ic05DVGZPeUJyQU9nNzlrVFgzQWdFNTdVZFdEb0pRMGFYN0lRUHcwWW13ZlNUQnUtamVwdGUtT3p1X2h0SnRMbzVGLVY3dzlqS09hSF9BRFpyOWZ4Q0dvRExCT0poVTZKTWlqUjRZQW1GZ00?oc=5" target="_blank" rel="noopener">Venezuela's withdrawal from OPEC gains traction in the oil - Inspenet</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPcGZWQVVsSEY1MDZDLXRVM2g2N0t1bHJ1VXpWX3pScTFZak53OGQ5VVNxemw0Mjdrd1paNjRYb1YtdFlYN3RIOURKM00xZmc4eFRlTHk2cTNhODJKWW5TOS1BMEE1cVF2NTN5YjJaeHRRNFlBVHUwUU9CN0pyOEdRMHE0c2VtcGNvamRPVFd3OVVlTnFmV3Fobks2WlZJU21oRW44?oc=5" target="_blank" rel="noopener">OPEC oil output falls in August, Reuters survey shows - Reuters</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxNS2hIVlN3T2xXekl4NzRBN0xWcE8yVnZoMkJEUWRFc2lDLWhSUjVaLXFLbTJhWWc1dzY0YlJaUXVtQ2FmRXdPZGJtSzJ3SnJWM1REVWhvVGNjRHF2T1FEaG1fNHJGR2VuWktvVHNZNFpkbHhRODVBSllaaGNCV1Y4cUdOaFVDcFZqTWNXVtIBkgFBVV95cUxNaV9JVVVaUGRVTXFFSFVBdWZDLUwxcjl4dTJIb21CZFRCX2prVndxLVV6RVphUzFhSlRFRzNJQlRXb0h2WW9reUtsaS1iVDNMMG9LUWZsdEhYN2gzLUwtM1JYaVVScnk0STlyMHl1emRJU0k4dE1SZnB5VXVkM3pyYXNBZGtzaVdSOGpMejBjRTlKQQ?oc=5" target="_blank" rel="noopener">OPEC+ approves further oil output increase as Hormuz exports start to recover - CNBC</a></li></ul>
+      </div>
+    </section>
+    
+
+    <section class="panel" style="--accent: #4C9F70">
+      <div class="panel-head">
+        <h2>US Dollar</h2>
+        <span class="timestamp">as of 2026-09-14T03:58:56+00:00</span>
+      </div>
+
+      <div class="score-row">
+        <div class="score">+4.01</div>
+        
+      </div>
+
+      <div class="price-line"><span class="muted">No price data this window (market likely closed) &mdash; DX=F</span></div>
+
+      <div class="breakdown">
+        <div>
+          <span class="label">Bullish coverage</span>
+          <span class="value">37 articles, tone +0.09 (finbert)</span>
+        </div>
+        <div>
+          <span class="label">Bearish coverage</span>
+          <span class="value">38 articles, tone +0.15 (finbert)</span>
+        </div>
+      </div>
+
+      <span class="label chart-label">Composite score, last 1 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-77527" height="120"></canvas>
+      <script>
+        new Chart(document.getElementById("chart-77527"), {
+          type: "line",
+          data: {
+            labels: ["09-14 03h"],
+            datasets: [
+              {
+                data: [4.012],
+                borderColor: "#4C9F70",
+                borderWidth: 1.5,
+                pointRadius: 2,
+                pointBackgroundColor: "#4C9F70",
+                tension: 0.15,
+                fill: false,
+              },
+              {
+                data: [0],
+                borderColor: "#8a8f9c",
+                borderWidth: 1,
+                borderDash: [4, 4],
+                pointRadius: 0,
+                fill: false,
+              },
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+            scales: {
+              x: {
+                display: true,
+                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+              y: {
+                display: true,
+                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+            },
+          }
+        });
+      </script>
+
+      <div class="headlines">
+        <span class="label">Top bullish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNRlJTZ3dmU0NMcWtjQU9uU1pXSDQ1Uk5YOGFCVTQwSlExOFZtcjBGT1VZdXppTkpqYkdoaUtTTWw0aVJxclFIaWFnWXItUzBDTkNNSGg1b0t3dVhvREJSQjJRYUFEMGpMa0pNTVpMUzdpT0YwRngyZi1nMlRCdHJlVjVkc0tvU3RqV2pPNzhtYUNhVXlWVXpPRlpiLXBFTE1KNjZoU2lZLXpUaE9CM0hTLTVRSQ?oc=5" target="_blank" rel="noopener">US Dollar outlook: Hawkish Fed repricing strengthens the bull case - stonex.com</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPa2ZIYy1JQkhiaHZMZmZkNXhDd3M3S28wVEphV0Q5ODA0VFAwdExrYnFHSzRjRDhMMzFUTnY3c2g3RE5CbnFVaHI5cEstYjRJUGRjUV8wUlBYUE5CUFRhcWJGT1ZDcTRab1RIX1BONXpSZ1VVY1c4UENQd3Z0Z0wyS0JpOVhfcVVVRzd3WnpOY1JpdGViSTlZTl9LSVhONmM?oc=5" target="_blank" rel="noopener">Safe-haven demand supports the US dollar; can Australia's better-than-expected GDP rescue the Australian dollar? - Moomoo</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxObnI1LWEyU0VuTFRTVlN3dFZ5UEp1M08weUxGaHFjVFVYeFFtbkdVTUtWUUpWU2d3cU5XWWVWMjc5SkNrMmtEZTNrYUZBUHo0SmpRNDctQm5oZkQtOEpZcUNHRTVpQVFUNmJIeUowLTJRbjNxeWJlY2kwOHc1RVRrMXA1SmRjM1FaZFdBVGgzMFdlbXc?oc=5" target="_blank" rel="noopener">U.S. Dollar Gains From a New Wave of Safe Haven Demand - stonex.com</a></li></ul>
+      </div>
+
+      <div class="headlines">
+        <span class="label">Top bearish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNRUZEM3VLaUtVaEZNNzlGMFlmOXJxenVDMG9qSk1Pb0pxVWwzLW1ndmtfVzJ3bExHSWlnR2J3YmFlbHN4RFE0WXl5b21FaXh2TllraVI5MHhfdWhLeDhXTi02bXZTRUJuVzJHb1NqMXB5dTdmSV82WmNwMW1oYUdiRFd4VFZYWW1Wd0RFWkMtd2w3a0Z3dXpyR212eEtycGpWQ09FcXA5dVh4T1c0?oc=5" target="_blank" rel="noopener">Asia FX Talk - USD holds firm, yen falls, regional CPI in focus - MUFG Research</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPZDNJaUJnTUhOckR3ODFMRjN3M3QtZ1NzUmtvYnRUOVlyWEo2Nzg4d3l5Tkl4SFNRMVJCUnlNeGxUYm5NQkxpNmxEdzVpU3ZHTkhRUXh0bEdhNld2WHFBVmNCRTBEY2dsUkxqVlYtYTUwX21GR1JZNnZjazk2OXBjNW80dWo3Nmx5TXZYLUY0WkZLei14eWV4dDlkRGVheWM?oc=5" target="_blank" rel="noopener">Dovish Fed Bets Pummel Dollar, Boost Gold Ahead of NFP - Investing.com</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxNVFRZaFp1RzRGblVrRGFlYlUteDBWNE5PRmNKSlZ1VmU0Y09naUFPWmw3U0tiZmY5VGJ1Wkp6N1pROGhtQVItYkczcGFvTmE2TGVYSG9MRGIwbXJNeWkySmI3ZkNBUU1LaU5TQ0E4UFR2N1JyMEZVZ2Jxd1NxTXZ1YV9qZ2NMck8xNFJfUXRKVnhBWVNJZUlia1ZHMFFyTkMtT3BhYXpn?oc=5" target="_blank" rel="noopener">The Dollar Index falls through a war and a hawkish repricing - FXStreet</a></li></ul>
+      </div>
+    </section>
+    
+
+    <section class="panel" style="--accent: #4C8CA8">
+      <div class="panel-head">
+        <h2>S&P 500</h2>
+        <span class="timestamp">as of 2026-09-14T03:58:56+00:00</span>
+      </div>
+
+      <div class="score-row">
+        <div class="score">-1.13</div>
+        
+      </div>
+
+      <div class="price-line"><span class="muted">No price data this window (market likely closed) &mdash; ES=F</span></div>
+
+      <div class="breakdown">
+        <div>
+          <span class="label">Bullish coverage</span>
+          <span class="value">38 articles, tone -0.20 (finbert)</span>
+        </div>
+        <div>
+          <span class="label">Bearish coverage</span>
+          <span class="value">40 articles, tone +0.18 (finbert)</span>
+        </div>
+      </div>
+
+      <span class="label chart-label">Composite score, last 1 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-9831" height="120"></canvas>
+      <script>
+        new Chart(document.getElementById("chart-9831"), {
+          type: "line",
+          data: {
+            labels: ["09-14 03h"],
+            datasets: [
+              {
+                data: [-1.133],
+                borderColor: "#4C8CA8",
+                borderWidth: 1.5,
+                pointRadius: 2,
+                pointBackgroundColor: "#4C8CA8",
+                tension: 0.15,
+                fill: false,
+              },
+              {
+                data: [0],
+                borderColor: "#8a8f9c",
+                borderWidth: 1,
+                borderDash: [4, 4],
+                pointRadius: 0,
+                fill: false,
+              },
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+            scales: {
+              x: {
+                display: true,
+                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+              y: {
+                display: true,
+                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+            },
+          }
+        });
+      </script>
+
+      <div class="headlines">
+        <span class="label">Top bullish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxQSG12a01IVVJtakhLMFlscGk0SXRsa0M2UUwtakVNd041MUV0RVdjanozTGlFdWFpZ2dCai10NlYtbW42d3pnQ1lseGdvMGR5VV9USlk0T09WNW93TVhPMVUyUHpQT1ZDLWRBRWdBcHIzbTN4T0VhVVBZb0pzeHlqTEJNS0ZnTXlXUDlTYmRFbHYxYVJWSDQ1THZBSXhIckdURjdPY25wcWc3SXJ2R2pFX1lIVFVoem51RmZDTHhOWkVIRVIwWWdlZE1odzFGTG9DeFo5NHUycw?oc=5" target="_blank" rel="noopener">'Titanic' has a happy ending: Robust rally caps Wall Street's week of red - TradingView</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQWHZrbGtuQ2NuRE92NG4temVfd3BnRnJ3ZDJQYlUzZGpBSnFIYWlLQ0VfVks2enFoZGdGamlac3MwdUFCb2JtTmlpV2NhaFFqUzZNQkhPS01ZVGNGTzNHZ05FbVFrWDVHN3F1Mjk1YU1uekRmRWktenpIX1dVQzd5RTJsZ3l2alRmNmxLUWNsY09xQTVJbnc?oc=5" target="_blank" rel="noopener">Stock Market Today, Sept. 11: HPE Surges on AI Infrastructure Demand and Recently Raised Guidance - Yahoo Finance</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxPVXFEeDQxXy1zUk5CSzNOMzNlLWx2QkRBYUhxUV9ObV9naWxTdS1GZXNmSXNaRG1XUmFZbldRMWliWVpQNmtjV2ZaTXJ0VlpGZDhlQTU0M1F1RUtmMEFwQ3pkNXRxYkJ6UjZVNE0tYWtLMlh4bkpqVWxMUXRveE82c1VyR3FXUlZ5SWZRQVc5YUN6SWhteGtNUjBPdUx1NG0tUUFIN0RMcHFRSUVsMHVxUnVFRS1CWVlBVEx3cUVhcDRqaTB3SkZBdC1B?oc=5" target="_blank" rel="noopener">SNDK Stock Breaks Resistance as NAND Demand Strengthens SanDisk but Memory Risks Remain - FXLeaders</a></li></ul>
+      </div>
+
+      <div class="headlines">
+        <span class="label">Top bearish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQdEpJSkhqQ0dZZjZvbFZ3MU9EbGZpa0l4ZjJNazczLTZQTVVfZHlJVmxRVEx3ZFRpLWRwdEhycTRXbGtFdnplbnAwOEgzWG5VQXlYNEdkWE9pVTV0aGl0ZkdsSTBNb1M4U21LWkxPeUVBYWZLTDFZem81OWEtenIwa2E5bjlsdU1Bcmh2SzROZTR2RGFpOVQ4YTRTT21QWXpBX2k2dHV0S3hROHNkYmhR?oc=5" target="_blank" rel="noopener">Barclays lifts S&P 500 index's year-end target to 7,950 on strong earnings - Reuters</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQTXFjUFRkaWo0Uy1RWThWLU14eFJ3VzF4Z1hyT3ZxMmgzUHdaSWRWSEpCZW1NaXpVU2pQRWxRUVRJT2ExS1FGSHB6VWVOR2pUXzlQUnNhcUxBSjRacjc2bmFHcWNtdmxIWXZHdi1vUjBfeTExYUNHVjROanlpRU5UOGJKeFE3VTY2M2ZzYmNaQVZ1d0xYdlhXVmN1S3BlZUdnRjM1U1FCU0hfUFdsWGIyV0Q0X0tJeDBxTWZwRGZ3?oc=5" target="_blank" rel="noopener">Airbus stock rebounds after breaking its 196 € support level - Idéal Investisseur</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxNQnZvT3Z3SDhtUHFOc2pNT0pYMGw4cFdXN0dIWEU0SmdBcF9yNDFCVmg2RmlKZktaU3pTWnRJTm55WmZpOG5fLUhXajhydnRmdlhHay1GS2NpV0pDaFZsXzZvWU50d182bVY5Z1dyN0c4Y2ZPMU1FeWZsYkNUWjNkbWlPQQ?oc=5" target="_blank" rel="noopener">Sandisk: What the Chart Is Trying to Tell Us - MarketBeat</a></li></ul>
+      </div>
+    </section>
+    
+
+    <section class="panel" style="--accent: #8B5FBF">
+      <div class="panel-head">
+        <h2>Nasdaq</h2>
+        <span class="timestamp">as of 2026-09-14T03:58:56+00:00</span>
+      </div>
+
+      <div class="score-row">
+        <div class="score">+6.36</div>
+        
+      </div>
+
+      <div class="price-line"><span class="muted">No price data this window (market likely closed) &mdash; NQ=F</span></div>
+
+      <div class="breakdown">
+        <div>
+          <span class="label">Bullish coverage</span>
+          <span class="value">40 articles, tone -0.16 (finbert)</span>
+        </div>
+        <div>
+          <span class="label">Bearish coverage</span>
+          <span class="value">36 articles, tone +0.41 (finbert)</span>
+        </div>
+      </div>
+
+      <span class="label chart-label">Composite score, last 1 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-85024" height="120"></canvas>
+      <script>
+        new Chart(document.getElementById("chart-85024"), {
+          type: "line",
+          data: {
+            labels: ["09-14 03h"],
+            datasets: [
+              {
+                data: [6.357],
+                borderColor: "#8B5FBF",
+                borderWidth: 1.5,
+                pointRadius: 2,
+                pointBackgroundColor: "#8B5FBF",
+                tension: 0.15,
+                fill: false,
+              },
+              {
+                data: [0],
+                borderColor: "#8a8f9c",
+                borderWidth: 1,
+                borderDash: [4, 4],
+                pointRadius: 0,
+                fill: false,
+              },
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+            scales: {
+              x: {
+                display: true,
+                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+              y: {
+                display: true,
+                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+            },
+          }
+        });
+      </script>
+
+      <div class="headlines">
+        <span class="label">Top bullish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQMHF3WHVnXzlRVW1XNld1X2lsdEc1eGpfUk1TWFJ1UC1vV21DXzBuRUozRjdValF3MWpydG90UDNRZGxKU005b2w4alk0OXduTnZ1aXVBUC0xZXdNVFlpQWFHeTU3SjhDYl9hZnFGTlBQY0prTUJaVUdJMl9Gb1I3aEJ3dnBnd3ljN3UyaXpoWUZxMVBWdW1ZQ3lhLTVuZw?oc=5" target="_blank" rel="noopener">Tech Stocks Surge as Momentum Traps the Bears - Yahoo Finance</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQOTZpMXRyVmxGMjJTRmVVOV91TnZIWlJsZS1BNlE3bENxRlRlVnh2RFZKQmdwUVNydUJQd1RvZlZLam1KbnR2ZS1Vd2VNaWhrN3lNZ3hETUtvcTVxYTFEOENQQ292eWk0YXJYYjBrekoycE5sU0FqdloxRXNZcTcyd1dnYkFEdGpmMV9Pd0lwemdYWmd0aHZaYmpkWmlLOFgxdnc?oc=5" target="_blank" rel="noopener">S&P 500 ends higher as strong inflation data cements rate-hike bets - Reuters</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9sNTR6eTFUS1JYX1lnaWVIZGxJeVhmbENJMHN3SUc4TTlSaHpweUdwNUNLejJtSmIwb0x0SEQxalc2OVN1X2s1WFhPSWt2X2VrcFFVeXhVVVpxYVVnaUFjRDR3SUFxbzA?oc=5" target="_blank" rel="noopener">The S&P 500 is back at a record high and the Dow just hit 54,000 - CNN</a></li></ul>
+      </div>
+
+      <div class="headlines">
+        <span class="label">Top bearish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOQTZMQ21MMFIxaUJ2cUQtcUM1T1h4bGxsUmRiX3BUYndDbDRYMFhvU2ZXcU0yUVNrckthUVIxMDlpYWYzSXJwTDBrNThfOF91RVl5elRCZ3hyU3dGd0s4SUgzbkI4S2NzdlBpUEJoM0swT0NWSXlWWmQ0UWJfMTNyWnRIZGxQQ2MxajhnRTBTRHRVeFUtUjlLeUFLY0Y4VkVIVENoNnhYUjU?oc=5" target="_blank" rel="noopener">Nasdaq 100 Forecast: Fresh highs keep momentum strong near 29K - forex.com</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQdm0tWXlKR0hxZHRBUEJpSEkyX3RBZkxjU2x6UzUyUkIwRS1OclFFRmhJWHJ4WmFxU1BXOW83elNPTFNtNW1sTzc4RTRILXhwYjNwSy16T0dubWhvUlpjX2lwMTNEVkZhejRSWnRUdVhIX2FNUEQ0TEprajlRdkR4RmFVSHhlazZ6MGRwRWpqXzN6UVN0RmxRMWI3M2RVd2ptOHFUMQ?oc=5" target="_blank" rel="noopener">Nasdaq analysis today at investingLive.com - TradingView</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQZ3VXaWVra21SbURkNk5DcVRTX1JSX280Zm9pV05MaUx5dkF3S1ZBZUFvcWk2SS1LZGRVd1c1ODFXSlFJUHdvdEZ4OXFFaDA4V2tIUHJqOW9TenRSTlJibmJNSm5JWks4eFpPYm9rRjBSOGVRM1YyZ05HY3NFNWZBM1VBaFdjbVlHZDJwVTZtY203UQ?oc=5" target="_blank" rel="noopener">Dow Drops 317, Nasdaq Sinks 172, S&P 500 Falls 45 - tvnewscheck.com</a></li></ul>
+      </div>
+    </section>
+    
+
+    <section class="panel" style="--accent: #E8871E">
+      <div class="panel-head">
+        <h2>Bitcoin</h2>
+        <span class="timestamp">as of 2026-09-14T03:58:56+00:00</span>
+      </div>
+
+      <div class="score-row">
+        <div class="score">+6.87</div>
+        
+      </div>
+
+      <div class="price-line"><span class="muted">No price data this window (market likely closed) &mdash; BTC-USD</span></div>
+
+      <div class="breakdown">
+        <div>
+          <span class="label">Bullish coverage</span>
+          <span class="value">38 articles, tone +0.07 (finbert)</span>
+        </div>
+        <div>
+          <span class="label">Bearish coverage</span>
+          <span class="value">38 articles, tone +0.29 (finbert)</span>
+        </div>
+      </div>
+
+      <span class="label chart-label">Composite score, last 1 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-34992" height="120"></canvas>
+      <script>
+        new Chart(document.getElementById("chart-34992"), {
+          type: "line",
+          data: {
+            labels: ["09-14 03h"],
+            datasets: [
+              {
+                data: [6.874],
+                borderColor: "#E8871E",
+                borderWidth: 1.5,
+                pointRadius: 2,
+                pointBackgroundColor: "#E8871E",
+                tension: 0.15,
+                fill: false,
+              },
+              {
+                data: [0],
+                borderColor: "#8a8f9c",
+                borderWidth: 1,
+                borderDash: [4, 4],
+                pointRadius: 0,
+                fill: false,
+              },
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+            scales: {
+              x: {
+                display: true,
+                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+              y: {
+                display: true,
+                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                grid: { color: "#2a2e3a" },
+              },
+            },
+          }
+        });
+      </script>
+
+      <div class="headlines">
+        <span class="label">Top bullish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOYW5ydk13NmdWaS1wZXd0MC1KQnpxOUdGY3R6SFpYMDVIZFNfMW5RQTU2b1dfYXVtMDhiWERTMXdwdjlEQWl5V2dsSm00NE5pY2phS0I1R015QWJ3cEVHaG0wUjZXYU5oUm1LWFl2bVZuNmF2WUZRZlI5LUItQVZNdjF1X0VKeW50b2l4WG5SWWdEN25oajl0bi1qU0ZabEh2c1owQV9jSVDSAa4BQVVfeXFMT3lZRHR0SU5wSjZla2VFbldPbk04ejJ3UUJjLVNaUndRQlgyR2F0SnJsOXltSVV0NTVDemd6VzhyOTlidWNwUXp2WjctTkNRYS1rTjdRblRHcTdVQ05KNXVrdFM5Ulk1NjgtOC1lNWlobUp6NWhXNzNoNlBEWWpnUXVuSy0tTm05VDBIT0JaOTJ4X3BKaW5scUNQYUFIRTR1OG9TQzM5ZFYyUTFhWmln?oc=5" target="_blank" rel="noopener">Bitcoin surges 12% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxPemN4ODV3YldjcDUxb1FRWXc1OWV4bXZwVEhOWTMtbDJaNG92V0xpd0V6OTBxM3lRN0RZUEtWQkRWQW9Kb0hNUF8zS2FBOU5BUlpFTmpvNFBiYnpSVEhHMmtCU2JMdzNjRlNXRWtwaUM1eUxrVjRWQ3VQT2Q4MVJHaHBfdHBRUFpETTVnT012dEJQQV9mcHNOOHUwQnlVU2ZibW51TTBzMHdvTXhsQnlMMzJjT0lhcTNvVktGLTVfN1o3ZXlkLV9JNWRZVVFvakVaaDdIMGxWdFJXUVMxT19rREpueFJibmw0WllRUDk1ckgwUHB1?oc=5" target="_blank" rel="noopener">Bitmine Surges 8% on Ethereum Strength After Cantor Fitzgerald Doubles Its Target, SharpLink Advances 9%, Strategy Gains 4% - 24/7 Wall St.</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE9GWnpPTVdhalZlX29PZmhxWWFzRlEwbGQ2Q2VuUm1ISTRKY2EwOUdEb3drMU9LdE16NXhRdGwyakxPOWdSR2ZKS0NoWUJzNGZZVVA5dnRlb01WRHM?oc=5" target="_blank" rel="noopener">Bitcoin surges to three-month high as momentum builds - foxbusiness.com</a></li></ul>
+      </div>
+
+      <div class="headlines">
+        <span class="label">Top bearish headlines this run</span>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQZ2stY3N4T3I2NU50Q3d2cUVaSUJYWUg5aGc4cnlmZmgtMi16cGVISVZaaWNqTmhLRnhqSkU4bVlkeGpZMmtlMVRUQ1FjV0FhX044amFzR3NhYWY2TW5NU0VqLVdvclo5d3d3Rm43YnZfR1kwQXgycU92ZWpSbDQyMFZIT1lhdw?oc=5" target="_blank" rel="noopener">Strategy's $200M Bitcoin sale didn't drop prices, signaling strong market demand. - Pluang</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE0zWnFhS2JFclROTWQ1NUFOTTdyVUlxb1IxbUFoRHE1WFNuVjhGMmtDb0FheHQ2SUJxSkhSenlBX051R1FfSVZxaXR2YUxwOC1aRlBIRE03NFdxTnZRZDg4ZktpZ3NkMkRV?oc=5" target="_blank" rel="noopener">Current price of Ethereum for Sept. 11, 2026 - Fortune</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTFBwS21sQ0RlNWhYREVhTjVEdGhnekF0SVVIZ3V3VUxoSXMtS0t6dUlDMGVYenpPeTZEM1ItdDhNZGdNLWlQa2pvQXhYcXVfNjRPOFNLYXFiYS1PY2ZreHVMajRQUHhSNlJ2UUVIcmktOA?oc=5" target="_blank" rel="noopener">Bitcoin, Ether rebound as short liquidations hit $427 million - qz.com</a></li></ul>
+      </div>
+    </section>
+    
+  <section class="panel" style="--accent: var(--rule)">
+    <div class="panel-head"><h2>Daily history</h2></div>
+    <p class="muted">No daily rollup yet.</p>
+  </section>
+</main>
+<footer>
+  Generated automatically from asset_sentiment_log.xlsx. Composite score is a v1
+  heuristic (article volume x tone, bullish side minus bearish side) -- treat it
+  as a directional read, not a calibrated probability. OHLC is a best-effort
+  trailing-hourly-bar snapshot, not a settlement-grade price.
+</footer>
+</body>
+</html>
