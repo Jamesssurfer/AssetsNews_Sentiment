@@ -74,44 +74,44 @@
 <body>
 <header>
   <h1>Asset sentiment &amp; price</h1>
-  <p>Last scan: 2026-09-14T08:52:00+00:00 UTC · Positive score = bullish pressure · Negative = bearish pressure</p>
+  <p>Last scan: 2026-09-14T09:39:43+00:00 UTC · Positive score = bullish pressure · Negative = bearish pressure</p>
 </header>
 <main>
   
     <section class="panel" style="--accent: #C9A227">
       <div class="panel-head">
         <h2>Gold</h2>
-        <span class="timestamp">as of 2026-09-14T08:52:00+00:00</span>
+        <span class="timestamp">as of 2026-09-14T09:39:43+00:00</span>
       </div>
 
       <div class="score-row">
-        <div class="score">-1.30</div>
-        <span class="delta">▼ -0.64 vs prior run</span>
+        <div class="score">+0.04</div>
+        <span class="delta">▲ +1.34 vs prior run</span>
       </div>
 
-      <div class="price-line">O 4,369.80 · H 4,379.30 · L 4,348.00 · C 4,353.00 <span class="muted">(GCZ26.CMX, 4h bars)</span></div>
+      <div class="price-line">O 4,377.90 · H 4,379.30 · L 4,320.10 · C 4,326.90 <span class="muted">(GCZ26.CMX, 4h bars)</span></div>
 
       <div class="breakdown">
         <div>
           <span class="label">Bullish coverage</span>
-          <span class="value">39 articles, tone -0.12 (finbert)</span>
+          <span class="value">39 articles, tone -0.10 (finbert)</span>
         </div>
         <div>
           <span class="label">Bearish coverage</span>
-          <span class="value">40 articles, tone +0.08 (finbert)</span>
+          <span class="value">40 articles, tone +0.13 (finbert)</span>
         </div>
       </div>
 
-      <span class="label chart-label">Composite score, last 3 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-37097" height="120"></canvas>
+      <span class="label chart-label">Composite score, last 4 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-32268" height="120"></canvas>
       <script>
-        new Chart(document.getElementById("chart-37097"), {
+        new Chart(document.getElementById("chart-32268"), {
           type: "line",
           data: {
-            labels: ["09-14 03h", "09-14 08h", "09-14 08h"],
+            labels: ["09-14 03h", "09-14 08h", "09-14 08h", "09-14 09h"],
             datasets: [
               {
-                data: [-2.309, -0.666, -1.304],
+                data: [-2.309, -0.666, -1.304, 0.041],
                 borderColor: "#C9A227",
                 borderWidth: 1.5,
                 pointRadius: 2,
@@ -120,7 +120,7 @@
                 fill: false,
               },
               {
-                data: [0, 0, 0],
+                data: [0, 0, 0, 0],
                 borderColor: "#8a8f9c",
                 borderWidth: 1,
                 borderDash: [4, 4],
@@ -167,37 +167,37 @@
     <section class="panel" style="--accent: #8A5A3B">
       <div class="panel-head">
         <h2>Oil</h2>
-        <span class="timestamp">as of 2026-09-14T08:52:00+00:00</span>
+        <span class="timestamp">as of 2026-09-14T09:39:43+00:00</span>
       </div>
 
       <div class="score-row">
-        <div class="score">+5.60</div>
-        <span class="delta">▲ +1.63 vs prior run</span>
+        <div class="score">+4.83</div>
+        <span class="delta">▼ -0.76 vs prior run</span>
       </div>
 
-      <div class="price-line">O 102.68 · H 103.80 · L 101.94 · C 103.13 <span class="muted">(CL=F, 4h bars)</span></div>
+      <div class="price-line">O 102.22 · H 103.83 · L 101.94 · C 102.83 <span class="muted">(CL=F, 4h bars)</span></div>
 
       <div class="breakdown">
         <div>
           <span class="label">Bullish coverage</span>
-          <span class="value">40 articles, tone +0.02 (finbert)</span>
+          <span class="value">40 articles, tone -0.01 (finbert)</span>
         </div>
         <div>
           <span class="label">Bearish coverage</span>
-          <span class="value">40 articles, tone +0.26 (finbert)</span>
+          <span class="value">40 articles, tone +0.25 (finbert)</span>
         </div>
       </div>
 
-      <span class="label chart-label">Composite score, last 3 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-29459" height="120"></canvas>
+      <span class="label chart-label">Composite score, last 4 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-38769" height="120"></canvas>
       <script>
-        new Chart(document.getElementById("chart-29459"), {
+        new Chart(document.getElementById("chart-38769"), {
           type: "line",
           data: {
-            labels: ["09-14 03h", "09-14 08h", "09-14 08h"],
+            labels: ["09-14 03h", "09-14 08h", "09-14 08h", "09-14 09h"],
             datasets: [
               {
-                data: [3.385, 3.965, 5.597],
+                data: [3.385, 3.965, 5.597, 4.834],
                 borderColor: "#8A5A3B",
                 borderWidth: 1.5,
                 pointRadius: 2,
@@ -206,7 +206,7 @@
                 fill: false,
               },
               {
-                data: [0, 0, 0],
+                data: [0, 0, 0, 0],
                 borderColor: "#8a8f9c",
                 borderWidth: 1,
                 borderDash: [4, 4],
@@ -236,16 +236,16 @@
 
       <div class="headlines">
         <span class="label">Top bullish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE9odGxncTZBdXJrcnd4Zm1GSENJSFpJQUJxbGphdTV2dTRfQTVmMzVFQ21PTGhzY19DSGVFUWpoeEtGMDZhNzRveUNoaDBlcDVLSmRpaFh6ZnA1emJSVllSYTNR?oc=5" target="_blank" rel="noopener">Current price of oil as of July 30, 2026 - Fortune</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQOFJZcEZXSVpGOEZvTVR0SGRqYmZ4WF9SZ3RKajNUVWZDM2t3U3BOa3lQWk1oMUpnOF9UTTk0eFpwdzR0TEVzbHlHelFkb0xxZ3lFX08tR0gyblJWX20xenlXMi0xNVFfSlJ4UDdVUWtZcW5hV19VRHZIS0taRmRDRzlOek1wb2hmR3lpMGhGS0ZwbVVVZ0p4NFhibHBOTkdrd0JpWnVpSDl1dw?oc=5" target="_blank" rel="noopener">London Gas Oil breaks resistance at $1,273: Live levels By Investing.com - Investing.com India</a></li>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNYnpIU2MtQ09aemlJcXpnMlNqNURRVFU3R2xmekhQcE9CODZEOE9wWFN5MlpDNmtjYVVpSjJ5N2pCZFllb0pkbVlQamw2Z1pGNHhpRENHVGpUelBCa1pZS0xrVXJLdnJkOUk2a2JKTHdPSC0ydVpkOVFZeDAxcndKM2lNWTJqYnhjYXZkMHR3bHRBZWlOWjJYcnNnVDNaeXNGckJ4ejhGRUlqRjQ?oc=5" target="_blank" rel="noopener">US Dollar Gains as Oil Rally and AI Concerns Hit Risk Appetite - Investing.com</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE9odGxncTZBdXJrcnd4Zm1GSENJSFpJQUJxbGphdTV2dTRfQTVmMzVFQ21PTGhzY19DSGVFUWpoeEtGMDZhNzRveUNoaDBlcDVLSmRpaFh6ZnA1emJSVllSYTNR?oc=5" target="_blank" rel="noopener">Current price of oil as of July 30, 2026 - Fortune</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxOa0xDNl91YjR4WVVvTXU5UlVvMnVQWUs0SDVCRFZFV0VxWVJzLVdsTWZuN1RiSjkxamJwdUkyVUdzZndiTXlITFdQWEVrSzJmSjN1bkczVjhhRktQSHR1UlMzMUtRalJZbmtLbDAtX0FJb1Ntb213dXFxeHMtVXh0NG5sd2ctUVdMWUJDQmF4R1U4V0hQZXQ0WVJDbVBWZDItbXAwbGxiWVFFSGs?oc=5" target="_blank" rel="noopener">Oil's roundtrip back to $100. Why China could determine what happens next - CNBC</a></li></ul>
       </div>
 
       <div class="headlines">
         <span class="label">Top bearish headlines this run</span>
         <ul><li><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPcGZWQVVsSEY1MDZDLXRVM2g2N0t1bHJ1VXpWX3pScTFZak53OGQ5VVNxemw0Mjdrd1paNjRYb1YtdFlYN3RIOURKM00xZmc4eFRlTHk2cTNhODJKWW5TOS1BMEE1cVF2NTN5YjJaeHRRNFlBVHUwUU9CN0pyOEdRMHE0c2VtcGNvamRPVFd3OVVlTnFmV3Fobks2WlZJU21oRW44?oc=5" target="_blank" rel="noopener">OPEC oil output falls in August, Reuters survey shows - Reuters</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxNS2hIVlN3T2xXekl4NzRBN0xWcE8yVnZoMkJEUWRFc2lDLWhSUjVaLXFLbTJhWWc1dzY0YlJaUXVtQ2FmRXdPZGJtSzJ3SnJWM1REVWhvVGNjRHF2T1FEaG1fNHJGR2VuWktvVHNZNFpkbHhRODVBSllaaGNCV1Y4cUdOaFVDcFZqTWNXVtIBkgFBVV95cUxNaV9JVVVaUGRVTXFFSFVBdWZDLUwxcjl4dTJIb21CZFRCX2prVndxLVV6RVphUzFhSlRFRzNJQlRXb0h2WW9reUtsaS1iVDNMMG9LUWZsdEhYN2gzLUwtM1JYaVVScnk0STlyMHl1emRJU0k4dE1SZnB5VXVkM3pyYXNBZGtzaVdSOGpMejBjRTlKQQ?oc=5" target="_blank" rel="noopener">OPEC+ approves further oil output increase as Hormuz exports start to recover - CNBC</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxPZGdpMlBVbExibHozSndzcGVmRE9SOVdnMnJDbmFSX2NSbjRQamJhd3R6dEkxX2tlaTkwdWRjVlplWkpsQTJoamljRzhQcXZkUmhDTmgtRWY0U1RwRUlEYUdoRmVmVkktM3FDNWpyVXRFNkpEWGl5ZlhHaGNadmVKTUx5NlhlQXE1ejdTUlowM0dGM1lPRkdTb2xRV2pKczR6aWtoLXRMWG11RDlUaXRuZDc3eUh1SDBmQ2NZQ2laTzBXMGtVQ0NpVjNhU2FvZ1ItWDhQWV9n?oc=5" target="_blank" rel="noopener">Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed - Investor's Business Daily</a></li></ul>
+<li><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE5TYnpCM2R2ZEh2OGpWR1o3VXRJZjJTQWZMRWMyOGQtUG9JdUxwelZUUjNyWjJteWE5Qmlod3l0dFAtNDBvZVprVGVyRzhZeU9CNndJU041eUtXMzNPdHU1bl8tZS1XVHU0?oc=5" target="_blank" rel="noopener">Organization of the Petroleum Exporting Countries - opec.org</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxNS2hIVlN3T2xXekl4NzRBN0xWcE8yVnZoMkJEUWRFc2lDLWhSUjVaLXFLbTJhWWc1dzY0YlJaUXVtQ2FmRXdPZGJtSzJ3SnJWM1REVWhvVGNjRHF2T1FEaG1fNHJGR2VuWktvVHNZNFpkbHhRODVBSllaaGNCV1Y4cUdOaFVDcFZqTWNXVtIBkgFBVV95cUxNaV9JVVVaUGRVTXFFSFVBdWZDLUwxcjl4dTJIb21CZFRCX2prVndxLVV6RVphUzFhSlRFRzNJQlRXb0h2WW9reUtsaS1iVDNMMG9LUWZsdEhYN2gzLUwtM1JYaVVScnk0STlyMHl1emRJU0k4dE1SZnB5VXVkM3pyYXNBZGtzaVdSOGpMejBjRTlKQQ?oc=5" target="_blank" rel="noopener">OPEC+ approves further oil output increase as Hormuz exports start to recover - CNBC</a></li></ul>
       </div>
     </section>
     
@@ -253,37 +253,37 @@
     <section class="panel" style="--accent: #4C9F70">
       <div class="panel-head">
         <h2>US Dollar</h2>
-        <span class="timestamp">as of 2026-09-14T08:52:00+00:00</span>
+        <span class="timestamp">as of 2026-09-14T09:39:43+00:00</span>
       </div>
 
       <div class="score-row">
-        <div class="score">+3.83</div>
-        <span class="delta">▼ -1.67 vs prior run</span>
+        <div class="score">+4.83</div>
+        <span class="delta">▲ +0.99 vs prior run</span>
       </div>
 
-      <div class="price-line">O 99.34 · H 99.59 · L 99.31 · C 99.57 <span class="muted">(DX-Y.NYB, 4h bars)</span></div>
+      <div class="price-line">O 99.31 · H 99.60 · L 99.31 · C 99.53 <span class="muted">(DX-Y.NYB, 4h bars)</span></div>
 
       <div class="breakdown">
         <div>
           <span class="label">Bullish coverage</span>
-          <span class="value">37 articles, tone +0.09 (finbert)</span>
+          <span class="value">37 articles, tone +0.10 (finbert)</span>
         </div>
         <div>
           <span class="label">Bearish coverage</span>
-          <span class="value">38 articles, tone +0.14 (finbert)</span>
+          <span class="value">39 articles, tone +0.20 (finbert)</span>
         </div>
       </div>
 
-      <span class="label chart-label">Composite score, last 3 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-36421" height="120"></canvas>
+      <span class="label chart-label">Composite score, last 4 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-9369" height="120"></canvas>
       <script>
-        new Chart(document.getElementById("chart-36421"), {
+        new Chart(document.getElementById("chart-9369"), {
           type: "line",
           data: {
-            labels: ["09-14 03h", "09-14 08h", "09-14 08h"],
+            labels: ["09-14 03h", "09-14 08h", "09-14 08h", "09-14 09h"],
             datasets: [
               {
-                data: [4.012, 5.496, 3.831],
+                data: [4.012, 5.496, 3.831, 4.825],
                 borderColor: "#4C9F70",
                 borderWidth: 1.5,
                 pointRadius: 2,
@@ -292,7 +292,7 @@
                 fill: false,
               },
               {
-                data: [0, 0, 0],
+                data: [0, 0, 0, 0],
                 borderColor: "#8a8f9c",
                 borderWidth: 1,
                 borderDash: [4, 4],
@@ -339,37 +339,37 @@
     <section class="panel" style="--accent: #4C8CA8">
       <div class="panel-head">
         <h2>S&P 500</h2>
-        <span class="timestamp">as of 2026-09-14T08:52:00+00:00</span>
+        <span class="timestamp">as of 2026-09-14T09:39:43+00:00</span>
       </div>
 
       <div class="score-row">
-        <div class="score">+0.93</div>
-        <span class="delta">▲ +1.01 vs prior run</span>
+        <div class="score">+0.34</div>
+        <span class="delta">▼ -0.59 vs prior run</span>
       </div>
 
-      <div class="price-line">O 7,620.25 · H 7,624.75 · L 7,603.50 · C 7,609.50 <span class="muted">(ES=F, 4h bars)</span></div>
+      <div class="price-line">O 7,620.00 · H 7,624.75 · L 7,593.75 · C 7,601.00 <span class="muted">(ES=F, 4h bars)</span></div>
 
       <div class="breakdown">
         <div>
           <span class="label">Bullish coverage</span>
-          <span class="value">38 articles, tone -0.15 (finbert)</span>
+          <span class="value">38 articles, tone -0.17 (finbert)</span>
         </div>
         <div>
           <span class="label">Bearish coverage</span>
-          <span class="value">40 articles, tone +0.24 (finbert)</span>
+          <span class="value">40 articles, tone +0.23 (finbert)</span>
         </div>
       </div>
 
-      <span class="label chart-label">Composite score, last 3 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-83535" height="120"></canvas>
+      <span class="label chart-label">Composite score, last 4 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-40128" height="120"></canvas>
       <script>
-        new Chart(document.getElementById("chart-83535"), {
+        new Chart(document.getElementById("chart-40128"), {
           type: "line",
           data: {
-            labels: ["09-14 03h", "09-14 08h", "09-14 08h"],
+            labels: ["09-14 03h", "09-14 08h", "09-14 08h", "09-14 09h"],
             datasets: [
               {
-                data: [-1.133, -0.076, 0.934],
+                data: [-1.133, -0.076, 0.934, 0.341],
                 borderColor: "#4C8CA8",
                 borderWidth: 1.5,
                 pointRadius: 2,
@@ -378,7 +378,7 @@
                 fill: false,
               },
               {
-                data: [0, 0, 0],
+                data: [0, 0, 0, 0],
                 borderColor: "#8a8f9c",
                 borderWidth: 1,
                 borderDash: [4, 4],
@@ -425,37 +425,37 @@
     <section class="panel" style="--accent: #8B5FBF">
       <div class="panel-head">
         <h2>Nasdaq</h2>
-        <span class="timestamp">as of 2026-09-14T08:52:00+00:00</span>
+        <span class="timestamp">as of 2026-09-14T09:39:43+00:00</span>
       </div>
 
       <div class="score-row">
-        <div class="score">+6.61</div>
-        <span class="delta">▼ -0.18 vs prior run</span>
+        <div class="score">+5.97</div>
+        <span class="delta">▼ -0.64 vs prior run</span>
       </div>
 
-      <div class="price-line">O 29,015.00 · H 29,037.50 · L 28,872.50 · C 28,902.50 <span class="muted">(NQ=F, 4h bars)</span></div>
+      <div class="price-line">O 29,014.50 · H 29,037.50 · L 28,816.25 · C 28,856.25 <span class="muted">(NQ=F, 4h bars)</span></div>
 
       <div class="breakdown">
         <div>
           <span class="label">Bullish coverage</span>
-          <span class="value">40 articles, tone -0.14 (finbert)</span>
+          <span class="value">40 articles, tone -0.20 (finbert)</span>
         </div>
         <div>
           <span class="label">Bearish coverage</span>
-          <span class="value">36 articles, tone +0.41 (finbert)</span>
+          <span class="value">36 articles, tone +0.44 (finbert)</span>
         </div>
       </div>
 
-      <span class="label chart-label">Composite score, last 3 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-8696" height="120"></canvas>
+      <span class="label chart-label">Composite score, last 4 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-84871" height="120"></canvas>
       <script>
-        new Chart(document.getElementById("chart-8696"), {
+        new Chart(document.getElementById("chart-84871"), {
           type: "line",
           data: {
-            labels: ["09-14 03h", "09-14 08h", "09-14 08h"],
+            labels: ["09-14 03h", "09-14 08h", "09-14 08h", "09-14 09h"],
             datasets: [
               {
-                data: [6.357, 6.796, 6.614],
+                data: [6.357, 6.796, 6.614, 5.969],
                 borderColor: "#8B5FBF",
                 borderWidth: 1.5,
                 pointRadius: 2,
@@ -464,7 +464,7 @@
                 fill: false,
               },
               {
-                data: [0, 0, 0],
+                data: [0, 0, 0, 0],
                 borderColor: "#8a8f9c",
                 borderWidth: 1,
                 borderDash: [4, 4],
@@ -511,20 +511,20 @@
     <section class="panel" style="--accent: #E8871E">
       <div class="panel-head">
         <h2>Bitcoin</h2>
-        <span class="timestamp">as of 2026-09-14T08:52:00+00:00</span>
+        <span class="timestamp">as of 2026-09-14T09:39:43+00:00</span>
       </div>
 
       <div class="score-row">
-        <div class="score">+5.65</div>
-        <span class="delta">▼ -0.15 vs prior run</span>
+        <div class="score">+6.57</div>
+        <span class="delta">▲ +0.92 vs prior run</span>
       </div>
 
-      <div class="price-line">O 77,646.46 · H 77,916.75 · L 77,338.51 · C 77,652.21 <span class="muted">(BTC-USD, 4h bars)</span></div>
+      <div class="price-line">O 77,583.99 · H 77,936.87 · L 77,337.96 · C 77,840.63 <span class="muted">(BTC-USD, 4h bars)</span></div>
 
       <div class="breakdown">
         <div>
           <span class="label">Bullish coverage</span>
-          <span class="value">38 articles, tone +0.04 (finbert)</span>
+          <span class="value">39 articles, tone +0.06 (finbert)</span>
         </div>
         <div>
           <span class="label">Bearish coverage</span>
@@ -532,16 +532,16 @@
         </div>
       </div>
 
-      <span class="label chart-label">Composite score, last 3 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-42019" height="120"></canvas>
+      <span class="label chart-label">Composite score, last 4 runs (~4 days)</span>
+      <canvas class="trend-chart" id="chart-17997" height="120"></canvas>
       <script>
-        new Chart(document.getElementById("chart-42019"), {
+        new Chart(document.getElementById("chart-17997"), {
           type: "line",
           data: {
-            labels: ["09-14 03h", "09-14 08h", "09-14 08h"],
+            labels: ["09-14 03h", "09-14 08h", "09-14 08h", "09-14 09h"],
             datasets: [
               {
-                data: [6.874, 5.801, 5.65],
+                data: [6.874, 5.801, 5.65, 6.573],
                 borderColor: "#E8871E",
                 borderWidth: 1.5,
                 pointRadius: 2,
@@ -550,7 +550,7 @@
                 fill: false,
               },
               {
-                data: [0, 0, 0],
+                data: [0, 0, 0, 0],
                 borderColor: "#8a8f9c",
                 borderWidth: 1,
                 borderDash: [4, 4],
@@ -580,7 +580,7 @@
 
       <div class="headlines">
         <span class="label">Top bullish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOYW5ydk13NmdWaS1wZXd0MC1KQnpxOUdGY3R6SFpYMDVIZFNfMW5RQTU2b1dfYXVtMDhiWERTMXdwdjlEQWl5V2dsSm00NE5pY2phS0I1R015QWJ3cEVHaG0wUjZXYU5oUm1LWFl2bVZuNmF2WUZRZlI5LUItQVZNdjF1X0VKeW50b2l4WG5SWWdEN25oajl0bi1qU0ZabEh2c1owQV9jSVDSAa4BQVVfeXFMT3lZRHR0SU5wSjZla2VFbldPbk04ejJ3UUJjLVNaUndRQlgyR2F0SnJsOXltSVV0NTVDemd6VzhyOTlidWNwUXp2WjctTkNRYS1rTjdRblRHcTdVQ05KNXVrdFM5Ulk1NjgtOC1lNWlobUp6NWhXNzNoNlBEWWpnUXVuSy0tTm05VDBIT0JaOTJ4X3BKaW5scUNQYUFIRTR1OG9TQzM5ZFYyUTFhWmln?oc=5" target="_blank" rel="noopener">Bitcoin surges 12% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC</a></li>
+        <ul><li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOYW5ydk13NmdWaS1wZXd0MC1KQnpxOUdGY3R6SFpYMDVIZFNfMW5RQTU2b1dfYXVtMDhiWERTMXdwdjlEQWl5V2dsSm00NE5pY2phS0I1R015QWJ3cEVHaG0wUjZXYU5oUm1LWFl2bVZuNmF2WUZRZlI5LUItQVZNdjF1X0VKeW50b2l4WG5SWWdEN25oajl0bi1qU0ZabEh2c1owQV9jSVDSAa4BQVVfeXFMT3lZRHR0SU5wSjZla2VFbldPbk04ejJ3UUJjLVNaUndRQlgyR2F0SnJsOXltSVV0NTVDemd6VzhyOTlidWNwUXp2WjctTkNRYS1rTjdRblRHcTdVQ05KNXVrdFM5Ulk1NjgtOC1lNWlobUp6NWhXNzNoNlBEWWpnUXVuSy0tTm05VDBIT0JaOTJ4X3BKaW5scUNQYUFIRTR1OG9TQzM5ZFYyUTFhWmln?oc=5" target="_blank" rel="noopener">Bitcoin surges 12% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - cnbc.com</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE9GWnpPTVdhalZlX29PZmhxWWFzRlEwbGQ2Q2VuUm1ISTRKY2EwOUdEb3drMU9LdE16NXhRdGwyakxPOWdSR2ZKS0NoWUJzNGZZVVA5dnRlb01WRHM?oc=5" target="_blank" rel="noopener">Bitcoin surges to three-month high as momentum builds - Fox Business</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxPemN4ODV3YldjcDUxb1FRWXc1OWV4bXZwVEhOWTMtbDJaNG92V0xpd0V6OTBxM3lRN0RZUEtWQkRWQW9Kb0hNUF8zS2FBOU5BUlpFTmpvNFBiYnpSVEhHMmtCU2JMdzNjRlNXRWtwaUM1eUxrVjRWQ3VQT2Q4MVJHaHBfdHBRUFpETTVnT012dEJQQV9mcHNOOHUwQnlVU2ZibW51TTBzMHdvTXhsQnlMMzJjT0lhcTNvVktGLTVfN1o3ZXlkLV9JNWRZVVFvakVaaDdIMGxWdFJXUVMxT19rREpueFJibmw0WllRUDk1ckgwUHB1?oc=5" target="_blank" rel="noopener">Bitmine Surges 8% on Ethereum Strength After Cantor Fitzgerald Doubles Its Target, SharpLink Advances 9%, Strategy Gains 4% - 24/7 Wall St.</a></li></ul>
       </div>
