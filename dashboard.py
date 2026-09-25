@@ -142,7 +142,7 @@ def _bucket_panel_html(bucket: str, log_df: pd.DataFrame, daily_df: pd.DataFrame
 
         <div class="panel-right">
           <span class="label chart-label">Composite score, last {len(chart_rows)} runs (~4 days)</span>
-          <canvas class="trend-chart" id="{canvas_id}" height="110"></canvas>
+          <canvas class="trend-chart" id="{canvas_id}" height="190"></canvas>
           <script>
             new Chart(document.getElementById("{canvas_id}"), {{
               type: "line",
@@ -188,7 +188,7 @@ def _bucket_panel_html(bucket: str, log_df: pd.DataFrame, daily_df: pd.DataFrame
           </script>
 
           <span class="label chart-label">Daily composite score, last {len(daily_rows)} days</span>
-          <canvas class="trend-chart" id="{daily_canvas_id}" height="110"></canvas>
+          <canvas class="trend-chart" id="{daily_canvas_id}" height="190"></canvas>
           <script>
             new Chart(document.getElementById("{daily_canvas_id}"), {{
               type: "line",
@@ -349,13 +349,13 @@ def build_dashboard():
   .mono {{ font-family: "IBM Plex Mono", ui-monospace, monospace; }}
   header {{
     padding: 2rem 1.5rem 1rem;
-    max-width: 1100px;
+    max-width: 1280px;
     margin: 0 auto;
     border-bottom: 1px solid var(--rule);
   }}
   header h1 {{ font-size: 1.4rem; font-weight: 600; margin: 0 0 0.3rem; }}
   header p {{ color: var(--muted); margin: 0; font-size: 0.9rem; }}
-  main {{ max-width: 1100px; margin: 0 auto; padding: 1.5rem; }}
+  main {{ max-width: 1280px; margin: 0 auto; padding: 1.5rem; }}
   .panel {{
     background: var(--panel);
     border-left: 3px solid var(--accent, var(--muted));
@@ -368,8 +368,8 @@ def build_dashboard():
   .panel-head h2 {{ font-size: 1.05rem; margin: 0; font-weight: 600; }}
   .timestamp {{ color: var(--muted); font-size: 0.8rem; }}
   .panel-body {{ display: flex; gap: 1.75rem; align-items: flex-start; flex-wrap: wrap; margin-top: 0.75rem; }}
-  .panel-left {{ flex: 1 1 300px; min-width: 260px; }}
-  .panel-right {{ flex: 1 1 340px; min-width: 280px; display: flex; flex-direction: column; }}
+  .panel-left {{ flex: 1 1 280px; min-width: 260px; }}
+  .panel-right {{ flex: 1.4 1 460px; min-width: 380px; display: flex; flex-direction: column; }}
   .score-row {{ display: flex; align-items: baseline; gap: 0.75rem; margin: 0 0 0.3rem; }}
   .score {{ font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 2.1rem; font-weight: 600; }}
   .delta {{ color: var(--muted); font-size: 0.85rem; }}
@@ -378,7 +378,7 @@ def build_dashboard():
   .breakdown .label {{ color: var(--muted); margin-right: 0.5rem; }}
   .breakdown .value {{ font-family: "IBM Plex Mono", ui-monospace, monospace; }}
   .chart-label {{ display: block; margin-top: 0.5rem; }}
-  .trend-chart {{ width: 100%; max-height: 140px; margin: 0.4rem 0 1rem; }}
+  .trend-chart {{ width: 100%; max-height: 220px; margin: 0.4rem 0 1.25rem; }}
   .headlines {{ margin-top: 1rem; }}
   .headlines .label {{ color: var(--muted); font-size: 0.8rem; display: block; margin-bottom: 0.3rem; }}
   .headlines ul {{ margin: 0; padding-left: 1.1rem; font-size: 0.9rem; }}
@@ -409,7 +409,7 @@ def build_dashboard():
   details.week-group summary::-webkit-details-marker {{ display: none; }}
   details.week-group summary::before {{ content: "▸"; font-size: 0.7rem; }}
   details.week-group[open] > summary::before {{ content: "▾"; }}
-  footer {{ max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem 2.5rem; color: var(--muted); font-size: 0.78rem; }}
+  footer {{ max-width: 1280px; margin: 0 auto; padding: 1rem 1.5rem 2.5rem; color: var(--muted); font-size: 0.78rem; }}
 </style>
 </head>
 <body>
