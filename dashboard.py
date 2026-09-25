@@ -7,6 +7,7 @@ CDN being silently blocked on a real network, with the chart just staying
 blank and no visible error -- self-hosting removes that failure mode).
 """
 import json
+from collections import OrderedDict
 from pathlib import Path
 
 import pandas as pd
@@ -24,7 +25,7 @@ BUCKET_COLORS = {
 }
 
 POINTS_PER_RUN_CHART = 24  # rolling 4 days at 6 runs/day
-DAILY_ROWS_SHOWN = 14
+DAILY_CHART_DAYS = 30  # daily-score chart per bucket -- shows fewer if less history exists yet
 
 
 def _fmt_score(x) -> str:
@@ -44,7 +45,7 @@ def _fmt_pct(x) -> str:
         return "n/a"
 
 
-def _bucket_panel_html(bucket: str, log_df: pd.DataFrame) -> str:
+def _bucket_panel_html(bucket: str, log_df: pd.DataFrame, daily_df: pd.DataFrame) -> str:
     rows = log_df[log_df["bucket"] == bucket].sort_values("timestamp_utc")
     if rows.empty:
         return ""
@@ -93,7 +94,13 @@ def _bucket_panel_html(bucket: str, log_df: pd.DataFrame) -> str:
     chart_labels = json.dumps(chart_times.dt.strftime("%m-%d %Hh").tolist())
     chart_values = json.dumps([round(float(v), 3) for v in chart_rows["composite_score"].tolist()])
     zero_line = json.dumps([0] * len(chart_rows))
-    canvas_id = f"chart-{abs(hash(bucket)) % 100000}"
+    canvas_id = f"chart-4h-{abs(hash(bucket)) % 100000}"
+
+    daily_rows = daily_df[daily_df["bucket"] == bucket].sort_values("date").tail(DAILY_CHART_DAYS) if not daily_df.empty else daily_df
+    daily_labels = json.dumps(daily_rows["date"].astype(str).tolist()) if not daily_rows.empty else "[]"
+    daily_values = json.dumps([round(float(v), 3) for v in daily_rows["composite_avg"].tolist()]) if not daily_rows.empty else "[]"
+    daily_zero_line = json.dumps([0] * len(daily_rows)) if not daily_rows.empty else "[]"
+    daily_canvas_id = f"chart-daily-{abs(hash(bucket)) % 100000}"
 
     return f"""
     <section class="panel" style="--accent: {color}">
@@ -102,110 +109,197 @@ def _bucket_panel_html(bucket: str, log_df: pd.DataFrame) -> str:
         <span class="timestamp">as of {latest['timestamp_utc']}</span>
       </div>
 
-      <div class="score-row">
-        <div class="score">{_fmt_score(latest['composite_score'])}</div>
-        {delta_html}
-      </div>
+      <div class="panel-body">
+        <div class="panel-left">
+          <div class="score-row">
+            <div class="score">{_fmt_score(latest['composite_score'])}</div>
+            {delta_html}
+          </div>
 
-      <div class="price-line">{price_line}</div>
+          <div class="price-line">{price_line}</div>
 
-      <div class="breakdown">
-        <div>
-          <span class="label">Bullish coverage</span>
-          <span class="value">{int(latest['bullish_articles'])} articles, tone {_fmt_score(bullish_tone)} ({model})</span>
+          <div class="breakdown">
+            <div>
+              <span class="label">Bullish coverage</span>
+              <span class="value">{int(latest['bullish_articles'])} articles, tone {_fmt_score(bullish_tone)} ({model})</span>
+            </div>
+            <div>
+              <span class="label">Bearish coverage</span>
+              <span class="value">{int(latest['bearish_articles'])} articles, tone {_fmt_score(bearish_tone)} ({model})</span>
+            </div>
+          </div>
+
+          <div class="headlines">
+            <span class="label">Top bullish headlines this run</span>
+            <ul>{bullish_headlines_html}</ul>
+          </div>
+
+          <div class="headlines">
+            <span class="label">Top bearish headlines this run</span>
+            <ul>{bearish_headlines_html}</ul>
+          </div>
         </div>
-        <div>
-          <span class="label">Bearish coverage</span>
-          <span class="value">{int(latest['bearish_articles'])} articles, tone {_fmt_score(bearish_tone)} ({model})</span>
+
+        <div class="panel-right">
+          <span class="label chart-label">Composite score, last {len(chart_rows)} runs (~4 days)</span>
+          <canvas class="trend-chart" id="{canvas_id}" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("{canvas_id}"), {{
+              type: "line",
+              data: {{
+                labels: {chart_labels},
+                datasets: [
+                  {{
+                    data: {chart_values},
+                    borderColor: "{color}",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "{color}",
+                    tension: 0.15,
+                    fill: false,
+                  }},
+                  {{
+                    data: {zero_line},
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  }},
+                ]
+              }},
+              options: {{
+                responsive: true,
+                plugins: {{ legend: {{ display: false }}, tooltip: {{ enabled: true, mode: "index", intersect: false }} }},
+                scales: {{
+                  x: {{
+                    display: true,
+                    ticks: {{ color: "#8a8f9c", maxTicksLimit: 6, font: {{ family: "IBM Plex Mono", size: 10 }} }},
+                    grid: {{ color: "#2a2e3a" }},
+                  }},
+                  y: {{
+                    display: true,
+                    ticks: {{ color: "#8a8f9c", font: {{ family: "IBM Plex Mono", size: 10 }} }},
+                    grid: {{ color: "#2a2e3a" }},
+                  }},
+                }},
+              }}
+            }});
+          </script>
+
+          <span class="label chart-label">Daily composite score, last {len(daily_rows)} days</span>
+          <canvas class="trend-chart" id="{daily_canvas_id}" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("{daily_canvas_id}"), {{
+              type: "line",
+              data: {{
+                labels: {daily_labels},
+                datasets: [
+                  {{
+                    data: {daily_values},
+                    borderColor: "{color}",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "{color}",
+                    tension: 0.15,
+                    fill: false,
+                  }},
+                  {{
+                    data: {daily_zero_line},
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  }},
+                ]
+              }},
+              options: {{
+                responsive: true,
+                plugins: {{ legend: {{ display: false }}, tooltip: {{ enabled: true, mode: "index", intersect: false }} }},
+                scales: {{
+                  x: {{
+                    display: true,
+                    ticks: {{ color: "#8a8f9c", maxTicksLimit: 6, font: {{ family: "IBM Plex Mono", size: 10 }} }},
+                    grid: {{ color: "#2a2e3a" }},
+                  }},
+                  y: {{
+                    display: true,
+                    ticks: {{ color: "#8a8f9c", font: {{ family: "IBM Plex Mono", size: 10 }} }},
+                    grid: {{ color: "#2a2e3a" }},
+                  }},
+                }},
+              }}
+            }});
+          </script>
         </div>
-      </div>
-
-      <span class="label chart-label">Composite score, last {len(chart_rows)} runs (~4 days)</span>
-      <canvas class="trend-chart" id="{canvas_id}" height="120"></canvas>
-      <script>
-        new Chart(document.getElementById("{canvas_id}"), {{
-          type: "line",
-          data: {{
-            labels: {chart_labels},
-            datasets: [
-              {{
-                data: {chart_values},
-                borderColor: "{color}",
-                borderWidth: 1.5,
-                pointRadius: 2,
-                pointBackgroundColor: "{color}",
-                tension: 0.15,
-                fill: false,
-              }},
-              {{
-                data: {zero_line},
-                borderColor: "#8a8f9c",
-                borderWidth: 1,
-                borderDash: [4, 4],
-                pointRadius: 0,
-                fill: false,
-              }},
-            ]
-          }},
-          options: {{
-            responsive: true,
-            plugins: {{ legend: {{ display: false }}, tooltip: {{ enabled: true, mode: "index", intersect: false }} }},
-            scales: {{
-              x: {{
-                display: true,
-                ticks: {{ color: "#8a8f9c", maxTicksLimit: 6, font: {{ family: "IBM Plex Mono", size: 10 }} }},
-                grid: {{ color: "#2a2e3a" }},
-              }},
-              y: {{
-                display: true,
-                ticks: {{ color: "#8a8f9c", font: {{ family: "IBM Plex Mono", size: 10 }} }},
-                grid: {{ color: "#2a2e3a" }},
-              }},
-            }},
-          }}
-        }});
-      </script>
-
-      <div class="headlines">
-        <span class="label">Top bullish headlines this run</span>
-        <ul>{bullish_headlines_html}</ul>
-      </div>
-
-      <div class="headlines">
-        <span class="label">Top bearish headlines this run</span>
-        <ul>{bearish_headlines_html}</ul>
       </div>
     </section>
     """
 
 
-def _daily_table_html(daily_df: pd.DataFrame) -> str:
+def _grouped_daily_history_html(daily_df: pd.DataFrame, buckets: list) -> str:
+    """Nested <details> dropdowns: Quarter > Week, most recent first, with the
+    latest date in each week on top. Plain HTML/CSS collapsibles -- no JS
+    needed, consistent with the rest of this self-contained page."""
     if daily_df.empty:
         return "<p class=\"muted\">No daily rollup yet.</p>"
 
-    recent_dates = sorted(daily_df["date"].unique())[-DAILY_ROWS_SHOWN:]
-    daily_df = daily_df[daily_df["date"].isin(recent_dates)]
-
-    buckets = list(BUCKET_COLORS.keys())
+    df = daily_df.copy()
+    df["date_dt"] = pd.to_datetime(df["date"])
     header_cells = "".join(f"<th>{b}</th>" for b in buckets)
 
-    body_rows = []
-    for date in recent_dates:
-        cells = []
-        for bucket in buckets:
-            match = daily_df[(daily_df["date"] == date) & (daily_df["bucket"] == bucket)]
-            if match.empty:
-                cells.append("<td class=\"muted\">—</td>")
-                continue
-            r = match.iloc[0]
-            cells.append(f"<td>{_fmt_score(r['composite_avg'])} <span class=\"muted\">({_fmt_pct(r['composite_pct_change_vs_prev_day'])})</span></td>")
-        body_rows.append(f"<tr><td>{date}</td>{''.join(cells)}</tr>")
+    unique_dates = sorted(df["date_dt"].unique(), reverse=True)  # latest first
 
-    return f"""
-    <table class="daily-table">
-      <thead><tr><th>Date</th>{header_cells}</tr></thead>
-      <tbody>{''.join(body_rows)}</tbody>
-    </table>
+    quarters: "OrderedDict[str, OrderedDict[str, list]]" = OrderedDict()
+    for d in unique_dates:
+        d_ts = pd.Timestamp(d)
+        quarter_label = f"{d_ts.year} Q{((d_ts.month - 1) // 3) + 1}"
+        week_start = d_ts - pd.Timedelta(days=d_ts.weekday())  # Monday
+        week_end = week_start + pd.Timedelta(days=6)
+        week_label = f"Week of {week_start:%b %d} \u2013 {week_end:%b %d}"
+        quarters.setdefault(quarter_label, OrderedDict()).setdefault(week_label, []).append(d_ts)
+
+    quarter_blocks = []
+    for qi, (quarter_label, weeks) in enumerate(quarters.items()):
+        week_blocks = []
+        for wi, (week_label, dates) in enumerate(weeks.items()):
+            row_html = []
+            for d_ts in dates:  # already latest-first
+                date_str = d_ts.strftime("%Y-%m-%d")
+                cells = []
+                for bucket in buckets:
+                    match = df[(df["date_dt"] == d_ts) & (df["bucket"] == bucket)]
+                    if match.empty:
+                        cells.append("<td class=\"muted\">\u2014</td>")
+                        continue
+                    r = match.iloc[0]
+                    cells.append(
+                        f"<td>{_fmt_score(r['composite_avg'])} "
+                        f"<span class=\"muted\">({_fmt_pct(r['composite_pct_change_vs_prev_day'])})</span></td>"
+                    )
+                row_html.append(f"<tr><td>{date_str}</td>{''.join(cells)}</tr>")
+
+            week_open = " open" if (qi == 0 and wi == 0) else ""
+            week_blocks.append(f"""
+            <details class="week-group"{week_open}>
+              <summary>{week_label}</summary>
+              <table class="daily-table">
+                <thead><tr><th>Date</th>{header_cells}</tr></thead>
+                <tbody>{''.join(row_html)}</tbody>
+              </table>
+            </details>
+            """)
+
+        quarter_open = " open" if qi == 0 else ""
+        quarter_blocks.append(f"""
+        <details class="quarter-group"{quarter_open}>
+          <summary>{quarter_label}</summary>
+          {''.join(week_blocks)}
+        </details>
+        """)
+
+    return "\n".join(quarter_blocks) + """
     <p class="muted small">Value shown is the day's average composite score; the figure in
     parentheses is the change versus the prior day for that bucket.</p>
     """
@@ -223,8 +317,8 @@ def build_dashboard():
         daily_df = pd.DataFrame()
 
     last_updated = log_df["timestamp_utc"].max() if not log_df.empty else "n/a"
-    panels_html = "\n".join(_bucket_panel_html(b, log_df) for b in BUCKET_COLORS)
-    daily_html = _daily_table_html(daily_df)
+    panels_html = "\n".join(_bucket_panel_html(b, log_df, daily_df) for b in BUCKET_COLORS)
+    daily_html = _grouped_daily_history_html(daily_df, list(BUCKET_COLORS.keys()))
 
     html = f"""<!doctype html>
 <html lang="en">
@@ -255,13 +349,13 @@ def build_dashboard():
   .mono {{ font-family: "IBM Plex Mono", ui-monospace, monospace; }}
   header {{
     padding: 2rem 1.5rem 1rem;
-    max-width: 880px;
+    max-width: 1100px;
     margin: 0 auto;
     border-bottom: 1px solid var(--rule);
   }}
   header h1 {{ font-size: 1.4rem; font-weight: 600; margin: 0 0 0.3rem; }}
   header p {{ color: var(--muted); margin: 0; font-size: 0.9rem; }}
-  main {{ max-width: 880px; margin: 0 auto; padding: 1.5rem; }}
+  main {{ max-width: 1100px; margin: 0 auto; padding: 1.5rem; }}
   .panel {{
     background: var(--panel);
     border-left: 3px solid var(--accent, var(--muted));
@@ -273,7 +367,10 @@ def build_dashboard():
   .panel-head {{ display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; }}
   .panel-head h2 {{ font-size: 1.05rem; margin: 0; font-weight: 600; }}
   .timestamp {{ color: var(--muted); font-size: 0.8rem; }}
-  .score-row {{ display: flex; align-items: baseline; gap: 0.75rem; margin: 0.6rem 0 0.3rem; }}
+  .panel-body {{ display: flex; gap: 1.75rem; align-items: flex-start; flex-wrap: wrap; margin-top: 0.75rem; }}
+  .panel-left {{ flex: 1 1 300px; min-width: 260px; }}
+  .panel-right {{ flex: 1 1 340px; min-width: 280px; display: flex; flex-direction: column; }}
+  .score-row {{ display: flex; align-items: baseline; gap: 0.75rem; margin: 0 0 0.3rem; }}
   .score {{ font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 2.1rem; font-weight: 600; }}
   .delta {{ color: var(--muted); font-size: 0.85rem; }}
   .price-line {{ font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.85rem; margin-bottom: 0.75rem; }}
@@ -296,7 +393,23 @@ def build_dashboard():
     font-family: "IBM Plex Mono", ui-monospace, monospace;
   }}
   table.daily-table th {{ font-family: "IBM Plex Sans", sans-serif; color: var(--muted); font-weight: 500; }}
-  footer {{ max-width: 880px; margin: 0 auto; padding: 1rem 1.5rem 2.5rem; color: var(--muted); font-size: 0.78rem; }}
+  details.quarter-group {{ border-top: 1px solid var(--rule); padding: 0.6rem 0; }}
+  details.quarter-group summary {{
+    cursor: pointer; font-weight: 600; font-size: 0.95rem; list-style: none;
+    display: flex; align-items: center; gap: 0.4rem;
+  }}
+  details.quarter-group summary::-webkit-details-marker {{ display: none; }}
+  details.quarter-group summary::before {{ content: "▸"; color: var(--muted); font-size: 0.75rem; }}
+  details.quarter-group[open] > summary::before {{ content: "▾"; }}
+  details.week-group {{ margin: 0.5rem 0 0.5rem 1.25rem; }}
+  details.week-group summary {{
+    cursor: pointer; color: var(--muted); font-size: 0.85rem; list-style: none;
+    display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.3rem;
+  }}
+  details.week-group summary::-webkit-details-marker {{ display: none; }}
+  details.week-group summary::before {{ content: "▸"; font-size: 0.7rem; }}
+  details.week-group[open] > summary::before {{ content: "▾"; }}
+  footer {{ max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem 2.5rem; color: var(--muted); font-size: 0.78rem; }}
 </style>
 </head>
 <body>
