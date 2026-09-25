@@ -27,13 +27,13 @@
   .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
   header {
     padding: 2rem 1.5rem 1rem;
-    max-width: 880px;
+    max-width: 1100px;
     margin: 0 auto;
     border-bottom: 1px solid var(--rule);
   }
   header h1 { font-size: 1.4rem; font-weight: 600; margin: 0 0 0.3rem; }
   header p { color: var(--muted); margin: 0; font-size: 0.9rem; }
-  main { max-width: 880px; margin: 0 auto; padding: 1.5rem; }
+  main { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
   .panel {
     background: var(--panel);
     border-left: 3px solid var(--accent, var(--muted));
@@ -45,7 +45,10 @@
   .panel-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; }
   .panel-head h2 { font-size: 1.05rem; margin: 0; font-weight: 600; }
   .timestamp { color: var(--muted); font-size: 0.8rem; }
-  .score-row { display: flex; align-items: baseline; gap: 0.75rem; margin: 0.6rem 0 0.3rem; }
+  .panel-body { display: flex; gap: 1.75rem; align-items: flex-start; flex-wrap: wrap; margin-top: 0.75rem; }
+  .panel-left { flex: 1 1 300px; min-width: 260px; }
+  .panel-right { flex: 1 1 340px; min-width: 280px; display: flex; flex-direction: column; }
+  .score-row { display: flex; align-items: baseline; gap: 0.75rem; margin: 0 0 0.3rem; }
   .score { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 2.1rem; font-weight: 600; }
   .delta { color: var(--muted); font-size: 0.85rem; }
   .price-line { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.85rem; margin-bottom: 0.75rem; }
@@ -68,98 +71,166 @@
     font-family: "IBM Plex Mono", ui-monospace, monospace;
   }
   table.daily-table th { font-family: "IBM Plex Sans", sans-serif; color: var(--muted); font-weight: 500; }
-  footer { max-width: 880px; margin: 0 auto; padding: 1rem 1.5rem 2.5rem; color: var(--muted); font-size: 0.78rem; }
+  details.quarter-group { border-top: 1px solid var(--rule); padding: 0.6rem 0; }
+  details.quarter-group summary {
+    cursor: pointer; font-weight: 600; font-size: 0.95rem; list-style: none;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  details.quarter-group summary::-webkit-details-marker { display: none; }
+  details.quarter-group summary::before { content: "▸"; color: var(--muted); font-size: 0.75rem; }
+  details.quarter-group[open] > summary::before { content: "▾"; }
+  details.week-group { margin: 0.5rem 0 0.5rem 1.25rem; }
+  details.week-group summary {
+    cursor: pointer; color: var(--muted); font-size: 0.85rem; list-style: none;
+    display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.3rem;
+  }
+  details.week-group summary::-webkit-details-marker { display: none; }
+  details.week-group summary::before { content: "▸"; font-size: 0.7rem; }
+  details.week-group[open] > summary::before { content: "▾"; }
+  footer { max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem 2.5rem; color: var(--muted); font-size: 0.78rem; }
 </style>
 </head>
 <body>
 <header>
   <h1>Asset sentiment &amp; price</h1>
-  <p>Last scan: 2026-09-25T23:09:40+00:00 UTC · Positive score = bullish pressure · Negative = bearish pressure</p>
+  <p>Last scan: 2026-09-25T23:48:49+00:00 UTC · Positive score = bullish pressure · Negative = bearish pressure</p>
 </header>
 <main>
   
     <section class="panel" style="--accent: #C9A227">
       <div class="panel-head">
         <h2>Gold</h2>
-        <span class="timestamp">as of 2026-09-25T23:09:40+00:00</span>
+        <span class="timestamp">as of 2026-09-25T23:48:49+00:00</span>
       </div>
 
-      <div class="score-row">
-        <div class="score">-4.27</div>
-        <span class="delta">▼ -0.24 vs prior run</span>
-      </div>
+      <div class="panel-body">
+        <div class="panel-left">
+          <div class="score-row">
+            <div class="score">-3.25</div>
+            <span class="delta">▲ +1.02 vs prior run</span>
+          </div>
 
-      <div class="price-line">O 4,321.60 · H 4,332.40 · L 4,314.50 · C 4,320.50 <span class="muted">(GCZ26.CMX, 4h bars)</span></div>
+          <div class="price-line">O 4,321.60 · H 4,332.40 · L 4,314.50 · C 4,320.50 <span class="muted">(GCZ26.CMX, 4h bars)</span></div>
 
-      <div class="breakdown">
-        <div>
-          <span class="label">Bullish coverage</span>
-          <span class="value">40 articles, tone -0.19 (finbert)</span>
-        </div>
-        <div>
-          <span class="label">Bearish coverage</span>
-          <span class="value">40 articles, tone -0.03 (finbert)</span>
-        </div>
-      </div>
+          <div class="breakdown">
+            <div>
+              <span class="label">Bullish coverage</span>
+              <span class="value">40 articles, tone -0.14 (finbert)</span>
+            </div>
+            <div>
+              <span class="label">Bearish coverage</span>
+              <span class="value">40 articles, tone -0.03 (finbert)</span>
+            </div>
+          </div>
 
-      <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-78712" height="120"></canvas>
-      <script>
-        new Chart(document.getElementById("chart-78712"), {
-          type: "line",
-          data: {
-            labels: ["09-20 09h", "09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h"],
-            datasets: [
-              {
-                data: [0.782, 2.554, -1.206, -0.471, -0.042, 2.191, 3.974, 4.606, 5.957, 4.238, 0.719, 1.688, 1.331, 1.912, -2.427, 0.64, 0.398, -1.429, -0.991, -2.099, -0.411, -1.498, -4.032, -4.269],
-                borderColor: "#C9A227",
-                borderWidth: 1.5,
-                pointRadius: 2,
-                pointBackgroundColor: "#C9A227",
-                tension: 0.15,
-                fill: false,
-              },
-              {
-                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                borderColor: "#8a8f9c",
-                borderWidth: 1,
-                borderDash: [4, 4],
-                pointRadius: 0,
-                fill: false,
-              },
-            ]
-          },
-          options: {
-            responsive: true,
-            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
-            scales: {
-              x: {
-                display: true,
-                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-              y: {
-                display: true,
-                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-            },
-          }
-        });
-      </script>
+          <div class="headlines">
+            <span class="label">Top bullish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNaDdPLWtTOVlMN0c3OWFFWmF1dUZfT28xLWducTQyQVo5XzRUZzU5YWxUZ1JlZzZqcHRtcG5FUENMZE9LN1ZEQXdpTDBMa3c2Ry1aakpaMjBtTlV6bTNDenB4d2d1OEltQmxadjVsTHFWY0J5alI2Sko2YVdfa1VHZDd3bGVtdUlOaXVaZU0xcFo0UHBjNXZTX2dKS1dtX1J5d2JBX2NxSW9TMS1P?oc=5" target="_blank" rel="noopener">Lundin Gold Hits Record Grade at Bonza Sur With 204 g/t Gold Over 3 Metres Intercept - the deep dive</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQeEVJaEpsQjFWNXBMR1dObVJJUUN5Vjc1ZVhOOUxIN1lfUzBzZUlQSDBUakVkdnVqc0VJYnlzbm5GSDZqeWVBS1BaSTE2Um1YWUViWV93MFU4d19KTUJnNnZhWERidE9JWE53Sk9CdGQza1hkVWNXQ3ltc092V2YyRDZFeHBIUFVwQ3dfd05IVndaVEN3N1VYekRPYlI0WFU?oc=5" target="_blank" rel="noopener">Gold hits record above $5,100 as geopolitics drive safe‑haven rush - Reuters</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTFAxTUhJVFR3RXFNV3VTVFBNTl9OUXhvNmx6R01EZjFqSW05UWJjN3JIUGltNUNobFJKazVGR0lhb1J2bS1iRDdSeC1Fa0YtNU1BQi1xM1hnVjhaZklSUjFpU0ZHWV9GOHlncUtZMmtKTzRxQV8zM2c?oc=5" target="_blank" rel="noopener">Precious Metals Surge: Gold Approaches $4,500 Mark, Silver Reclaims $66 - finance.biggo.com</a></li></ul>
+          </div>
 
-      <div class="headlines">
-        <span class="label">Top bullish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNaDdPLWtTOVlMN0c3OWFFWmF1dUZfT28xLWducTQyQVo5XzRUZzU5YWxUZ1JlZzZqcHRtcG5FUENMZE9LN1ZEQXdpTDBMa3c2Ry1aakpaMjBtTlV6bTNDenB4d2d1OEltQmxadjVsTHFWY0J5alI2Sko2YVdfa1VHZDd3bGVtdUlOaXVaZU0xcFo0UHBjNXZTX2dKS1dtX1J5d2JBX2NxSW9TMS1P?oc=5" target="_blank" rel="noopener">Lundin Gold Hits Record Grade at Bonza Sur With 204 g/t Gold Over 3 Metres Intercept - the deep dive</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOdmIweWNUQkhQS0N4SVhSTjEzWjBlUU9IX2Vxa2c4cGVvM1RQN3BqRkVRWFBYSHAzdFNqcmdYSFhVWUViVWV5Wmp6cHhERHVOSHNnbTcxYnlaaFZ1Y3lsOWpWRDdxbUR4ZDNlRVlQWEZERkhuLWZaT0VxRkhEamE3QmRGMDNvX3Z1VlVPNnczTFBWbEhlbEZqMkZJYTRsM2FKSXpkWUJIbkVUcGtwaXdwRUUxbDBHTFJ1ZmpjZQ?oc=5" target="_blank" rel="noopener">Gold price will hit $4,900/oz in 2026 on strong sovereign demand as China buys 75% more than reported in July – Goldman Sachs - Kitco</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQeEVJaEpsQjFWNXBMR1dObVJJUUN5Vjc1ZVhOOUxIN1lfUzBzZUlQSDBUakVkdnVqc0VJYnlzbm5GSDZqeWVBS1BaSTE2Um1YWUViWV93MFU4d19KTUJnNnZhWERidE9JWE53Sk9CdGQza1hkVWNXQ3ltc092V2YyRDZFeHBIUFVwQ3dfd05IVndaVEN3N1VYekRPYlI0WFU?oc=5" target="_blank" rel="noopener">Gold hits record above $5,100 as geopolitics drive safe‑haven rush - Reuters</a></li></ul>
-      </div>
-
-      <div class="headlines">
-        <span class="label">Top bearish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxQSFRKQTdTLTFRejA5ZGxYc0lkZGFQNlplRlBCemlQVEwyMVdDNFkxTENCMXgwZ3NjZEdzdWNkcjJDdno0d0xyVHl1S2Zlal85Q2pkaTVvbm5VMGVUaE9naDhITzdVV2xPeGRlQmdYQlZCNGc2VDVnLU5hMGxHQklJMUZXY2xUSmxVQVU0ZmVISlVPR1dPTVNfOE9iOVJ3TlpXbThVcWlMRmJUeENhYkdLTkVxZ05qeXRHSDlkejk1R2V3bHpsd3h4ZHEwLVA0Q2VvajhqMmRCTQ?oc=5" target="_blank" rel="noopener">Record: Chinese investors pull $2.22 billion from Gold ETFs in June, the highest monthly outflow ever - FXStreet</a></li>
+          <div class="headlines">
+            <span class="label">Top bearish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxQSFRKQTdTLTFRejA5ZGxYc0lkZGFQNlplRlBCemlQVEwyMVdDNFkxTENCMXgwZ3NjZEdzdWNkcjJDdno0d0xyVHl1S2Zlal85Q2pkaTVvbm5VMGVUaE9naDhITzdVV2xPeGRlQmdYQlZCNGc2VDVnLU5hMGxHQklJMUZXY2xUSmxVQVU0ZmVISlVPR1dPTVNfOE9iOVJ3TlpXbThVcWlMRmJUeENhYkdLTkVxZ05qeXRHSDlkejk1R2V3bHpsd3h4ZHEwLVA0Q2VvajhqMmRCTQ?oc=5" target="_blank" rel="noopener">Record: Chinese investors pull $2.22 billion from Gold ETFs in June, the highest monthly outflow ever - FXStreet</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNcGdBZURLclpjb21vODJwTDdrcndNR2ZCUGdqRGVoYXhkWkdFZEpHT2wyMnNORDJnRUtxcGhZTGxWcGxfNVhxLVpHNlh2c2VpbW5JOENUeFpJT1QxMnVCRWdsNFROQzZuYjNxbmptZGVWbTliMWJTcVBVU2hrMGs0Qlpkb2p6Y1hydWZJQVlWcS1kejhZTDZyU2UwQmVBNHpLMkp5UUxsNmJvV2c5ZU9vMEdNZk1Zdw?oc=5" target="_blank" rel="noopener">Gold market sees positive ETF inflows in July, ending two months of outflows - Kitco</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPME13WGVlVjFRRTNPak02V1FBTDZVR25FMHh5Yjc5NWZqZUZfZ3pyUjRxTU5HcWRDS1I3RVRQQ0V0eTZOZmMxMk9aMlc1WGsyd0FPQzU3ZzlMSUp4cVFBSUR6ZkJucl9WSTNlRWRPdHlxY1o1emxISC10OXJib2tlaV80RGpxaW9hR3BydHhPOVNMdFFDSDd1c3RzVGc1MmJpNm1WTDkySUplMkZyZks2bQ?oc=5" target="_blank" rel="noopener">Gold breaks below key MAs, eyes $4,260 support: Live levels - Investing.com</a></li></ul>
+          </div>
+        </div>
+
+        <div class="panel-right">
+          <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
+          <canvas class="trend-chart" id="chart-4h-28151" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-4h-28151"), {
+              type: "line",
+              data: {
+                labels: ["09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h", "09-25 23h"],
+                datasets: [
+                  {
+                    data: [2.554, -1.206, -0.471, -0.042, 2.191, 3.974, 4.606, 5.957, 4.238, 0.719, 1.688, 1.331, 1.912, -2.427, 0.64, 0.398, -1.429, -0.991, -2.099, -0.411, -1.498, -4.032, -4.269, -3.251],
+                    borderColor: "#C9A227",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#C9A227",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+
+          <span class="label chart-label">Daily composite score, last 12 days</span>
+          <canvas class="trend-chart" id="chart-daily-28151" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-daily-28151"), {
+              type: "line",
+              data: {
+                labels: ["2026-09-14", "2026-09-15", "2026-09-16", "2026-09-17", "2026-09-18", "2026-09-19", "2026-09-20", "2026-09-21", "2026-09-22", "2026-09-23", "2026-09-24", "2026-09-25"],
+                datasets: [
+                  {
+                    data: [-0.566, 0.936, -1.849, -1.002, 0.025, 0.844, 0.295, 2.682, 3.15, 0.364, -1.03, -2.552],
+                    borderColor: "#C9A227",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#C9A227",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+        </div>
       </div>
     </section>
     
@@ -167,85 +238,137 @@
     <section class="panel" style="--accent: #8A5A3B">
       <div class="panel-head">
         <h2>Oil</h2>
-        <span class="timestamp">as of 2026-09-25T23:09:40+00:00</span>
+        <span class="timestamp">as of 2026-09-25T23:48:49+00:00</span>
       </div>
 
-      <div class="score-row">
-        <div class="score">+3.55</div>
-        <span class="delta">▲ +0.82 vs prior run</span>
-      </div>
+      <div class="panel-body">
+        <div class="panel-left">
+          <div class="score-row">
+            <div class="score">+2.59</div>
+            <span class="delta">▼ -0.96 vs prior run</span>
+          </div>
 
-      <div class="price-line">O 92.24 · H 92.91 · L 91.82 · C 92.44 <span class="muted">(CL=F, 4h bars)</span></div>
+          <div class="price-line">O 92.24 · H 92.91 · L 91.82 · C 92.44 <span class="muted">(CL=F, 4h bars)</span></div>
 
-      <div class="breakdown">
-        <div>
-          <span class="label">Bullish coverage</span>
-          <span class="value">40 articles, tone +0.00 (finbert)</span>
-        </div>
-        <div>
-          <span class="label">Bearish coverage</span>
-          <span class="value">40 articles, tone +0.18 (finbert)</span>
-        </div>
-      </div>
+          <div class="breakdown">
+            <div>
+              <span class="label">Bullish coverage</span>
+              <span class="value">40 articles, tone +0.00 (finbert)</span>
+            </div>
+            <div>
+              <span class="label">Bearish coverage</span>
+              <span class="value">40 articles, tone +0.13 (finbert)</span>
+            </div>
+          </div>
 
-      <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-16022" height="120"></canvas>
-      <script>
-        new Chart(document.getElementById("chart-16022"), {
-          type: "line",
-          data: {
-            labels: ["09-20 09h", "09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h"],
-            datasets: [
-              {
-                data: [-2.595, -1.684, 0.123, -0.608, -0.152, 1.38, -0.096, 0.809, 2.274, 3.255, 4.987, 4.381, 1.604, 4.329, 1.184, -0.877, -0.838, 2.851, 1.827, 2.607, 3.082, 2.252, 2.723, 3.547],
-                borderColor: "#8A5A3B",
-                borderWidth: 1.5,
-                pointRadius: 2,
-                pointBackgroundColor: "#8A5A3B",
-                tension: 0.15,
-                fill: false,
-              },
-              {
-                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                borderColor: "#8a8f9c",
-                borderWidth: 1,
-                borderDash: [4, 4],
-                pointRadius: 0,
-                fill: false,
-              },
-            ]
-          },
-          options: {
-            responsive: true,
-            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
-            scales: {
-              x: {
-                display: true,
-                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-              y: {
-                display: true,
-                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-            },
-          }
-        });
-      </script>
-
-      <div class="headlines">
-        <span class="label">Top bullish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOaFBFeE9aMXltVV9yS0xqMEFpaVJGaG10NkVOa09mNTEwM1JyT1p6eEdKYkxvYnJQTWtaaUItS1hZbC1xandMZHpaV3N3Yzh4MmwzUVZPZnZyOGtjcVNlcFAxSFZSanVRcXhwOXpxR1R5M0U3NjRkV2NKODRmaUM2R05jY2RfTk15bkpKMFdTMVlQSFo3b3l5MVFIVUtPTFdZSFJtcQ?oc=5" target="_blank" rel="noopener">Iran War Raises Demand for US Fuel, Boosting Gulf Coast Refining Margins - EnergyNow.com</a></li>
+          <div class="headlines">
+            <span class="label">Top bullish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOaFBFeE9aMXltVV9yS0xqMEFpaVJGaG10NkVOa09mNTEwM1JyT1p6eEdKYkxvYnJQTWtaaUItS1hZbC1xandMZHpaV3N3Yzh4MmwzUVZPZnZyOGtjcVNlcFAxSFZSanVRcXhwOXpxR1R5M0U3NjRkV2NKODRmaUM2R05jY2RfTk15bkpKMFdTMVlQSFo3b3l5MVFIVUtPTFdZSFJtcQ?oc=5" target="_blank" rel="noopener">Iran War Raises Demand for US Fuel, Boosting Gulf Coast Refining Margins - EnergyNow.com</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNaFA3TG9MdVViYl8xUnV2c2U2T0FDLU1oRGM0VlA5bEVsaG9oOG9oOC03VWowRjBieTVuMEFRMDBJR2M5ODhIOGt1LTZDNUNXTkVvN1Bva3ljSlJqUUJQLW5KR18zVkFtUjdZVzZ5RmZpOV90TlpKLUhwd0hqYXV3alZFRDRqQ0ZjM2RJTGdrR1dtZTR0MmhLRHVPNWdRb03SAaQBQVVfeXFMT3VZUUFQRjJ6VnNtOGxsRVBXNkUyckprRnQ3UDhfZnN5NzVOZGRCNFJ1dnpmb0dvaDhEaWVXaE9Fa3drUXE3Vm1WbW5wbklwLTBvUERWX1RvMElsZW56dHdoNmUzWGliNEFHOTMydU1qRDVyeWxlMkpNdkZZVnl0QjNEeHNHb3dFTUY0RktoQ0ZMY2NtODg2X2pTS0Q0bVlJTkJTVTQ?oc=5" target="_blank" rel="noopener">Oil prices gain as focus shifts to supply recovery and demand - CNBC</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPWEdjS0pVMy1JLXZFN0V6ZFhjdjNOOXpjRnUtYXdYZEdjbzNaR2R6TGU4UTRDVEdLazJuMS12eHp6d0hWQjI0ZzdhRTUtbVBqR3NhSGRES0UxbG1TZ29QX1hjaWZFNWs1RWNWV1E0azdPVDNIR2x4TGJYMzdDZ3YtVUN1VzZEam5Tb3pXYy1TejN0VFMxYjI1U3ByeFZDZmZ1UnFYX053R3N3YzhST3dSWGdB?oc=5" target="_blank" rel="noopener">OPEC+ keeps oil output policy unchanged for October - Reuters</a></li></ul>
-      </div>
+          </div>
 
-      <div class="headlines">
-        <span class="label">Top bearish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQNW5vUTdIRGFyRVl2N2RoaktRTEFFdFh5al9GckxJSVJOd1V6UkR0UzdzMFNrVlAyRnMzZGVUOUM0S2x6WWcwc0ZZR2kwb2o1TVYxRl9pdG9hMWlrc3NDdEJYWU1aZjEtSVVrRnVqMTEzVEEwNUNRV3JiT2pVY2pPeXBiTG44YUtLcTFKUHdXMEIwMmk2cVFQN04zamI2MTN6Nm9LOWdTY3lnMWduazh6OGpXeW5SVjZOVHgyeUxR?oc=5" target="_blank" rel="noopener">Oil falls on oversupply after Hormuz reopening; Michigan sentiment improves - equiti.com</a></li>
+          <div class="headlines">
+            <span class="label">Top bearish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQNW5vUTdIRGFyRVl2N2RoaktRTEFFdFh5al9GckxJSVJOd1V6UkR0UzdzMFNrVlAyRnMzZGVUOUM0S2x6WWcwc0ZZR2kwb2o1TVYxRl9pdG9hMWlrc3NDdEJYWU1aZjEtSVVrRnVqMTEzVEEwNUNRV3JiT2pVY2pPeXBiTG44YUtLcTFKUHdXMEIwMmk2cVFQN04zamI2MTN6Nm9LOWdTY3lnMWduazh6OGpXeW5SVjZOVHgyeUxR?oc=5" target="_blank" rel="noopener">Oil falls on oversupply after Hormuz reopening; Michigan sentiment improves - equiti.com</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNc1BOTkRSU0FuQ1IyRE5kUGJzb2V4Mnl1SW5JYVZVWEV0WGZPT1BQN3BEbHpFNU1SQUhMbUdmM04tZG5fbkVMb2hmeDE1M0lIUUd6cHhSdWU2VExUSEJZc3YzY2pNUXFpTUNlNm5Pd2wydU1lU0Ztb1UzT2ZLaUx2SFhWQ2dJQ25QR0E?oc=5" target="_blank" rel="noopener">nano Crude Oil Fut (Jan 2027) Trade Ideas — COINBASE:NOLF2027 - TradingView</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPWEdjS0pVMy1JLXZFN0V6ZFhjdjNOOXpjRnUtYXdYZEdjbzNaR2R6TGU4UTRDVEdLazJuMS12eHp6d0hWQjI0ZzdhRTUtbVBqR3NhSGRES0UxbG1TZ29QX1hjaWZFNWs1RWNWV1E0azdPVDNIR2x4TGJYMzdDZ3YtVUN1VzZEam5Tb3pXYy1TejN0VFMxYjI1U3ByeFZDZmZ1UnFYX053R3N3YzhST3dSWGdB?oc=5" target="_blank" rel="noopener">OPEC+ keeps oil output policy unchanged for October - Reuters</a></li></ul>
+          </div>
+        </div>
+
+        <div class="panel-right">
+          <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
+          <canvas class="trend-chart" id="chart-4h-27514" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-4h-27514"), {
+              type: "line",
+              data: {
+                labels: ["09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h", "09-25 23h"],
+                datasets: [
+                  {
+                    data: [-1.684, 0.123, -0.608, -0.152, 1.38, -0.096, 0.809, 2.274, 3.255, 4.987, 4.381, 1.604, 4.329, 1.184, -0.877, -0.838, 2.851, 1.827, 2.607, 3.082, 2.252, 2.723, 3.547, 2.589],
+                    borderColor: "#8A5A3B",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#8A5A3B",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+
+          <span class="label chart-label">Daily composite score, last 12 days</span>
+          <canvas class="trend-chart" id="chart-daily-27514" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-daily-27514"), {
+              type: "line",
+              data: {
+                labels: ["2026-09-14", "2026-09-15", "2026-09-16", "2026-09-17", "2026-09-18", "2026-09-19", "2026-09-20", "2026-09-21", "2026-09-22", "2026-09-23", "2026-09-24", "2026-09-25"],
+                datasets: [
+                  {
+                    data: [3.844, 1.426, 1.484, 2.468, 1.628, -0.806, -0.925, 0.485, 3.724, 1.56, 1.612, 2.901],
+                    borderColor: "#8A5A3B",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#8A5A3B",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+        </div>
       </div>
     </section>
     
@@ -253,85 +376,137 @@
     <section class="panel" style="--accent: #4C9F70">
       <div class="panel-head">
         <h2>US Dollar</h2>
-        <span class="timestamp">as of 2026-09-25T23:09:40+00:00</span>
+        <span class="timestamp">as of 2026-09-25T23:48:49+00:00</span>
       </div>
 
-      <div class="score-row">
-        <div class="score">+2.88</div>
-        <span class="delta">▲ +0.57 vs prior run</span>
-      </div>
+      <div class="panel-body">
+        <div class="panel-left">
+          <div class="score-row">
+            <div class="score">+2.88</div>
+            <span class="delta">▼ -0.00 vs prior run</span>
+          </div>
 
-      <div class="price-line">O 101.02 · H 101.08 · L 100.95 · C 101.03 <span class="muted">(DX-Y.NYB, 4h bars)</span></div>
+          <div class="price-line">O 101.02 · H 101.08 · L 100.95 · C 101.03 <span class="muted">(DX-Y.NYB, 4h bars)</span></div>
 
-      <div class="breakdown">
-        <div>
-          <span class="label">Bullish coverage</span>
-          <span class="value">39 articles, tone +0.01 (finbert)</span>
-        </div>
-        <div>
-          <span class="label">Bearish coverage</span>
-          <span class="value">40 articles, tone +0.16 (finbert)</span>
-        </div>
-      </div>
+          <div class="breakdown">
+            <div>
+              <span class="label">Bullish coverage</span>
+              <span class="value">39 articles, tone +0.01 (finbert)</span>
+            </div>
+            <div>
+              <span class="label">Bearish coverage</span>
+              <span class="value">40 articles, tone +0.16 (finbert)</span>
+            </div>
+          </div>
 
-      <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-32546" height="120"></canvas>
-      <script>
-        new Chart(document.getElementById("chart-32546"), {
-          type: "line",
-          data: {
-            labels: ["09-20 09h", "09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h"],
-            datasets: [
-              {
-                data: [5.858, 5.294, 2.086, 2.621, 5.943, 9.002, 6.898, 3.766, 2.322, 4.269, 3.284, 5.751, 2.054, 5.137, -0.565, -0.401, 1.611, 3.187, 0.547, 3.048, 4.887, 1.413, 2.316, 2.884],
-                borderColor: "#4C9F70",
-                borderWidth: 1.5,
-                pointRadius: 2,
-                pointBackgroundColor: "#4C9F70",
-                tension: 0.15,
-                fill: false,
-              },
-              {
-                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                borderColor: "#8a8f9c",
-                borderWidth: 1,
-                borderDash: [4, 4],
-                pointRadius: 0,
-                fill: false,
-              },
-            ]
-          },
-          options: {
-            responsive: true,
-            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
-            scales: {
-              x: {
-                display: true,
-                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-              y: {
-                display: true,
-                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-            },
-          }
-        });
-      </script>
-
-      <div class="headlines">
-        <span class="label">Top bullish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxObnI1LWEyU0VuTFRTVlN3dFZ5UEp1M08weUxGaHFjVFVYeFFtbkdVTUtWUUpWU2d3cU5XWWVWMjc5SkNrMmtEZTNrYUZBUHo0SmpRNDctQm5oZkQtOEpZcUNHRTVpQVFUNmJIeUowLTJRbjNxeWJlY2kwOHc1RVRrMXA1SmRjM1FaZFdBVGgzMFdlbXc?oc=5" target="_blank" rel="noopener">U.S. Dollar Gains From a New Wave of Safe Haven Demand - stonex.com</a></li>
+          <div class="headlines">
+            <span class="label">Top bullish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxObnI1LWEyU0VuTFRTVlN3dFZ5UEp1M08weUxGaHFjVFVYeFFtbkdVTUtWUUpWU2d3cU5XWWVWMjc5SkNrMmtEZTNrYUZBUHo0SmpRNDctQm5oZkQtOEpZcUNHRTVpQVFUNmJIeUowLTJRbjNxeWJlY2kwOHc1RVRrMXA1SmRjM1FaZFdBVGgzMFdlbXc?oc=5" target="_blank" rel="noopener">U.S. Dollar Gains From a New Wave of Safe Haven Demand - stonex.com</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPUzNuYUY3Y0xYRjV5UHMzckJMZEs1WGRncEwtTVdXbjZlSEJhb19uWmF0WFk0WEVGZld5TjdUZ1l5QjhhS05TbHJUX01YNDNIVFRJVmlHMFJvQjV4MWhkZkVlcE1EMnVGTERUcVRULThyaldDbjJmN1Z2RmxMeTVvenZsVklyLURIdWduOGpBOF9ibnlmVEZjckJDS21GbmljbTVvckJIZEF1YjTSAZoBQVVfeXFMUEYxZDNRZEJUMGgzNzcxb2ZWTS1JUkVlSlFTSnNiTmdyUkYxNXZWemFaNFNJam1PR1RWOGFyVmd3NG9kcUxkeklXS0FyYTdwaDZXa1hPLWtoSTMwUTVWcjQxcmVVdEk1cldRYjB2bnlEWWFLOF9XRlFOZVNXNEQzQ09jYWFxbHNPRVFNTXd3cWtDcFRBSjM3MzZhZw?oc=5" target="_blank" rel="noopener">U.S. dollar strengthens as traders see resilient US economy - Forex Factory</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOaEdRYWt1NjlZdUc2SmN1aENJRmhOU0Rxc095SVpSMmZ5UzA3MW9zRWRtR20yX1VlV0xkblZ3QlRSYkNzbHh0Ui1ZVmpyY0hxNk9nXzVERmZBeXc5azJkMUhKaFBobTZqeWo3WWtPaXE3R3RFaEZycXVGYjdfOTlLR1RybjRCamxFMGlyeGNuYkxNRnJaU3E0cDVrYnBQdGZ3R29lcmpmYWFDaEtmSUdzSExDcnVyT1RhVVJj?oc=5" target="_blank" rel="noopener">Dollar Gains on US Economic Strength and Hawkish Fed Comments - TradingView</a></li></ul>
-      </div>
+          </div>
 
-      <div class="headlines">
-        <span class="label">Top bearish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNNDRQWG91elN3ajdjOGFCNWR2ZWg3dG93VFlWLW8xcExpSU80TE0tWHY4bzNTdllfLThVT1o1TnY5dmFlVkE0cGhlcWlsblQyVVFXRzdMSnJpcW9lNmxWbWU0eVRDOEYtVk5GYzFBSzBJS0VjYUVLRzI5T0N0UGc2QWd2WWxCc1dadlctb25ScjJLdmpZTGZ4d3BZNA?oc=5" target="_blank" rel="noopener">A hawkish Fed and a dovish SNB are driving gains in USDCHF - marketpulse.com</a></li>
+          <div class="headlines">
+            <span class="label">Top bearish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNNDRQWG91elN3ajdjOGFCNWR2ZWg3dG93VFlWLW8xcExpSU80TE0tWHY4bzNTdllfLThVT1o1TnY5dmFlVkE0cGhlcWlsblQyVVFXRzdMSnJpcW9lNmxWbWU0eVRDOEYtVk5GYzFBSzBJS0VjYUVLRzI5T0N0UGc2QWd2WWxCc1dadlctb25ScjJLdmpZTGZ4d3BZNA?oc=5" target="_blank" rel="noopener">A hawkish Fed and a dovish SNB are driving gains in USDCHF - marketpulse.com</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxNbzMtME9DWnA3YzBIa1FYM2VjQ1Zzcnp2T1RVcGljSEVuUVdFdHQxYW1TNl9nbXRJb0FObTRUekNya1VQa3FrVUpLekFqNzF0NXVpaVk4RXV2WVZFdzJTbXV1MFczYmY1cndYQXQ3Mlc2UFZ2bGdDRmxTNGxTVDFQTWd4TVlCa0VF?oc=5" target="_blank" rel="noopener">FX Daily: Bond sell-off helps USD consolidate gains - ING Think</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNRUZEM3VLaUtVaEZNNzlGMFlmOXJxenVDMG9qSk1Pb0pxVWwzLW1ndmtfVzJ3bExHSWlnR2J3YmFlbHN4RFE0WXl5b21FaXh2TllraVI5MHhfdWhLeDhXTi02bXZTRUJuVzJHb1NqMXB5dTdmSV82WmNwMW1oYUdiRFd4VFZYWW1Wd0RFWkMtd2w3a0Z3dXpyR212eEtycGpWQ09FcXA5dVh4T1c0?oc=5" target="_blank" rel="noopener">Asia FX Talk - USD holds firm, yen falls, regional CPI in focus - MUFG Research</a></li></ul>
+          </div>
+        </div>
+
+        <div class="panel-right">
+          <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
+          <canvas class="trend-chart" id="chart-4h-26463" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-4h-26463"), {
+              type: "line",
+              data: {
+                labels: ["09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h", "09-25 23h"],
+                datasets: [
+                  {
+                    data: [5.294, 2.086, 2.621, 5.943, 9.002, 6.898, 3.766, 2.322, 4.269, 3.284, 5.751, 2.054, 5.137, -0.565, -0.401, 1.611, 3.187, 0.547, 3.048, 4.887, 1.413, 2.316, 2.884, 2.883],
+                    borderColor: "#4C9F70",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#4C9F70",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+
+          <span class="label chart-label">Daily composite score, last 12 days</span>
+          <canvas class="trend-chart" id="chart-daily-26463" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-daily-26463"), {
+              type: "line",
+              data: {
+                labels: ["2026-09-14", "2026-09-15", "2026-09-16", "2026-09-17", "2026-09-18", "2026-09-19", "2026-09-20", "2026-09-21", "2026-09-22", "2026-09-23", "2026-09-24", "2026-09-25"],
+                datasets: [
+                  {
+                    data: [4.065, 1.065, 2.599, 1.162, 3.518, 4.516, 4.616, 6.402, 3.907, 1.556, 2.098, 2.875],
+                    borderColor: "#4C9F70",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#4C9F70",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+        </div>
       </div>
     </section>
     
@@ -339,85 +514,137 @@
     <section class="panel" style="--accent: #4C8CA8">
       <div class="panel-head">
         <h2>S&P 500</h2>
-        <span class="timestamp">as of 2026-09-25T23:09:40+00:00</span>
+        <span class="timestamp">as of 2026-09-25T23:48:49+00:00</span>
       </div>
 
-      <div class="score-row">
-        <div class="score">-1.51</div>
-        <span class="delta">▼ -1.16 vs prior run</span>
-      </div>
+      <div class="panel-body">
+        <div class="panel-left">
+          <div class="score-row">
+            <div class="score">+0.56</div>
+            <span class="delta">▲ +2.07 vs prior run</span>
+          </div>
 
-      <div class="price-line">O 7,795.25 · H 7,814.75 · L 7,793.25 · C 7,805.75 <span class="muted">(ES=F, 4h bars)</span></div>
+          <div class="price-line">O 7,795.25 · H 7,814.75 · L 7,793.25 · C 7,805.75 <span class="muted">(ES=F, 4h bars)</span></div>
 
-      <div class="breakdown">
-        <div>
-          <span class="label">Bullish coverage</span>
-          <span class="value">40 articles, tone -0.18 (finbert)</span>
-        </div>
-        <div>
-          <span class="label">Bearish coverage</span>
-          <span class="value">40 articles, tone +0.10 (finbert)</span>
-        </div>
-      </div>
+          <div class="breakdown">
+            <div>
+              <span class="label">Bullish coverage</span>
+              <span class="value">40 articles, tone -0.17 (finbert)</span>
+            </div>
+            <div>
+              <span class="label">Bearish coverage</span>
+              <span class="value">32 articles, tone +0.00 (finbert)</span>
+            </div>
+          </div>
 
-      <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-77742" height="120"></canvas>
-      <script>
-        new Chart(document.getElementById("chart-77742"), {
-          type: "line",
-          data: {
-            labels: ["09-20 09h", "09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h"],
-            datasets: [
-              {
-                data: [2.489, 4.365, 3.176, 4.866, 6.671, 1.004, -1.939, -5.327, -0.832, -1.312, 2.912, -0.95, -0.281, 1.949, 0.422, 2.163, 4.648, 3.526, 2.56, 5.169, 3.434, 3.215, -0.348, -1.506],
-                borderColor: "#4C8CA8",
-                borderWidth: 1.5,
-                pointRadius: 2,
-                pointBackgroundColor: "#4C8CA8",
-                tension: 0.15,
-                fill: false,
-              },
-              {
-                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                borderColor: "#8a8f9c",
-                borderWidth: 1,
-                borderDash: [4, 4],
-                pointRadius: 0,
-                fill: false,
-              },
-            ]
-          },
-          options: {
-            responsive: true,
-            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
-            scales: {
-              x: {
-                display: true,
-                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-              y: {
-                display: true,
-                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-            },
-          }
-        });
-      </script>
-
-      <div class="headlines">
-        <span class="label">Top bullish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOUmw5dTU0bUtGQk1BdkpteVFtOFpEN0tycVhJNnIwQndiRVVaZjlMcG9lanhVZkxLd1lMVlRRMGMyNXctZkRDVnE4YVNXQkg2QUFxcEhKdVJ0eWl6Yk9HOXRKMTNoUWNyNmtMX2FZOEdJd0FETUU4Mmc1SVFXcllLVmt1bDhoMUdWRzN2VGUzMnVIWk1qRXBONUZSN3BkMDBvOG9zMTA3WUdVLVFDTXlj?oc=5" target="_blank" rel="noopener">Stock market today: Nasdaq surges 2% to record high, Dow and S&P 500 gain as chip stocks rally, oil falls - Yahoo Finance</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE5zcWd0VnY2YzZFVGMwSnZaOE5NcVN1dF9LRHRCbEpJdHFwOGpWR1FNelJiWTA2Y01oVHRhbXJpand2d1RHV194bWwwX3ItdkROekdzNkd6STlzZnh4SU5OejhmSDdxVllMRDRFZFhNUFVuWjlrRXBN?oc=5" target="_blank" rel="noopener">Stock market today: Nasdaq surges 2% to record high, Dow and S&P 500 gain as chip stocks rally, oil falls - AOL.com</a></li>
+          <div class="headlines">
+            <span class="label">Top bullish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOUmw5dTU0bUtGQk1BdkpteVFtOFpEN0tycVhJNnIwQndiRVVaZjlMcG9lanhVZkxLd1lMVlRRMGMyNXctZkRDVnE4YVNXQkg2QUFxcEhKdVJ0eWl6Yk9HOXRKMTNoUWNyNmtMX2FZOEdJd0FETUU4Mmc1SVFXcllLVmt1bDhoMUdWRzN2VGUzMnVIWk1qRXBONUZSN3BkMDBvOG9zMTA3WUdVLVFDTXlj?oc=5" target="_blank" rel="noopener">Stock market today: Nasdaq surges 2% to record high, Dow and S&P 500 gain as chip stocks rally, oil falls - Yahoo Finance</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE5zcWd0VnY2YzZFVGMwSnZaOE5NcVN1dF9LRHRCbEpJdHFwOGpWR1FNelJiWTA2Y01oVHRhbXJpand2d1RHV194bWwwX3ItdkROekdzNkd6STlzZnh4SU5OejhmSDdxVllMRDRFZFhNUFVuWjlrRXBN?oc=5" target="_blank" rel="noopener">Stock market today: Nasdaq surges 2% to record high, Dow and S&P 500 gain as chip stocks rally, oil falls - aol.com</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPbkNnYmlpUUZ1UFBUdG13a1NLZlhpbXR4cEpMcUdqRkR5aXd1UjVKaEFFQTJyQ0JrQWFHN0I0Zk1wSDVOZ0RaRWM2aXpCb3BDQmE4c0dXaHFLQVhRcXdiZDZnSko3UGd6WlkwNlVncFNJdTVnbHVGaFJBTXltM0ttaUxkZ0ZFa2ptNVN5S3FTbXBPOTc3UHdZVEtVYVFqWXNMazVsZlhaY3hibzViazhyeXBta2RFWHF4Z1pN?oc=5" target="_blank" rel="noopener">Stock market today: Dow hits record high, S&P 500 and Nasdaq surge as Big Tech gains power rally - Yahoo Finance</a></li></ul>
-      </div>
+          </div>
 
-      <div class="headlines">
-        <span class="label">Top bearish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxOQjlSRnVrTllBQ18wak5KWFByYjA4V24ydVJiNnNuV0dQQ1VKVDNnZVp0YUtZdzlhOTNfekZjUW1BckF6UUZFbGZ6cDNwbkVERzZGSlpSa1pueHdxZTdMeVNXWV9BMDh5Z24yU2JEd09IZllEcU1oN0RidTZicDltdy1YRkNzd2dNa2JpZ3FfV1Rha1ZrTVc3NDNxZHQ?oc=5" target="_blank" rel="noopener">If There's a Stock Market Crash Ahead, History Highlights the Best Strategy for Investors - Yahoo Finance</a></li>
+          <div class="headlines">
+            <span class="label">Top bearish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxOQjlSRnVrTllBQ18wak5KWFByYjA4V24ydVJiNnNuV0dQQ1VKVDNnZVp0YUtZdzlhOTNfekZjUW1BckF6UUZFbGZ6cDNwbkVERzZGSlpSa1pueHdxZTdMeVNXWV9BMDh5Z24yU2JEd09IZllEcU1oN0RidTZicDltdy1YRkNzd2dNa2JpZ3FfV1Rha1ZrTVc3NDNxZHQ?oc=5" target="_blank" rel="noopener">If There's a Stock Market Crash Ahead, History Highlights the Best Strategy for Investors - Yahoo Finance</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxOU01EZGE0SW03eXhMd0NqUFllNlVQUHBhcG83aTE2NmVHR09yLWdYZ3pRV3pNeTZ3a1dCQXB6UTd3MHZXenlNc2N1UzlWSm5kd2FzNjA0cVV6NmVXNEgtcHlma09OZzhfZVNZRk0xdmgyblZnb1k2aXd1RjlwNXk5cVI3STR2RUlRcklTSXRpbFlTdw?oc=5" target="_blank" rel="noopener">Dow Drops 352, Nasdaq Sinks 308, S&P 500 Falls 59 - TV News Check</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5mVGZhR2M2RXNUaW82ZXZfOGVwTjBCcVNaTXpZUFpSNXdKY1RIZENnWk9sLUMyOGNwSVNnRmRfTWJZeEZEOGVhQXd2a1VKdTA0SmhTM3cxQjZGWjQ?oc=5" target="_blank" rel="noopener">S&P 500 falls for third straight day - Fox Business</a></li></ul>
+          </div>
+        </div>
+
+        <div class="panel-right">
+          <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
+          <canvas class="trend-chart" id="chart-4h-62446" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-4h-62446"), {
+              type: "line",
+              data: {
+                labels: ["09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h", "09-25 23h"],
+                datasets: [
+                  {
+                    data: [4.365, 3.176, 4.866, 6.671, 1.004, -1.939, -5.327, -0.832, -1.312, 2.912, -0.95, -0.281, 1.949, 0.422, 2.163, 4.648, 3.526, 2.56, 5.169, 3.434, 3.215, -0.348, -1.506, 0.564],
+                    borderColor: "#4C8CA8",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#4C8CA8",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+
+          <span class="label chart-label">Daily composite score, last 12 days</span>
+          <canvas class="trend-chart" id="chart-daily-62446" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-daily-62446"), {
+              type: "line",
+              data: {
+                labels: ["2026-09-14", "2026-09-15", "2026-09-16", "2026-09-17", "2026-09-18", "2026-09-19", "2026-09-20", "2026-09-21", "2026-09-22", "2026-09-23", "2026-09-24", "2026-09-25"],
+                datasets: [
+                  {
+                    data: [-1.22, -1.495, 3.536, 0.912, 3.252, 2.97, 3.994, 0.102, -0.046, 1.063, 3.976, 1.199],
+                    borderColor: "#4C8CA8",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#4C8CA8",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+        </div>
       </div>
     </section>
     
@@ -425,85 +652,137 @@
     <section class="panel" style="--accent: #8B5FBF">
       <div class="panel-head">
         <h2>Nasdaq</h2>
-        <span class="timestamp">as of 2026-09-25T23:09:40+00:00</span>
+        <span class="timestamp">as of 2026-09-25T23:48:49+00:00</span>
       </div>
 
-      <div class="score-row">
-        <div class="score">+2.17</div>
-        <span class="delta">▲ +0.58 vs prior run</span>
-      </div>
+      <div class="panel-body">
+        <div class="panel-left">
+          <div class="score-row">
+            <div class="score">+1.66</div>
+            <span class="delta">▼ -0.51 vs prior run</span>
+          </div>
 
-      <div class="price-line">O 30,912.00 · H 30,935.00 · L 30,845.00 · C 30,921.75 <span class="muted">(NQ=F, 4h bars)</span></div>
+          <div class="price-line">O 30,912.00 · H 30,935.00 · L 30,845.00 · C 30,921.75 <span class="muted">(NQ=F, 4h bars)</span></div>
 
-      <div class="breakdown">
-        <div>
-          <span class="label">Bullish coverage</span>
-          <span class="value">35 articles, tone -0.07 (finbert)</span>
-        </div>
-        <div>
-          <span class="label">Bearish coverage</span>
-          <span class="value">35 articles, tone +0.20 (finbert)</span>
-        </div>
-      </div>
+          <div class="breakdown">
+            <div>
+              <span class="label">Bullish coverage</span>
+              <span class="value">35 articles, tone -0.13 (finbert)</span>
+            </div>
+            <div>
+              <span class="label">Bearish coverage</span>
+              <span class="value">34 articles, tone +0.20 (finbert)</span>
+            </div>
+          </div>
 
-      <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-42826" height="120"></canvas>
-      <script>
-        new Chart(document.getElementById("chart-42826"), {
-          type: "line",
-          data: {
-            labels: ["09-20 09h", "09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h"],
-            datasets: [
-              {
-                data: [-2.364, 1.017, -0.452, 1.542, -0.548, -2.334, -3.163, -6.67, -8.339, -7.758, -6.764, -7.409, -3.845, -3.169, -0.002, -1.29, -0.791, 0.925, -0.014, -0.763, -2.189, -0.681, 1.586, 2.17],
-                borderColor: "#8B5FBF",
-                borderWidth: 1.5,
-                pointRadius: 2,
-                pointBackgroundColor: "#8B5FBF",
-                tension: 0.15,
-                fill: false,
-              },
-              {
-                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                borderColor: "#8a8f9c",
-                borderWidth: 1,
-                borderDash: [4, 4],
-                pointRadius: 0,
-                fill: false,
-              },
-            ]
-          },
-          options: {
-            responsive: true,
-            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
-            scales: {
-              x: {
-                display: true,
-                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-              y: {
-                display: true,
-                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-            },
-          }
-        });
-      </script>
+          <div class="headlines">
+            <span class="label">Top bullish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNRTNUV0JnS3haREZESHpOTVREazZUWkNwUE43OEQxMFJYajZnU3JhaWFKOEt1MVEtLTJYdlg5YnVUUnE3WnFnN0FoRDRJUFZlVEpNN2pCaWFpSEQ5NmlIM2hoQ2VDcHNHRHpTcWpiQ1RCVFRPbDd2cExKOF9adGxta2FWMUN1NjRvamQ0QUpYcFBUM2hSZkk4YWVibw?oc=5" target="_blank" rel="noopener">Nasdaq gains 2% for the week driven by mid-week tech rally (AMD:NASDAQ) - Seeking Alpha</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQUUdXdXVKYkpsa2JoQmRNeVpVWWhwb1pIVmUwcUl0QVRFVEFjRDJtREJPbXJWaXVEc0NQSWZZUlhwTl80T3h4eGM1dE9oaXRsWlVueWx0MWt3YXlWbV9PYkZDWVVPb1ZveThvalZfWnBvQ2J5Sjg1UkNOQmU5eDdWN0FvVQ?oc=5" target="_blank" rel="noopener">Nasdaq hits record high as chipmakers fuel stock gains - Reuters</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOcEVXNVpEUFAyU1hJbU1QMk1PYVBBSUNoRmRZMTR0d1Bib2FHeFEwS1N4QXpTLXVva3VXYTh6TG1Wd0Y5NnQ4ZGprUC1hR0d4eWc0TmUyR3lRN0xfX3YwRlpic0hmSU82RTZtZnRudXRlNzBkclZaTW1kNGFURDdac29ZX09obU9OWjRBVXoyRHc2R2ZVbTc5dFZYdlhXc0tqZGhJUUszampxSVMwWENrbk1abUtMemVnbHFpVA?oc=5" target="_blank" rel="noopener">Nasdaq gains 2% for the week driven by mid-week tech rally - TradingView</a></li></ul>
+          </div>
 
-      <div class="headlines">
-        <span class="label">Top bullish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNRTNUV0JnS3haREZESHpOTVREazZUWkNwUE43OEQxMFJYajZnU3JhaWFKOEt1MVEtLTJYdlg5YnVUUnE3WnFnN0FoRDRJUFZlVEpNN2pCaWFpSEQ5NmlIM2hoQ2VDcHNHRHpTcWpiQ1RCVFRPbDd2cExKOF9adGxta2FWMUN1NjRvamQ0QUpYcFBUM2hSZkk4YWVibw?oc=5" target="_blank" rel="noopener">Nasdaq gains 2% for the week driven by mid-week tech rally (AMD:NASDAQ) - Seeking Alpha</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOcEVXNVpEUFAyU1hJbU1QMk1PYVBBSUNoRmRZMTR0d1Bib2FHeFEwS1N4QXpTLXVva3VXYTh6TG1Wd0Y5NnQ4ZGprUC1hR0d4eWc0TmUyR3lRN0xfX3YwRlpic0hmSU82RTZtZnRudXRlNzBkclZaTW1kNGFURDdac29ZX09obU9OWjRBVXoyRHc2R2ZVbTc5dFZYdlhXc0tqZGhJUUszampxSVMwWENrbk1abUtMemVnbHFpVA?oc=5" target="_blank" rel="noopener">Nasdaq gains 2% for the week driven by mid-week tech rally - TradingView</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxPbHVRbDJ4YUNuNGtIUDJpZEROMVZkbzB5Rkp5YWhJaENZOG9LR3FJQWRQRHgxbElCSkM5eXdsT3Jzek9zSm5saEFNalpPMFltRU5IVTlqMGhZZEVNNDFDQVJseE9pRXJ5cUhfTVdMWHRBeThHbXNEWDZxWHFlNE1UdDZMRjdUWWdKYmJpWG5tRVBmMHNoX2ZWR1hyRExpaWhvVnBjNnhWellxSkh6N3JaVlppb3p0dXoweFZQWXVaOWhXY1RQdmhwYm52c3pQdVM2UjZHbU94NlA?oc=5" target="_blank" rel="noopener">S&P500, Nasdaq End Higher, Dow Hits Record High On Strong Mag 7 Performance And Falling Oil Prices — BA, XOM, CVX, HOOD, AMD In Focus - Stocktwits</a></li></ul>
-      </div>
-
-      <div class="headlines">
-        <span class="label">Top bearish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQOEYwd1BtWVl1OTlFSDhYVWRTSWxkbHZ0SmEwaVFmM25iRlNCY2JsQXhZbW5Id1hLUG5hcmZkaDUxWHhYTFozSFQySjhGcTZfZFgweTZOazlTQTZ6eWFyN1hXbS1KdjhBX3gtbDlfd1lUVEFWQ3VvWHdGTkE3aUdPZEs4TFNVbVVfQWthN01laUV0Zk42T1JWLS1Ja0tscnc4Nlk0U3NfbmZocWlWRlp1NjhTOA?oc=5" target="_blank" rel="noopener">Nasdaq 100 Forecast: NDX extends gains as oil, Treasury yields fall - stonex.com</a></li>
+          <div class="headlines">
+            <span class="label">Top bearish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQOEYwd1BtWVl1OTlFSDhYVWRTSWxkbHZ0SmEwaVFmM25iRlNCY2JsQXhZbW5Id1hLUG5hcmZkaDUxWHhYTFozSFQySjhGcTZfZFgweTZOazlTQTZ6eWFyN1hXbS1KdjhBX3gtbDlfd1lUVEFWQ3VvWHdGTkE3aUdPZEs4TFNVbVVfQWthN01laUV0Zk42T1JWLS1Ja0tscnc4Nlk0U3NfbmZocWlWRlp1NjhTOA?oc=5" target="_blank" rel="noopener">Nasdaq 100 Forecast: NDX extends gains as oil, Treasury yields fall - stonex.com</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNQTZPX3FUV2ZpQ1NIekg5VHBoTm85UFFqaFg5clBON19hejFFX2pPVlA1VjdKODAxWll5azI0cUpid2NsVVBiYmpILVFJRzFFeWV3N1pfLWMzV05Xb3VWc3BIUllaQXJPclFKU3g3bWNNa0ROcklaWEd4U2owRC1ZWlJpRGwzV0l3Smtzd2ItYmtWcXlWWGc?oc=5" target="_blank" rel="noopener">Nasdaq indices surge as buyers break above key resistance - investingLive</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPQ1FiOVdEVEtTNHJ0OE1RQm5wXzJrbkg4cloxSmtreGtnR3Q3WlNNS1ZidDZwWjItSENaWXJpSDl1b3MySjVqUE9oTUxSd0lMY0ZxMDNiVGZtN3I2c2x5dzJvQ0NJdllKbjZva2VZQlpvV0hpb1JBbWxJVTdIclFLd2c5UE5UdUtBVHdQVklnWndnaVk0NmxYYkpSTG1NOXpWNG9yZDN2NDVLcjNC?oc=5" target="_blank" rel="noopener">Stock Market Today: Small Caps, Gold Miners Spanked Amid Sell-Off; Meta Makes A Bullish Move - Investor's Business Daily</a></li></ul>
+          </div>
+        </div>
+
+        <div class="panel-right">
+          <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
+          <canvas class="trend-chart" id="chart-4h-57508" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-4h-57508"), {
+              type: "line",
+              data: {
+                labels: ["09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h", "09-25 23h"],
+                datasets: [
+                  {
+                    data: [1.017, -0.452, 1.542, -0.548, -2.334, -3.163, -6.67, -8.339, -7.758, -6.764, -7.409, -3.845, -3.169, -0.002, -1.29, -0.791, 0.925, -0.014, -0.763, -2.189, -0.681, 1.586, 2.17, 1.656],
+                    borderColor: "#8B5FBF",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#8B5FBF",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+
+          <span class="label chart-label">Daily composite score, last 12 days</span>
+          <canvas class="trend-chart" id="chart-daily-57508" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-daily-57508"), {
+              type: "line",
+              data: {
+                labels: ["2026-09-14", "2026-09-15", "2026-09-16", "2026-09-17", "2026-09-18", "2026-09-19", "2026-09-20", "2026-09-21", "2026-09-22", "2026-09-23", "2026-09-24", "2026-09-25"],
+                datasets: [
+                  {
+                    data: [5.507, 1.638, 1.225, -1.626, -2.282, -2.938, 0.022, -3.179, -7.568, -2.077, -0.161, 0.221],
+                    borderColor: "#8B5FBF",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#8B5FBF",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+        </div>
       </div>
     </section>
     
@@ -511,95 +790,164 @@
     <section class="panel" style="--accent: #E8871E">
       <div class="panel-head">
         <h2>Bitcoin</h2>
-        <span class="timestamp">as of 2026-09-25T23:09:40+00:00</span>
+        <span class="timestamp">as of 2026-09-25T23:48:49+00:00</span>
       </div>
 
-      <div class="score-row">
-        <div class="score">+10.26</div>
-        <span class="delta">▲ +2.80 vs prior run</span>
-      </div>
+      <div class="panel-body">
+        <div class="panel-left">
+          <div class="score-row">
+            <div class="score">+9.49</div>
+            <span class="delta">▼ -0.77 vs prior run</span>
+          </div>
 
-      <div class="price-line">O 84,006.55 · H 84,176.97 · L 83,615.01 · C 84,087.92 <span class="muted">(BTC-USD, 4h bars)</span></div>
+          <div class="price-line">O 84,006.55 · H 84,176.97 · L 83,615.01 · C 84,066.00 <span class="muted">(BTC-USD, 4h bars)</span></div>
 
-      <div class="breakdown">
-        <div>
-          <span class="label">Bullish coverage</span>
-          <span class="value">38 articles, tone -0.09 (finbert)</span>
-        </div>
-        <div>
-          <span class="label">Bearish coverage</span>
-          <span class="value">35 articles, tone +0.60 (finbert)</span>
-        </div>
-      </div>
+          <div class="breakdown">
+            <div>
+              <span class="label">Bullish coverage</span>
+              <span class="value">38 articles, tone -0.09 (finbert)</span>
+            </div>
+            <div>
+              <span class="label">Bearish coverage</span>
+              <span class="value">35 articles, tone +0.56 (finbert)</span>
+            </div>
+          </div>
 
-      <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
-      <canvas class="trend-chart" id="chart-89297" height="120"></canvas>
-      <script>
-        new Chart(document.getElementById("chart-89297"), {
-          type: "line",
-          data: {
-            labels: ["09-20 09h", "09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h"],
-            datasets: [
-              {
-                data: [7.109, 7.539, 12.404, 9.796, 9.097, 11.634, 7.134, 3.131, 2.644, -0.662, 3.92, 6.586, 5.594, 9.04, 8.935, 8.255, 10.904, 10.456, 9.114, 9.138, 7.554, 9.45, 7.453, 10.257],
-                borderColor: "#E8871E",
-                borderWidth: 1.5,
-                pointRadius: 2,
-                pointBackgroundColor: "#E8871E",
-                tension: 0.15,
-                fill: false,
-              },
-              {
-                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                borderColor: "#8a8f9c",
-                borderWidth: 1,
-                borderDash: [4, 4],
-                pointRadius: 0,
-                fill: false,
-              },
-            ]
-          },
-          options: {
-            responsive: true,
-            plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
-            scales: {
-              x: {
-                display: true,
-                ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-              y: {
-                display: true,
-                ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
-                grid: { color: "#2a2e3a" },
-              },
-            },
-          }
-        });
-      </script>
-
-      <div class="headlines">
-        <span class="label">Top bullish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMi8wFBVV95cUxOSTZPSHFoWDhhaEFHTFcxQ0RjcHNmZVZxNXY5VUxvRjFMVUpUY3hibVdTNHBWRUxRSU9ibDdjZkVCSmkwQmJpWjZ1eGh1WmpBRlBDMlVSbkZ3aWFUOUhRanQxT05KdVhsenRJVkNURWI1U09ILWF4dVhiZWRocTE3bXJnVVBaZlBub2ZmYkdLRVdKLWFFcGoxZnVYVXpMY2kyTVduNXA3bXN0SWowMEljOEtJTHA5dnFfT3F0OFF6LWYxaTYwTGpNZTc5YW15YndqRnROUnhCRjBhLWxiOVVvRmlpeXZ1NWxRNldRMU5PaVd3Yk0?oc=5" target="_blank" rel="noopener">XRP, Solana Lead Crypto Majors With Bitcoin Stuck Below $85K, BTC ETF Inflows Turning Positive For 2026 - TradingView</a></li>
+          <div class="headlines">
+            <span class="label">Top bullish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMi8wFBVV95cUxOSTZPSHFoWDhhaEFHTFcxQ0RjcHNmZVZxNXY5VUxvRjFMVUpUY3hibVdTNHBWRUxRSU9ibDdjZkVCSmkwQmJpWjZ1eGh1WmpBRlBDMlVSbkZ3aWFUOUhRanQxT05KdVhsenRJVkNURWI1U09ILWF4dVhiZWRocTE3bXJnVVBaZlBub2ZmYkdLRVdKLWFFcGoxZnVYVXpMY2kyTVduNXA3bXN0SWowMEljOEtJTHA5dnFfT3F0OFF6LWYxaTYwTGpNZTc5YW15YndqRnROUnhCRjBhLWxiOVVvRmlpeXZ1NWxRNldRMU5PaVd3Yk0?oc=5" target="_blank" rel="noopener">XRP, Solana Lead Crypto Majors With Bitcoin Stuck Below $85K, BTC ETF Inflows Turning Positive For 2026 - TradingView</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOYW5ydk13NmdWaS1wZXd0MC1KQnpxOUdGY3R6SFpYMDVIZFNfMW5RQTU2b1dfYXVtMDhiWERTMXdwdjlEQWl5V2dsSm00NE5pY2phS0I1R015QWJ3cEVHaG0wUjZXYU5oUm1LWFl2bVZuNmF2WUZRZlI5LUItQVZNdjF1X0VKeW50b2l4WG5SWWdEN25oajl0bi1qU0ZabEh2c1owQV9jSVDSAa4BQVVfeXFMT3lZRHR0SU5wSjZla2VFbldPbk04ejJ3UUJjLVNaUndRQlgyR2F0SnJsOXltSVV0NTVDemd6VzhyOTlidWNwUXp2WjctTkNRYS1rTjdRblRHcTdVQ05KNXVrdFM5Ulk1NjgtOC1lNWlobUp6NWhXNzNoNlBEWWpnUXVuSy0tTm05VDBIT0JaOTJ4X3BKaW5scUNQYUFIRTR1OG9TQzM5ZFYyUTFhWmln?oc=5" target="_blank" rel="noopener">Bitcoin surges 12% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOYVg0QkZmc3p2MENoYl9xejdUYzd2NmxxWERxaWl2VGJNSTFIaVVQZzNOYS1fYVA4X0Y4RVc4QnR3ZjdCaGktTEtuSld3R2tQQ3ZGX19fc2YxcVZNRE1jd0kyOVlpNGZoYXVYVHRUNGt5Z0ZQWHNpUnFEMF8tVHI4N1Z0M2hvNXMteEd0T3g1NDVlSHNQZmRlSzNJNXg0eGNuajBXdzVRdmYzOVNnY2V1bkVUZlJwYXRyYlBMel9yR042VTRJMTlXTm01dw?oc=5" target="_blank" rel="noopener">Bitcoin Surges as Institutional Demand, Short Covering, Clarity Act Progress Converge - WSJ</a></li></ul>
-      </div>
+          </div>
 
-      <div class="headlines">
-        <span class="label">Top bearish headlines this run</span>
-        <ul><li><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNaWVhbE9DbTFqTjFKVzEwVFJIZzdZZVlTakpMOHJmdnY5SHUxWHdFeVhRd3NjUW5seWw4cmlqOGpqV1RTMFhaQlpkT3A3SGV0YTloTWFHNzNZT2RqVGZqaDlLMk1tbW15UzRZVDlwbURXMGhJM3dXV1laRUVfaWdXQw?oc=5" target="_blank" rel="noopener">Crypto Prices Today: Bitcoin Slides to $84,000 While Altcoins Rally Hard - CryptoTicker</a></li>
+          <div class="headlines">
+            <span class="label">Top bearish headlines this run</span>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNaWVhbE9DbTFqTjFKVzEwVFJIZzdZZVlTakpMOHJmdnY5SHUxWHdFeVhRd3NjUW5seWw4cmlqOGpqV1RTMFhaQlpkT3A3SGV0YTloTWFHNzNZT2RqVGZqaDlLMk1tbW15UzRZVDlwbURXMGhJM3dXV1laRUVfaWdXQw?oc=5" target="_blank" rel="noopener">Crypto Prices Today: Bitcoin Slides to $84,000 While Altcoins Rally Hard - CryptoTicker</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE5TejE3cXRtYXN0Qm5POU9ISHVfT3NGQW90UVViWXRxbURFeFc0V3hzSUF3dUhBTUxJS2d5cHpqT1ExRDhmb3RQa1FTdWlxZkZ0TFUyYWF6RkY1LXJjN2NiTk1DRnF6LU1acm51dy1UbGVla29UWmNoeWZ2REY?oc=5" target="_blank" rel="noopener">Institutions Held Their Bitcoin Through Crash — and Some Bought More: Report - Bitcoin Magazine</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxOaXV3ang1VjN6VzlqcVR1empzLS12Q3pnSjdaZUh3SVcyRXdUc0k0c1Y5RGFfTjdPRmRUT0tzaGd4TEZDSjhXelJhOHdpSzdZQ1gxMTBKWjVsdE1ZTHZsRzZodEZpZGR6OEYycGJiYkZUWTBicVVsWms5OXBTcXhrdTRRamhvSVVNY1pLOFBZbw?oc=5" target="_blank" rel="noopener">Bitcoin Price Prediction: What to Check on Levels, Holding Period and Leverage Before the October 28 Rate Decision - CryptoTicker</a></li></ul>
+          </div>
+        </div>
+
+        <div class="panel-right">
+          <span class="label chart-label">Composite score, last 24 runs (~4 days)</span>
+          <canvas class="trend-chart" id="chart-4h-9482" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-4h-9482"), {
+              type: "line",
+              data: {
+                labels: ["09-20 15h", "09-20 18h", "09-20 22h", "09-21 03h", "09-21 09h", "09-21 17h", "09-21 23h", "09-22 03h", "09-22 09h", "09-22 16h", "09-22 22h", "09-23 03h", "09-23 09h", "09-23 16h", "09-23 22h", "09-24 03h", "09-24 09h", "09-24 16h", "09-24 23h", "09-25 03h", "09-25 09h", "09-25 16h", "09-25 23h", "09-25 23h"],
+                datasets: [
+                  {
+                    data: [7.539, 12.404, 9.796, 9.097, 11.634, 7.134, 3.131, 2.644, -0.662, 3.92, 6.586, 5.594, 9.04, 8.935, 8.255, 10.904, 10.456, 9.114, 9.138, 7.554, 9.45, 7.453, 10.257, 9.491],
+                    borderColor: "#E8871E",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#E8871E",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+
+          <span class="label chart-label">Daily composite score, last 12 days</span>
+          <canvas class="trend-chart" id="chart-daily-9482" height="110"></canvas>
+          <script>
+            new Chart(document.getElementById("chart-daily-9482"), {
+              type: "line",
+              data: {
+                labels: ["2026-09-14", "2026-09-15", "2026-09-16", "2026-09-17", "2026-09-18", "2026-09-19", "2026-09-20", "2026-09-21", "2026-09-22", "2026-09-23", "2026-09-24", "2026-09-25"],
+                datasets: [
+                  {
+                    data: [6.65, 8.118, 11.191, 11.001, 5.424, 11.375, 9.023, 7.749, 3.122, 7.956, 9.903, 8.678],
+                    borderColor: "#E8871E",
+                    borderWidth: 1.5,
+                    pointRadius: 2,
+                    pointBackgroundColor: "#E8871E",
+                    tension: 0.15,
+                    fill: false,
+                  },
+                  {
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: "#8a8f9c",
+                    borderWidth: 1,
+                    borderDash: [4, 4],
+                    pointRadius: 0,
+                    fill: false,
+                  },
+                ]
+              },
+              options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { enabled: true, mode: "index", intersect: false } },
+                scales: {
+                  x: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", maxTicksLimit: 6, font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                  y: {
+                    display: true,
+                    ticks: { color: "#8a8f9c", font: { family: "IBM Plex Mono", size: 10 } },
+                    grid: { color: "#2a2e3a" },
+                  },
+                },
+              }
+            });
+          </script>
+        </div>
       </div>
     </section>
     
   <section class="panel" style="--accent: var(--rule)">
     <div class="panel-head"><h2>Daily history</h2></div>
     
-    <table class="daily-table">
-      <thead><tr><th>Date</th><th>Gold</th><th>Oil</th><th>US Dollar</th><th>S&P 500</th><th>Nasdaq</th><th>Bitcoin</th></tr></thead>
-      <tbody><tr><td>2026-09-14</td><td>-0.57 <span class="muted">(n/a)</span></td><td>+3.84 <span class="muted">(n/a)</span></td><td>+4.07 <span class="muted">(n/a)</span></td><td>-1.22 <span class="muted">(n/a)</span></td><td>+5.51 <span class="muted">(n/a)</span></td><td>+6.65 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-15</td><td>+0.94 <span class="muted">(n/a)</span></td><td>+1.43 <span class="muted">(n/a)</span></td><td>+1.06 <span class="muted">(n/a)</span></td><td>-1.50 <span class="muted">(n/a)</span></td><td>+1.64 <span class="muted">(n/a)</span></td><td>+8.12 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-16</td><td>-1.85 <span class="muted">(n/a)</span></td><td>+1.48 <span class="muted">(n/a)</span></td><td>+2.60 <span class="muted">(n/a)</span></td><td>+3.54 <span class="muted">(n/a)</span></td><td>+1.23 <span class="muted">(n/a)</span></td><td>+11.19 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-17</td><td>-1.00 <span class="muted">(n/a)</span></td><td>+2.47 <span class="muted">(n/a)</span></td><td>+1.16 <span class="muted">(n/a)</span></td><td>+0.91 <span class="muted">(n/a)</span></td><td>-1.63 <span class="muted">(n/a)</span></td><td>+11.00 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-18</td><td>+0.03 <span class="muted">(n/a)</span></td><td>+1.63 <span class="muted">(n/a)</span></td><td>+3.52 <span class="muted">(n/a)</span></td><td>+3.25 <span class="muted">(n/a)</span></td><td>-2.28 <span class="muted">(n/a)</span></td><td>+5.42 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-19</td><td>+0.84 <span class="muted">(n/a)</span></td><td>-0.81 <span class="muted">(n/a)</span></td><td>+4.52 <span class="muted">(n/a)</span></td><td>+2.97 <span class="muted">(n/a)</span></td><td>-2.94 <span class="muted">(n/a)</span></td><td>+11.38 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-20</td><td>+0.29 <span class="muted">(n/a)</span></td><td>-0.93 <span class="muted">(n/a)</span></td><td>+4.62 <span class="muted">(n/a)</span></td><td>+3.99 <span class="muted">(n/a)</span></td><td>+0.02 <span class="muted">(n/a)</span></td><td>+9.02 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-21</td><td>+2.68 <span class="muted">(n/a)</span></td><td>+0.48 <span class="muted">(n/a)</span></td><td>+6.40 <span class="muted">(n/a)</span></td><td>+0.10 <span class="muted">(n/a)</span></td><td>-3.18 <span class="muted">(n/a)</span></td><td>+7.75 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-22</td><td>+3.15 <span class="muted">(n/a)</span></td><td>+3.72 <span class="muted">(n/a)</span></td><td>+3.91 <span class="muted">(n/a)</span></td><td>-0.05 <span class="muted">(n/a)</span></td><td>-7.57 <span class="muted">(n/a)</span></td><td>+3.12 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-23</td><td>+0.36 <span class="muted">(n/a)</span></td><td>+1.56 <span class="muted">(n/a)</span></td><td>+1.56 <span class="muted">(n/a)</span></td><td>+1.06 <span class="muted">(n/a)</span></td><td>-2.08 <span class="muted">(n/a)</span></td><td>+7.96 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-24</td><td>-1.03 <span class="muted">(n/a)</span></td><td>+1.61 <span class="muted">(n/a)</span></td><td>+2.10 <span class="muted">(n/a)</span></td><td>+3.98 <span class="muted">(n/a)</span></td><td>-0.16 <span class="muted">(n/a)</span></td><td>+9.90 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-25</td><td>-2.55 <span class="muted">(n/a)</span></td><td>+2.90 <span class="muted">(n/a)</span></td><td>+2.88 <span class="muted">(n/a)</span></td><td>+1.20 <span class="muted">(n/a)</span></td><td>+0.22 <span class="muted">(n/a)</span></td><td>+8.68 <span class="muted">(n/a)</span></td></tr></tbody>
-    </table>
+        <details class="quarter-group" open>
+          <summary>2026 Q3</summary>
+          
+            <details class="week-group" open>
+              <summary>Week of Sep 21 – Sep 27</summary>
+              <table class="daily-table">
+                <thead><tr><th>Date</th><th>Gold</th><th>Oil</th><th>US Dollar</th><th>S&P 500</th><th>Nasdaq</th><th>Bitcoin</th></tr></thead>
+                <tbody><tr><td>2026-09-25</td><td>-2.55 <span class="muted">(n/a)</span></td><td>+2.90 <span class="muted">(n/a)</span></td><td>+2.88 <span class="muted">(n/a)</span></td><td>+1.20 <span class="muted">(n/a)</span></td><td>+0.22 <span class="muted">(n/a)</span></td><td>+8.68 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-24</td><td>-1.03 <span class="muted">(n/a)</span></td><td>+1.61 <span class="muted">(n/a)</span></td><td>+2.10 <span class="muted">(n/a)</span></td><td>+3.98 <span class="muted">(n/a)</span></td><td>-0.16 <span class="muted">(n/a)</span></td><td>+9.90 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-23</td><td>+0.36 <span class="muted">(n/a)</span></td><td>+1.56 <span class="muted">(n/a)</span></td><td>+1.56 <span class="muted">(n/a)</span></td><td>+1.06 <span class="muted">(n/a)</span></td><td>-2.08 <span class="muted">(n/a)</span></td><td>+7.96 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-22</td><td>+3.15 <span class="muted">(n/a)</span></td><td>+3.72 <span class="muted">(n/a)</span></td><td>+3.91 <span class="muted">(n/a)</span></td><td>-0.05 <span class="muted">(n/a)</span></td><td>-7.57 <span class="muted">(n/a)</span></td><td>+3.12 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-21</td><td>+2.68 <span class="muted">(n/a)</span></td><td>+0.48 <span class="muted">(n/a)</span></td><td>+6.40 <span class="muted">(n/a)</span></td><td>+0.10 <span class="muted">(n/a)</span></td><td>-3.18 <span class="muted">(n/a)</span></td><td>+7.75 <span class="muted">(n/a)</span></td></tr></tbody>
+              </table>
+            </details>
+            
+            <details class="week-group">
+              <summary>Week of Sep 14 – Sep 20</summary>
+              <table class="daily-table">
+                <thead><tr><th>Date</th><th>Gold</th><th>Oil</th><th>US Dollar</th><th>S&P 500</th><th>Nasdaq</th><th>Bitcoin</th></tr></thead>
+                <tbody><tr><td>2026-09-20</td><td>+0.29 <span class="muted">(n/a)</span></td><td>-0.93 <span class="muted">(n/a)</span></td><td>+4.62 <span class="muted">(n/a)</span></td><td>+3.99 <span class="muted">(n/a)</span></td><td>+0.02 <span class="muted">(n/a)</span></td><td>+9.02 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-19</td><td>+0.84 <span class="muted">(n/a)</span></td><td>-0.81 <span class="muted">(n/a)</span></td><td>+4.52 <span class="muted">(n/a)</span></td><td>+2.97 <span class="muted">(n/a)</span></td><td>-2.94 <span class="muted">(n/a)</span></td><td>+11.38 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-18</td><td>+0.03 <span class="muted">(n/a)</span></td><td>+1.63 <span class="muted">(n/a)</span></td><td>+3.52 <span class="muted">(n/a)</span></td><td>+3.25 <span class="muted">(n/a)</span></td><td>-2.28 <span class="muted">(n/a)</span></td><td>+5.42 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-17</td><td>-1.00 <span class="muted">(n/a)</span></td><td>+2.47 <span class="muted">(n/a)</span></td><td>+1.16 <span class="muted">(n/a)</span></td><td>+0.91 <span class="muted">(n/a)</span></td><td>-1.63 <span class="muted">(n/a)</span></td><td>+11.00 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-16</td><td>-1.85 <span class="muted">(n/a)</span></td><td>+1.48 <span class="muted">(n/a)</span></td><td>+2.60 <span class="muted">(n/a)</span></td><td>+3.54 <span class="muted">(n/a)</span></td><td>+1.23 <span class="muted">(n/a)</span></td><td>+11.19 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-15</td><td>+0.94 <span class="muted">(n/a)</span></td><td>+1.43 <span class="muted">(n/a)</span></td><td>+1.06 <span class="muted">(n/a)</span></td><td>-1.50 <span class="muted">(n/a)</span></td><td>+1.64 <span class="muted">(n/a)</span></td><td>+8.12 <span class="muted">(n/a)</span></td></tr><tr><td>2026-09-14</td><td>-0.57 <span class="muted">(n/a)</span></td><td>+3.84 <span class="muted">(n/a)</span></td><td>+4.07 <span class="muted">(n/a)</span></td><td>-1.22 <span class="muted">(n/a)</span></td><td>+5.51 <span class="muted">(n/a)</span></td><td>+6.65 <span class="muted">(n/a)</span></td></tr></tbody>
+              </table>
+            </details>
+            
+        </details>
+        
     <p class="muted small">Value shown is the day's average composite score; the figure in
     parentheses is the change versus the prior day for that bucket.</p>
     
