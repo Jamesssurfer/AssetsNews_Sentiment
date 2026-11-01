@@ -385,7 +385,7 @@ def _bucket_panel_html(bucket: str, log_df: pd.DataFrame, daily_df: pd.DataFrame
 
       <div class="price-chart-wrap">
         <span class="label chart-label">Daily composite vs price, last {PRICE_CHART_DAYS} days ({'7-day' if BUCKET_BY_LABEL[bucket].get('trades_weekends') else 'trading days only'})</span>
-        <canvas class="price-chart" id="{price_canvas_id}" height="110"></canvas>
+        <div class="price-chart-box"><canvas id="{price_canvas_id}"></canvas></div>
       </div>
       <script>
 {init_js}      </script>
@@ -525,7 +525,7 @@ CSS = """
   .chart-label { display: block; margin-top: 0.5rem; }
   .trend-chart { width: 100%; max-height: 220px; margin: 0.4rem 0 1.25rem; }
   .price-chart-wrap { margin-top: 1.25rem; padding-top: 0.5rem; border-top: 1px solid var(--rule); }
-  .price-chart { width: 100%; max-height: 340px; margin: 0.4rem 0 0.5rem; }
+  .price-chart-box { position: relative; width: 100%; height: clamp(360px, 55vh, 580px); margin: 0.6rem 0 0.5rem; }
   .signal {
     margin-top: 1.5rem; padding: 0.75rem 1rem; background: #171a21;
     border: 1px solid var(--rule); border-left: 3px solid var(--sig, var(--muted));
@@ -577,6 +577,7 @@ JS = """
 const TAB_INITS = {};
 const TAB_DONE = {};
 const MONO = { family: "IBM Plex Mono", size: 10 };
+const BIG = { family: "IBM Plex Mono", size: 12 };
 
 function lineChart(id, labels, values, color) {
   new Chart(document.getElementById(id), {
@@ -606,16 +607,17 @@ function priceChart(id, labels, score, close, tickers, color) {
     data: {
       labels: labels,
       datasets: [
-        { label: "Composite", data: score, yAxisID: "y", borderColor: color, backgroundColor: color, borderWidth: 1.5, pointRadius: 2, tension: 0.15, spanGaps: false },
+        { label: "Composite", data: score, yAxisID: "y", borderColor: color, backgroundColor: color, borderWidth: 2.5, pointRadius: 3.5, tension: 0.15, spanGaps: false },
         { label: "Price", data: close, yAxisID: "y1", borderColor: "#e7e5de", backgroundColor: "#e7e5de", borderWidth: 1.5, borderDash: [5, 4], pointRadius: 2, tension: 0.15, spanGaps: false },
         { label: "zero", data: labels.map(function () { return 0; }), yAxisID: "y", borderColor: "#8a8f9c", borderWidth: 1, borderDash: [2, 4], pointRadius: 0 },
       ],
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       interaction: { mode: "index", intersect: false },
       plugins: {
-        legend: { labels: { color: "#8a8f9c", boxWidth: 12, filter: function (item) { return item.text !== "zero"; } } },
+        legend: { labels: { color: "#c5c8d0", boxWidth: 14, font: { size: 13 }, filter: function (item) { return item.text !== "zero"; } } },
         tooltip: {
           filter: function (item) { return item.dataset.label !== "zero"; },
           callbacks: {
@@ -632,9 +634,9 @@ function priceChart(id, labels, score, close, tickers, color) {
         },
       },
       scales: {
-        x: { ticks: { color: "#8a8f9c", maxTicksLimit: 10, font: MONO }, grid: { color: "#2a2e3a" } },
-        y: { position: "left", title: { display: true, text: "Daily composite", color: color }, ticks: { color: color, font: MONO }, grid: { color: "#2a2e3a" } },
-        y1: { position: "right", title: { display: true, text: "Price (last close of day)", color: "#e7e5de" }, ticks: { color: "#e7e5de", font: MONO }, grid: { drawOnChartArea: false } },
+        x: { ticks: { color: "#8a8f9c", maxTicksLimit: 12, font: BIG }, grid: { color: "#2a2e3a" } },
+        y: { position: "left", title: { display: true, text: "Daily composite", color: color, font: { size: 13 } }, ticks: { color: color, font: BIG }, grid: { color: "#2a2e3a" } },
+        y1: { position: "right", title: { display: true, text: "Price (last close)", color: "#e7e5de", font: { size: 13 } }, ticks: { color: "#e7e5de", font: BIG }, grid: { drawOnChartArea: false } },
       },
     },
   });
