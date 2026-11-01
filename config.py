@@ -24,18 +24,54 @@ other repo's model choice was (see its README's model-comparison table).
 Do that check once you have a few real runs -- Bitcoin coverage in particular
 mixes analyst tone with more informal/social crypto-native language and is
 the one most likely to need a second look.
+
+Contract selection: Gold, Oil, S&P 500 and Nasdaq pick the highest-volume
+near-term contract each scan, using the "contract" spec on the bucket (root +
+Yahoo exchange suffix + listed month codes). The "ticker" on those buckets is
+the fallback if no candidate returns data. US Dollar (DX-Y.NYB, spot index)
+and Bitcoin (BTC-USD) have no contracts and stay on their static ticker.
+The Oil / S&P / Nasdaq suffixes (.NYM / .CME) are UNVERIFIED against Yahoo --
+check "ticker_used" in the Log after the first run; if it still shows
+CL=F / ES=F / NQ=F the guessed symbols did not resolve.
 """
 
 MAX_ARTICLES_PER_QUERY = 8
+
+# --- price_fetcher ---------------------------------------------------------
+# If the newest hourly bar is older than this, the window is treated as "no
+# price data" instead of reporting stale bars as if they were current.
+MAX_PRICE_BAR_AGE_HOURS = 6
+
+# --- divergence status (dashboard.py) --------------------------------------
+# Defined BEFORE looking at results so the rule cannot be bent to fit them.
+SIGNAL_WINDOW = 5          # trading days
+SIGNAL_SIGMA = 1.0         # "outside normal" = beyond 1 std dev of own history of 5-day changes
+SIGNAL_MIN_DAYS = 20       # aligned (score + price) trading days needed before any status
+SIGNAL_MIN_CHANGES = 8     # 5-day changes needed to estimate a std dev
+SIGNAL_MIN_CORR_DAYS = 60  # aligned days before a realized correlation is shown
+
+STATUS_NOTES = {
+    "Confirming": "Score and price both moved beyond normal, in the expected direction.",
+    "Diverging": "Score and price both moved beyond normal, in OPPOSITE directions.",
+    "No signal": "At least one series is inside its normal 5-day range.",
+    "Not enough data": "Not enough aligned history yet for a status.",
+    "No price data": "Price is missing for the latest window, so no status is given.",
+}
+
+_ALL_MONTHS = ["F", "G", "H", "J", "K", "M", "N", "Q", "U", "V", "X", "Z"]
+_QUARTERLY = ["H", "M", "U", "Z"]
 
 BUCKETS = {
     "gold": {
         "label": "Gold",
         "sentiment_model": "finbert",
-        "ticker": "GC=F",  # placeholder -- price_fetcher resolves the actual
+        "ticker": "GC=F",  # fallback only -- price_fetcher resolves the actual
                             # most-liquid COMEX contract at fetch time, same
                             # logic ported from the gold basis pipeline.
-        "ticker_resolution": "gold_liquid_contract",
+        "ticker_resolution": "liquid_contract",
+        "contract": {"root": "GC", "suffix": ".CMX", "months": _ALL_MONTHS},
+        "expected_sign": 1,
+        "trades_weekends": False,
         "bullish_queries": [
             "gold price rally",
             "gold hits record high",
@@ -54,8 +90,11 @@ BUCKETS = {
     "oil": {
         "label": "Oil",
         "sentiment_model": "finbert",
-        "ticker": "CL=F",
-        "ticker_resolution": "static",
+        "ticker": "CL=F",  # fallback only
+        "ticker_resolution": "liquid_contract",
+        "contract": {"root": "CL", "suffix": ".NYM", "months": _ALL_MONTHS},  # suffix unverified
+        "expected_sign": 1,
+        "trades_weekends": False,
         "bullish_queries": [
             "oil price rally",
             "oil surges supply cut",
@@ -86,6 +125,8 @@ BUCKETS = {
                                 # basket, not tied to a single exchange's cash
                                 # session, and shows active intraday quotes.
         "ticker_resolution": "static",
+        "expected_sign": 1,
+        "trades_weekends": False,
         "bullish_queries": [
             "dollar strengthens",
             "DXY rally",
@@ -108,7 +149,12 @@ BUCKETS = {
                             # index only trades ~13:30-20:00 UTC, so most of
                             # this scanner's 4-hourly windows would otherwise
                             # show empty OHLC outside that one daily window.
-        "ticker_resolution": "static",
+                            # Fallback only -- the quarterly contract with the
+                            # highest volume is picked at fetch time.
+        "ticker_resolution": "liquid_contract",
+        "contract": {"root": "ES", "suffix": ".CME", "months": _QUARTERLY},  # suffix unverified
+        "expected_sign": 1,
+        "trades_weekends": False,
         "bullish_queries": [
             "S&P 500 record high",
             "S&P 500 rally",
@@ -129,8 +175,11 @@ BUCKETS = {
         "sentiment_model": "finbert",
         "ticker": "NQ=F",  # E-mini Nasdaq futures, same reasoning as ES=F
                             # above -- covers QQQ-adjacent sentiment without
-                            # the cash-hours gap.
-        "ticker_resolution": "static",
+                            # the cash-hours gap. Fallback only, as above.
+        "ticker_resolution": "liquid_contract",
+        "contract": {"root": "NQ", "suffix": ".CME", "months": _QUARTERLY},  # suffix unverified
+        "expected_sign": 1,
+        "trades_weekends": False,
         "bullish_queries": [
             "Nasdaq record high",
             "Nasdaq rally",
@@ -152,6 +201,8 @@ BUCKETS = {
         "ticker": "BTC-USD",  # trades 24/7 -- no session-gap issue at all,
                                # simplest case of the six.
         "ticker_resolution": "static",
+        "expected_sign": 1,
+        "trades_weekends": True,
         "bullish_queries": [
             "bitcoin price rally",
             "bitcoin surges",
