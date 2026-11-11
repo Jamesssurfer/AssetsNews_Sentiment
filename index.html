@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <body>
 <header>
   <h1>Asset sentiment &amp; price</h1>
-  <p>Last scan: 2026-11-10T21:42:22+00:00 UTC · Positive score = bullish pressure · Negative = bearish pressure</p>
+  <p>Last scan: 2026-11-11T05:02:17+00:00 UTC · Positive score = bullish pressure · Negative = bearish pressure</p>
 </header>
 <nav class="tabs">
     <button class="tab-btn" data-tab="gold" style="--accent: #C9A227">Gold</button>
@@ -216,26 +216,26 @@ document.addEventListener("DOMContentLoaded", function () {
     <section class="panel tab-panel active" id="tab-gold" style="--accent: #C9A227">
       <div class="panel-head">
         <h2>Gold</h2>
-        <span class="timestamp">as of 2026-11-10T21:42:22+00:00</span>
+        <span class="timestamp">as of 2026-11-11T05:02:17+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">+3.73</div>
-            <span class="delta">▲ +0.66 vs prior run</span>
+            <div class="score">+2.73</div>
+            <span class="delta">▼ -1.00 vs prior run</span>
           </div>
 
-          <div class="price-line">O 4,026.30 · H 4,044.40 · L 4,022.50 · C 4,035.40 <span class="muted">(GCZ26.CMX, 4h bars)</span></div>
+          <div class="price-line">O 4,040.80 · H 4,060.60 · L 4,034.10 · C 4,053.60 <span class="muted">(GCZ26.CMX, 4h bars)</span></div>
 
           <div class="breakdown">
             <div>
               <span class="label">Bullish coverage</span>
-              <span class="value">40 articles, tone -0.09 (finbert)</span>
+              <span class="value">40 articles, tone -0.04 (finbert)</span>
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">37 articles, tone +0.22 (finbert)</span>
+              <span class="value">38 articles, tone +0.14 (finbert)</span>
             </div>
           </div>
 
@@ -267,10 +267,10 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="signal" style="--sig: #8A8F9C">
         <div class="signal-head">
           <span class="status">No signal</span>
-          <span class="muted small">as of 2026-11-10 · 5-trading-day windows, normal range = 1 std dev of own history</span>
+          <span class="muted small">as of 2026-11-11 · 5-trading-day windows, normal range = 1 std dev of own history</span>
         </div>
         <div class="signal-note">At least one series is inside its normal 5-day range.</div>
-        <div class="signal-lines mono"><div>Score 5-day change -0.96 (normal range ±3.06) · Price 5-day change +2.47% (normal range ±2.26%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (42 of 60 days)</div></div>
+        <div class="signal-lines mono"><div>Score 5-day change +0.20 (normal range ±3.01) · Price 5-day change -0.46% (normal range ±2.23%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (43 of 60 days)</div></div>
         <div class="muted small signal-caveat">Descriptive context, not a tested or contrarian signal. News tends to trail price, and with this little history the normal range is a rough estimate.</div>
       </div>
     
@@ -281,9 +281,9 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
       <script>
 TAB_INITS["gold"] = function () {
-  lineChart("chart-4h-gold", ["11-03 11h", "11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h"], [4.845, 0.357, 0.107, 5.255, 2.213, 8.564, 7.398, 4.488, 4.331, 1.291, 6.404, 2.838, 3.957, 8.029, 4.808, 3.084, 1.517, 2.406, 3.342, 2.26, 1.585, 2.148, 3.074, 3.732], "#C9A227");
+  lineChart("chart-4h-gold", ["11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h", "11-11 05h"], [0.357, 0.107, 5.255, 2.213, 8.564, 7.398, 4.488, 4.331, 1.291, 6.404, 2.838, 3.957, 8.029, 4.808, 3.084, 1.517, 2.406, 3.342, 2.26, 1.585, 2.148, 3.074, 3.732, 2.728], "#C9A227");
   lineChart("chart-daily-gold", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-17", "2026-10-18", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10"], [2.987, 3.275, 3.842, 1.63, 2.479, 6.267, 6.259, 3.607, 0.371, 1.791, 4.442, 0.704, 3.511, 4.154, 3.659, 3.95, 6.643, 4.698, 4.967, 2.238, 4.509, 3.734, 3.949, 2.525, 6.817, 3.716, 4.97, 2.422, 1.922, 2.985], "#C9A227");
-  priceChart("chart-price-gold", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10"], [2.987, 3.275, 3.842, 1.63, 2.479, 3.607, 0.371, 1.791, 4.442, 0.704, 3.659, 3.95, 6.643, 4.698, 4.967, 3.734, 3.949, 2.525, 6.817, 3.716, 1.922, 2.985], [4190.7002, 4179.2002, 4128.6001, 4187.6001, 4186.7002, 4152.7998, 4140.7002, 4147.7998, 4044.2, 4010.0, 4096.8999, 4073.8999, 4080.0, 4034.6001, 3889.8999, 3963.5, 3938.1001, 4072.3, 4110.6001, 4079.5, 4111.6001, 4035.3999], ["GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCJ27.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX"], "#C9A227");
+  priceChart("chart-price-gold", ["2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11"], [3.275, 3.842, 1.63, 2.479, 3.607, 0.371, 1.791, 4.442, 0.704, 3.659, 3.95, 6.643, 4.698, 4.967, 3.734, 3.949, 2.525, 6.817, 3.716, 1.922, 2.985, 2.728], [4179.2002, 4128.6001, 4187.6001, 4186.7002, 4152.7998, 4140.7002, 4147.7998, 4044.2, 4010.0, 4096.8999, 4073.8999, 4080.0, 4034.6001, 3889.8999, 3963.5, 3938.1001, 4072.3, 4110.6001, 4079.5, 4111.6001, 4035.3999, 4053.6001], ["GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCJ27.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX"], "#C9A227");
 };
       </script>
     </section>
@@ -292,34 +292,34 @@ TAB_INITS["gold"] = function () {
     <section class="panel tab-panel" id="tab-oil" style="--accent: #8A5A3B">
       <div class="panel-head">
         <h2>Oil</h2>
-        <span class="timestamp">as of 2026-11-10T21:42:22+00:00</span>
+        <span class="timestamp">as of 2026-11-11T05:02:17+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">+4.58</div>
-            <span class="delta">▼ -0.85 vs prior run</span>
+            <div class="score">+5.25</div>
+            <span class="delta">▲ +0.67 vs prior run</span>
           </div>
 
-          <div class="price-line">O 86.44 · H 86.57 · L 85.75 · C 86.44 <span class="muted">(CLZ26.NYM, 4h bars)</span></div>
+          <div class="price-line">O 86.32 · H 86.77 · L 86.12 · C 86.61 <span class="muted">(CLZ26.NYM, 4h bars)</span></div>
 
           <div class="breakdown">
             <div>
               <span class="label">Bullish coverage</span>
-              <span class="value">40 articles, tone -0.01 (finbert)</span>
+              <span class="value">39 articles, tone +0.04 (finbert)</span>
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">39 articles, tone +0.22 (finbert)</span>
+              <span class="value">39 articles, tone +0.23 (finbert)</span>
             </div>
           </div>
 
           <div class="headlines">
             <span class="label">Top bullish headlines this run</span>
             <ul><li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxNS3d3eDJFNXE0T2pOMy1XYWt4VEF3NXdJVzNRQXZvWnZKeUU3Z21WNld4YS05dDhTX0tnSUhaRHVyY3dZaXBJdVlBazJMekE2ekRHVDB2SS16a0pPVFV3cVVQWmJ5cnI2QlBfQndnaDFuam1MVVpaZFdpMElYWWwzeFVINm1wQi1PdDRqaXFCYmprQVVPN09hTlVySThLS183RGVhdzRQdUQ?oc=5" target="_blank" rel="noopener">Occidental beats profit estimates as higher oil prices offset output decline - Reuters</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTFBjTlRGd3BRUEMzNUZwM1NOcE8zYTlod3VmSjlYUko3QnVERUNud2xpRzRXZjgzSzM4YzFhc2dVdjkwNk9EQ2lVczE5Nml0bHk3VEhoZ2ZSS0stY0NoZk1OZnlB?oc=5" target="_blank" rel="noopener">Current price of oil as of September 1, 2026 - Fortune</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPdnY1Y2d3T09FR1I3NTFPUGJKQ3VLLVVqalkyUUVKek1OSHVPcDQ1Q25OU201TGNFSFZaZ3JNbUs1bFBkZW9MZVdtYlE3dVdyOGxyQmhOZmJXN01MaGFBWVNZQ3A3Q1FqdVVWSVZIY2ltdmY3UDk1d21zZDBDZDBHa0xGRkN0MVZsT0hoNG1KUWYwSmpjQnUtUVU1Yk1aSHR2WV9VUTF3cW43Q2Uzb0JDc05zRWNyclVBOFNUNUMxbnBRcVhU?oc=5" target="_blank" rel="noopener">Natural Gas News: EIA Storage Report Tests Whether Heat Can Break Resistance - FXEmpire</a></li></ul>
+<li><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPVTlKVk5vOWlpYndFb2Flck9IczhtU2k5X1I3a0tlMjA2dkRmMEJncVFZdWctZW9wX05NaU9vUzNwMU5ld3UycklJMjhHaHB3WDdZVF81Z0t1WWNZak8tTFFwdDZtTHZvUnozMnVpUmtEanVsN2ZxM1A2QkxZS3IydDByTlQtd3RFYThzVnlwVmR0eGMyT1RQQldPZVp4VE1oSm5TcHBXVTd1dXM?oc=5" target="_blank" rel="noopener">Oil surges 6%, Brent and US crude both surpass $100 on more tanker attacks - Reuters</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTFBjTlRGd3BRUEMzNUZwM1NOcE8zYTlod3VmSjlYUko3QnVERUNud2xpRzRXZjgzSzM4YzFhc2dVdjkwNk9EQ2lVczE5Nml0bHk3VEhoZ2ZSS0stY0NoZk1OZnlB?oc=5" target="_blank" rel="noopener">Current price of oil as of September 1, 2026 - Fortune</a></li></ul>
           </div>
 
           <div class="headlines">
@@ -343,10 +343,10 @@ TAB_INITS["gold"] = function () {
       <div class="signal" style="--sig: #8A8F9C">
         <div class="signal-head">
           <span class="status">No signal</span>
-          <span class="muted small">as of 2026-11-10 · 5-trading-day windows, normal range = 1 std dev of own history</span>
+          <span class="muted small">as of 2026-11-11 · 5-trading-day windows, normal range = 1 std dev of own history</span>
         </div>
         <div class="signal-note">At least one series is inside its normal 5-day range.</div>
-        <div class="signal-lines mono"><div>Score 5-day change -1.21 (normal range ±2.61) · Price 5-day change -9.94% (normal range ±5.60%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (42 of 60 days)</div></div>
+        <div class="signal-lines mono"><div>Score 5-day change -0.48 (normal range ±2.57) · Price 5-day change -1.32% (normal range ±5.51%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (43 of 60 days)</div></div>
         <div class="muted small signal-caveat">Descriptive context, not a tested or contrarian signal. News tends to trail price, and with this little history the normal range is a rough estimate.</div>
       </div>
     
@@ -357,9 +357,9 @@ TAB_INITS["gold"] = function () {
       </div>
       <script>
 TAB_INITS["oil"] = function () {
-  lineChart("chart-4h-oil", ["11-03 11h", "11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h"], [6.731, 8.294, 6.602, 3.312, 7.277, 6.716, 6.972, 4.511, 4.741, 4.861, 4.703, 6.191, 5.541, 7.44, 5.472, 6.007, 7.111, 4.916, 5.214, 5.246, 6.208, 6.462, 5.434, 4.581], "#8A5A3B");
+  lineChart("chart-4h-oil", ["11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h", "11-11 05h"], [8.294, 6.602, 3.312, 7.277, 6.716, 6.972, 4.511, 4.741, 4.861, 4.703, 6.191, 5.541, 7.44, 5.472, 6.007, 7.111, 4.916, 5.214, 5.246, 6.208, 6.462, 5.434, 4.581, 5.25], "#8A5A3B");
   lineChart("chart-daily-oil", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-17", "2026-10-18", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10"], [4.514, 3.841, 2.97, 3.736, 5.13, 7.134, 5.318, 1.218, 0.094, -0.129, 0.95, 1.995, 1.471, 2.565, 1.378, 4.077, 5.073, 4.665, 3.836, 0.755, 4.607, 2.359, 6.699, 5.73, 6.066, 5.124, 6.115, 5.747, 5.727, 5.492], "#8A5A3B");
-  priceChart("chart-price-oil", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10"], [4.514, 3.841, 2.97, 3.736, 5.13, 1.218, 0.094, -0.129, 0.95, 1.995, 1.378, 4.077, 5.073, 4.665, 3.836, 2.359, 6.699, 5.73, 6.066, 5.124, 5.727, 5.492], [93.77, 94.68, 95.04, 96.13, 99.04, 98.29, 98.16, 98.05, 98.99, 103.44, 101.4, 100.0, 102.01, 102.77, 104.0, 96.52, 95.98, 87.77, 90.59, 90.34, 87.75, 86.44], ["CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM"], "#8A5A3B");
+  priceChart("chart-price-oil", ["2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11"], [3.841, 2.97, 3.736, 5.13, 1.218, 0.094, -0.129, 0.95, 1.995, 1.378, 4.077, 5.073, 4.665, 3.836, 2.359, 6.699, 5.73, 6.066, 5.124, 5.727, 5.492, 5.25], [94.68, 95.04, 96.13, 99.04, 98.29, 98.16, 98.05, 98.99, 103.44, 101.4, 100.0, 102.01, 102.77, 104.0, 96.52, 95.98, 87.77, 90.59, 90.34, 87.75, 86.44, 86.61], ["CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM"], "#8A5A3B");
 };
       </script>
     </section>
@@ -368,26 +368,26 @@ TAB_INITS["oil"] = function () {
     <section class="panel tab-panel" id="tab-us-dollar" style="--accent: #4C9F70">
       <div class="panel-head">
         <h2>US Dollar</h2>
-        <span class="timestamp">as of 2026-11-10T21:42:22+00:00</span>
+        <span class="timestamp">as of 2026-11-11T05:02:17+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">-1.88</div>
-            <span class="delta">▼ -1.29 vs prior run</span>
+            <div class="score">+1.83</div>
+            <span class="delta">▲ +3.71 vs prior run</span>
           </div>
 
-          <div class="price-line">O 102.31 · H 102.33 · L 102.22 · C 102.24 <span class="muted">(DX-Y.NYB, 4h bars)</span></div>
+          <div class="price-line">O 102.24 · H 102.30 · L 102.21 · C 102.25 <span class="muted">(DX-Y.NYB, 4h bars)</span></div>
 
           <div class="breakdown">
             <div>
               <span class="label">Bullish coverage</span>
-              <span class="value">40 articles, tone -0.26 (finbert)</span>
+              <span class="value">40 articles, tone -0.10 (finbert)</span>
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">40 articles, tone +0.17 (finbert)</span>
+              <span class="value">40 articles, tone +0.19 (finbert)</span>
             </div>
           </div>
 
@@ -395,7 +395,7 @@ TAB_INITS["oil"] = function () {
             <span class="label">Top bullish headlines this run</span>
             <ul><li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQalFaeTZ2Tl9BS09vVjROdl84Z24tcVpyWWRLMVltR3hyQ1g5OThDMllnMGxscnZMWktXT2FxNVVMd1ZGTTVycFJMV0JVT202NFFncFh0MVRYUlBiLS1XWEVvUnI1dHNaMEt0TXgzanprZGp5MDRsRXl5cTVVRDZ0SjYwNXc0UUtGNWlMVDlQUE9MRk5EbDgzTFllcWlOZ3ZFWkM0MWFwOGYtYk9CRUl3bWNJVXk?oc=5" target="_blank" rel="noopener">US data buoys dollar as Fed hike expectations nudged higher - Reuters</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQZFJYZkhmMDhYMTdhb1BDdWVYaXZWY3RFaVEwMUl4SmhNYnZGOUtKcTJGaGNrNEVNVWxfR1UyT0FMVjNQajc0bFRjZl83aUhMVDFoaFVXVlVENjN3NUV0Zk9BUHBLQ0hZM1FZZXBJOUtGZm5TMW9uWGk0S1F6NlFseklia2s3WU1hTGw0RnVOOFRZMzkwellRUHNIOU1tT1E?oc=5" target="_blank" rel="noopener">Dollar Gains on US Economic Strength and Hawkish Fed - Yahoo Finance</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSlFNWXp0dVMyTTFZMWg2N014N2NkUU52UHBfSEQ4eU9GQU1DdndBaDRPdTNQSjE2MElDREw2Skt1WUp3eFk2TUU0VDd1bXRkSmw1MVR1WEo2cHB1RTRjQmk2UVNxdWlDSGJxNVNBWHpDX3JVRE9RMVVpMWhHbVZDVGpHYWM2OWhFV2xwblNSY05kRVNwdzRBWmpEQjZaYWhkeG03UWY3SnVGNkg2cXY2UzI0anl1ZEhkT2JVZlpIN2g?oc=5" target="_blank" rel="noopener">Dollar strengthens after US inflation data boosts Fed rate-hike expectations - marketscreener.com</a></li></ul>
+<li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOVlUxQmZpdHZQcXlmY2ZmWjlyVGkySFFOdm5HZlAwWHBfeFZnV2laZGs4UEdRdE1pVlhUQWNHbzZHdXdNT1IzMWRMNW1Ba0k2bFJRNTItSnBLZ0pESy03VXpIY01ZbUl3QmZCR1hOSU95X2xGb0VSc213VllqLXoyS21SUkV2dWVZZXJKaF9MeWFjdHYxbWxxWVhnLUtDSjZUS19HdXdIZHjSAbQBQVVfeXFMTm9XRnRZRWVQRWNicFc0SkZIemhLVmNEWG5wX2xidm5oN2Z3anRaNUN0S2ZQbGkxTW1pcXA3bkpFOVZtSXBGWUhOMldBYjRRYmx3TlBsdTgtWWZJRU5HTDdsYUg1QVlSTF8zZFFrcnVydlRFcFFWbl85bEJVQ1Jfd2QxUnZBOW5WcTVjU2FhSVotRXBTZXVBVU1ZcmRvOERuZDVGMFc4d1ktYmNkb3A3d0U3alhG?oc=5" target="_blank" rel="noopener">Gold Feels the Weight of USD, Yields on Hawkish Fed and CPI - FOREX.com</a></li></ul>
           </div>
 
           <div class="headlines">
@@ -419,10 +419,10 @@ TAB_INITS["oil"] = function () {
       <div class="signal" style="--sig: #8A8F9C">
         <div class="signal-head">
           <span class="status">No signal</span>
-          <span class="muted small">as of 2026-11-10 · 5-trading-day windows, normal range = 1 std dev of own history</span>
+          <span class="muted small">as of 2026-11-11 · 5-trading-day windows, normal range = 1 std dev of own history</span>
         </div>
         <div class="signal-note">At least one series is inside its normal 5-day range.</div>
-        <div class="signal-lines mono"><div>Score 5-day change -1.82 (normal range ±3.16) · Price 5-day change +0.42% (normal range ±0.53%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (42 of 60 days)</div></div>
+        <div class="signal-lines mono"><div>Score 5-day change +1.10 (normal range ±3.13) · Price 5-day change +0.67% (normal range ±0.52%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (43 of 60 days)</div></div>
         <div class="muted small signal-caveat">Descriptive context, not a tested or contrarian signal. News tends to trail price, and with this little history the normal range is a rough estimate.</div>
       </div>
     
@@ -433,9 +433,9 @@ TAB_INITS["oil"] = function () {
       </div>
       <script>
 TAB_INITS["us-dollar"] = function () {
-  lineChart("chart-4h-us-dollar", ["11-03 11h", "11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h"], [-0.605, 1.26, -0.985, 3.514, -0.334, -1.976, 0.262, 0.006, -0.695, 0.673, 1.355, 3.412, 1.565, 0.385, -0.278, -3.92, -4.667, -2.323, -3.43, -2.101, -1.35, -2.048, -0.588, -1.876], "#4C9F70");
+  lineChart("chart-4h-us-dollar", ["11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h", "11-11 05h"], [1.26, -0.985, 3.514, -0.334, -1.976, 0.262, 0.006, -0.695, 0.673, 1.355, 3.412, 1.565, 0.385, -0.278, -3.92, -4.667, -2.323, -3.43, -2.101, -1.35, -2.048, -0.588, -1.876, 1.834], "#4C9F70");
   lineChart("chart-daily-us-dollar", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-17", "2026-10-18", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10"], [1.148, -0.172, 4.048, 4.193, 5.318, 5.633, 6.245, 6.22, 4.475, 5.76, 8.506, 5.309, 4.836, 7.865, 6.417, 2.387, 1.203, 0.923, -1.181, 0.074, -0.006, 2.248, 0.316, 0.732, -0.569, 1.186, -0.562, -3.473, -1.726, -1.504], "#4C9F70");
-  priceChart("chart-price-us-dollar", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10"], [1.148, -0.172, 4.048, 4.193, 5.318, 6.22, 4.475, 5.76, 8.506, 5.309, 6.417, 2.387, 1.203, 0.923, -1.181, 2.248, 0.316, 0.732, -0.569, 1.186, -1.726, -1.504], [102.563, 102.215, 102.528, 102.004, 101.779, 101.973, 101.73, 101.691, 101.617, 101.752, 102.03, 102.365, 102.115, 101.851, 101.916, 101.669, 101.814, 101.567, 101.56, 102.279, 101.835, 102.237], ["DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB"], "#4C9F70");
+  priceChart("chart-price-us-dollar", ["2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11"], [-0.172, 4.048, 4.193, 5.318, 6.22, 4.475, 5.76, 8.506, 5.309, 6.417, 2.387, 1.203, 0.923, -1.181, 2.248, 0.316, 0.732, -0.569, 1.186, -1.726, -1.504, 1.834], [102.215, 102.528, 102.004, 101.779, 101.973, 101.73, 101.691, 101.617, 101.752, 102.03, 102.365, 102.115, 101.851, 101.916, 101.669, 101.814, 101.567, 101.56, 102.279, 101.835, 102.237, 102.251], ["DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB"], "#4C9F70");
 };
       </script>
     </section>
@@ -444,34 +444,34 @@ TAB_INITS["us-dollar"] = function () {
     <section class="panel tab-panel" id="tab-s-p-500" style="--accent: #4C8CA8">
       <div class="panel-head">
         <h2>S&P 500</h2>
-        <span class="timestamp">as of 2026-11-10T21:42:22+00:00</span>
+        <span class="timestamp">as of 2026-11-11T05:02:17+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">+0.16</div>
-            <span class="delta">▼ -2.42 vs prior run</span>
+            <div class="score">+1.55</div>
+            <span class="delta">▲ +1.40 vs prior run</span>
           </div>
 
-          <div class="price-line">O 7,510.25 · H 7,559.00 · L 7,500.50 · C 7,553.50 <span class="muted">(ESZ26.CME, 4h bars)</span></div>
+          <div class="price-line">O 7,570.75 · H 7,591.25 · L 7,557.50 · C 7,589.50 <span class="muted">(ESZ26.CME, 4h bars)</span></div>
 
           <div class="breakdown">
             <div>
               <span class="label">Bullish coverage</span>
-              <span class="value">39 articles, tone -0.29 (finbert)</span>
+              <span class="value">39 articles, tone -0.11 (finbert)</span>
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">39 articles, tone +0.29 (finbert)</span>
+              <span class="value">38 articles, tone +0.17 (finbert)</span>
             </div>
           </div>
 
           <div class="headlines">
             <span class="label">Top bullish headlines this run</span>
             <ul><li><a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxPVHh4VWhFZEdfQ0pEa1hTTG5QOXdZREZydzBNcWloS2NHUi0tNkFSbTdlS2wyeEpubjNEeFJrZ2ZQRnhRRDNqNmZnbTVPNEZmUTJqSnpvQ3NZMUlRNnQ5THkxQU03T2FWaElrM2ZjcXgzYllPaExuMDJsUXA3d2ZJeGdRS2dZUFlRMTR4ODlBSXp4a0V2SmcyZWZkdlI3Zm1aQ3FXU09qakk1V1hwcUJXYzVXX3ktQlFOQUZlU2pxZDhWREM3d1pIeFpGOUtJdw?oc=5" target="_blank" rel="noopener">The record-setting S&P 500 is putting up some impressive stats: By the numbers - Yahoo Finance</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOUmw5dTU0bUtGQk1BdkpteVFtOFpEN0tycVhJNnIwQndiRVVaZjlMcG9lanhVZkxLd1lMVlRRMGMyNXctZkRDVnE4YVNXQkg2QUFxcEhKdVJ0eWl6Yk9HOXRKMTNoUWNyNmtMX2FZOEdJd0FETUU4Mmc1SVFXcllLVmt1bDhoMUdWRzN2VGUzMnVIWk1qRXBONUZSN3BkMDBvOG9zMTA3WUdVLVFDTXlj?oc=5" target="_blank" rel="noopener">Stock market today: Nasdaq surges 2% to record high, Dow and S&P 500 gain as chip stocks rally, oil falls - Yahoo Finance</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxQZ2RpVTBmUG56SEduSVlsbWVJNWRHOGtuX1o5QUVKdnJ1NlFZTGxHQXhBbVdZOXhwTkdPS3k2X1dZVG1YaWdHMXYzV0N4cUdIVkYzNnZ1azZ6Q1hZS3NqZkV2SGxwTHBnNkowc19HaFZqQ0RRN0x6Mm55OG4wWVJFa2gyOVNCbmpUYXB6UmJzc0VGUzQ?oc=5" target="_blank" rel="noopener">SoftBank Group shares surge 14% as Asian tech stocks track Wall Street rebound - CNBC</a></li></ul>
+<li><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQbEN3Mm5ocS1Ldi01QWZSYzFlZVA3cXlpMV8ta1FQdzFnM3MyVU5OU1F2YXNOQVNHb1pTcXc0WUxHZEZTYTlFdzlCQ2RPSXNFRzZrUjdVaHQwUWs3ZWZWc195VjVfSWQtbERQdTlsZ0dwazdhTldWTFZ4cnBLT3FNQW0tVjZFeUMyWHhwWkxnbmRVWmc4NlFZajRsY1lrdlFsX21HUzdWSFhLblZXTDRBTWp0cXluYjRSSDJaYXdfYlHSAcgBQVVfeXFMT0VoYS1fSEJRbzktdHdWcnhOUTJ3dmx6cFVnYmZOYUV4RENFX3lZWDdxOTNER0tLUUJhaWVMN1d4em81S2ZyX29yQ1dfVFFEUncwMjdYZ19QWkxJRTZwMlY2VU9kNEJSM2xJazZLLXdmQ2I4TGFXQm5STUU5WFhVYjBaeWVDWVpweHJIN2w1YWhiaEVuTzh5UjhXak1Fblkzd2NWcmxJYWxOLWxnVFF6eFdYM0pnQUFPQ1NlVlJSR3g3VXlGRU1CQVk?oc=5" target="_blank" rel="noopener">Three Reasons Why US Stock Market Is Rallying: Dow Up 700 Points, Nasdaq Surges 2% - NDTV Profit</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxOT3NWYXZnLXVlLXBfeDRvQy1PcFNlMjdVdFRLLXZTc2pXeHZLdVZLZ1R4ZFZzeWNSMmFydmpCMnByVmsxX05fa0IwSFlwczkySkNySVp1dE1JaW5yVjNVUHRsRGppNTR0V3V0Q09kc1AwUjR1SW95WnZTRVZDZEVOTg?oc=5" target="_blank" rel="noopener">Stock market surges after Democrats' midterm wins - CBS News</a></li></ul>
           </div>
 
           <div class="headlines">
@@ -495,10 +495,10 @@ TAB_INITS["us-dollar"] = function () {
       <div class="signal" style="--sig: #8A8F9C">
         <div class="signal-head">
           <span class="status">No signal</span>
-          <span class="muted small">as of 2026-11-10 · 5-trading-day windows, normal range = 1 std dev of own history</span>
+          <span class="muted small">as of 2026-11-11 · 5-trading-day windows, normal range = 1 std dev of own history</span>
         </div>
         <div class="signal-note">At least one series is inside its normal 5-day range.</div>
-        <div class="signal-lines mono"><div>Score 5-day change +0.65 (normal range ±4.17) · Price 5-day change -0.80% (normal range ±1.09%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (42 of 60 days)</div></div>
+        <div class="signal-lines mono"><div>Score 5-day change +0.21 (normal range ±4.10) · Price 5-day change -1.91% (normal range ±1.13%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (43 of 60 days)</div></div>
         <div class="muted small signal-caveat">Descriptive context, not a tested or contrarian signal. News tends to trail price, and with this little history the normal range is a rough estimate.</div>
       </div>
     
@@ -509,9 +509,9 @@ TAB_INITS["us-dollar"] = function () {
       </div>
       <script>
 TAB_INITS["s-p-500"] = function () {
-  lineChart("chart-4h-s-p-500", ["11-03 11h", "11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h"], [2.932, 1.596, -0.053, 0.425, 3.676, 3.004, 3.426, 3.794, 6.198, 2.962, 3.093, 4.597, 3.017, 4.576, 7.052, 5.612, 5.215, 5.735, 5.283, 8.069, 4.769, 5.619, 2.579, 0.157], "#4C8CA8");
+  lineChart("chart-4h-s-p-500", ["11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h", "11-11 05h"], [1.596, -0.053, 0.425, 3.676, 3.004, 3.426, 3.794, 6.198, 2.962, 3.093, 4.597, 3.017, 4.576, 7.052, 5.612, 5.215, 5.735, 5.283, 8.069, 4.769, 5.619, 2.579, 0.157, 1.555], "#4C8CA8");
   lineChart("chart-daily-s-p-500", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-17", "2026-10-18", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10"], [6.429, 4.642, 5.773, 7.571, 7.075, 8.451, 6.662, 3.709, 2.733, -0.595, 1.578, 2.62, 0.537, 3.051, 1.297, 5.354, -0.813, 3.208, 6.81, 8.224, 7.11, 4.658, 2.136, 1.349, 3.408, 4.212, 5.064, 5.411, 6.419, 2.785], "#4C8CA8");
-  priceChart("chart-price-s-p-500", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10"], [6.429, 4.642, 5.773, 7.571, 7.075, 3.709, 2.733, -0.595, 1.578, 2.62, 1.297, 5.354, -0.813, 3.208, 6.81, 4.658, 2.136, 1.349, 3.408, 4.212, 6.419, 2.785], [7855.5, 7853.25, 7750.75, 7788.5, 7703.0, 7742.75, 7777.25, 7775.0, 7709.0, 7672.5, 7718.25, 7760.75, 7759.5, 7713.5, 7617.25, 7626.5, 7614.25, 7737.5, 7403.5, 7404.0, 7570.25, 7553.5], ["ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME"], "#4C8CA8");
+  priceChart("chart-price-s-p-500", ["2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11"], [4.642, 5.773, 7.571, 7.075, 3.709, 2.733, -0.595, 1.578, 2.62, 1.297, 5.354, -0.813, 3.208, 6.81, 4.658, 2.136, 1.349, 3.408, 4.212, 6.419, 2.785, 1.555], [7853.25, 7750.75, 7788.5, 7703.0, 7742.75, 7777.25, 7775.0, 7709.0, 7672.5, 7718.25, 7760.75, 7759.5, 7713.5, 7617.25, 7626.5, 7614.25, 7737.5, 7403.5, 7404.0, 7570.25, 7553.5, 7589.5], ["ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME"], "#4C8CA8");
 };
       </script>
     </section>
@@ -520,26 +520,26 @@ TAB_INITS["s-p-500"] = function () {
     <section class="panel tab-panel" id="tab-nasdaq" style="--accent: #8B5FBF">
       <div class="panel-head">
         <h2>Nasdaq</h2>
-        <span class="timestamp">as of 2026-11-10T21:42:22+00:00</span>
+        <span class="timestamp">as of 2026-11-11T05:02:17+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">-1.87</div>
-            <span class="delta">▲ +1.13 vs prior run</span>
+            <div class="score">-0.11</div>
+            <span class="delta">▲ +1.76 vs prior run</span>
           </div>
 
-          <div class="price-line">O 27,634.25 · H 27,916.00 · L 27,582.50 · C 27,869.00 <span class="muted">(NQZ26.CME, 4h bars)</span></div>
+          <div class="price-line">O 28,020.25 · H 28,219.75 · L 27,953.75 · C 28,196.75 <span class="muted">(NQZ26.CME, 4h bars)</span></div>
 
           <div class="breakdown">
             <div>
               <span class="label">Bullish coverage</span>
-              <span class="value">37 articles, tone -0.28 (finbert)</span>
+              <span class="value">39 articles, tone -0.26 (finbert)</span>
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">37 articles, tone +0.17 (finbert)</span>
+              <span class="value">37 articles, tone +0.21 (finbert)</span>
             </div>
           </div>
 
@@ -547,7 +547,7 @@ TAB_INITS["s-p-500"] = function () {
             <span class="label">Top bullish headlines this run</span>
             <ul><li><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxOUVJKTmloTUp4Z243anZOSnFqemdHRV9velRGNWQwXzZmV1BFZXowNVdGd1dOY1dKTTd0UHlmd3pJRjFrZlNzd2o1ci1yQlNYY2RqYXVaLXB5MERLTl8zb0ZpTXhhRnVGMjROYVI1dTNKYWJtZDZjUS1nVEdlYk8yTQ?oc=5" target="_blank" rel="noopener">S&P 500 rises, Nasdaq hits record high as tech stocks gain - The Journal Record</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPeU5vV1FUS0NXR1I0ZmtlREJ2ZUY3V0d3S3Z6STlrRnZtSm1SZlRwUXZLek43a2ZEREY3ZG1CVU0xX2hFaEVLMnc2OFljbXBqQjZsbVA3MS0wUzhGckZ1aS1lclZ4OUNxOE8xT0JMYUtLNC1DTF84SUR5WWkyN3ptZnhaWERoQU4y?oc=5" target="_blank" rel="noopener">Tech leads Asian stock rally as traders track Wall St rebound - AFP.com</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNZHQzR1JILVZHZXNNRC1QR2R1WElYblktRTdEUGd0OUdaakVEU1hCWU9nbWlmMFUzNnU2bGRYZ0JueTZLbXQzNEFUc19tV1hqVkJGOXBPWWRXaGVwa3ZVczhpcXlXRlZDOE9JcEZ0YUkxOUEzbXhIMnotcm1Qc0FaUXpRd2pmZVY5ZW9wZk9KNUJUZ1hyRmx5RVRLOXhBekt1YkE?oc=5" target="_blank" rel="noopener">Tech leads stock rally as traders track Wall St rebound - Yahoo Finance</a></li></ul>
+<li><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTFBLdXByZ2luV08xMUtCYWd0RG5fMWJRVUtJOFhRbWF0cWU2eDJDRTA4QUVVQ3dXMnpIUVBwdzFCNjJxLTRNS0xpT2FCZUU4STd6emw3NEc1b3pfNVdtZHBpZW1tWjkxYU5zVDl3VlBXNUFnNGFN?oc=5" target="_blank" rel="noopener">[Closing Market] KOSPI Rebounds 4% as Tech Stocks Surge - Businesskorea</a></li></ul>
           </div>
 
           <div class="headlines">
@@ -571,10 +571,10 @@ TAB_INITS["s-p-500"] = function () {
       <div class="signal" style="--sig: #8A8F9C">
         <div class="signal-head">
           <span class="status">No signal</span>
-          <span class="muted small">as of 2026-11-10 · 5-trading-day windows, normal range = 1 std dev of own history</span>
+          <span class="muted small">as of 2026-11-11 · 5-trading-day windows, normal range = 1 std dev of own history</span>
         </div>
         <div class="signal-note">At least one series is inside its normal 5-day range.</div>
-        <div class="signal-lines mono"><div>Score 5-day change -2.16 (normal range ±6.10) · Price 5-day change -1.79% (normal range ±2.75%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (42 of 60 days)</div></div>
+        <div class="signal-lines mono"><div>Score 5-day change +2.63 (normal range ±6.02) · Price 5-day change -1.65% (normal range ±2.72%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (43 of 60 days)</div></div>
         <div class="muted small signal-caveat">Descriptive context, not a tested or contrarian signal. News tends to trail price, and with this little history the normal range is a rough estimate.</div>
       </div>
     
@@ -585,9 +585,9 @@ TAB_INITS["s-p-500"] = function () {
       </div>
       <script>
 TAB_INITS["nasdaq"] = function () {
-  lineChart("chart-4h-nasdaq", ["11-03 11h", "11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h"], [2.04, -2.081, -5.301, -0.881, -2.024, -2.873, -3.916, 3.373, 5.854, 6.276, 4.44, 1.998, 3.897, 5.123, 6.871, 6.319, 7.297, 7.364, 6.346, 5.732, 3.908, 0.253, -3.002, -1.873], "#8B5FBF");
+  lineChart("chart-4h-nasdaq", ["11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h", "11-11 05h"], [-2.081, -5.301, -0.881, -2.024, -2.873, -3.916, 3.373, 5.854, 6.276, 4.44, 1.998, 3.897, 5.123, 6.871, 6.319, 7.297, 7.364, 6.346, 5.732, 3.908, 0.253, -3.002, -1.873, -0.108], "#8B5FBF");
   lineChart("chart-daily-nasdaq", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-17", "2026-10-18", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10"], [1.744, 5.682, 6.271, 4.488, 2.898, 5.144, 5.225, 3.328, 1.217, -3.456, -0.652, 3.082, 1.581, 0.774, -0.435, -4.659, -0.841, -1.111, 4.007, 4.865, 3.095, 1.944, 0.62, -2.735, -1.139, 4.642, 5.552, 7.002, 4.82, -1.541], "#8B5FBF");
-  priceChart("chart-price-nasdaq", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10"], [1.744, 5.682, 6.271, 4.488, 2.898, 3.328, 1.217, -3.456, -0.652, 3.082, -0.435, -4.659, -0.841, -1.111, 4.007, 1.944, 0.62, -2.735, -1.139, 4.642, 4.82, -1.541], [30901.5, 30766.75, 30010.0, 30077.0, 29391.25, 29766.5, 29919.75, 29849.5, 29110.75, 29175.0, 29506.0, 29831.0, 29723.25, 29214.25, 28540.0, 28498.25, 28376.25, 28670.0, 26893.5, 27107.5, 27919.0, 27869.0], ["NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME"], "#8B5FBF");
+  priceChart("chart-price-nasdaq", ["2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11"], [5.682, 6.271, 4.488, 2.898, 3.328, 1.217, -3.456, -0.652, 3.082, -0.435, -4.659, -0.841, -1.111, 4.007, 1.944, 0.62, -2.735, -1.139, 4.642, 4.82, -1.541, -0.108], [30766.75, 30010.0, 30077.0, 29391.25, 29766.5, 29919.75, 29849.5, 29110.75, 29175.0, 29506.0, 29831.0, 29723.25, 29214.25, 28540.0, 28498.25, 28376.25, 28670.0, 26893.5, 27107.5, 27919.0, 27869.0, 28196.75], ["NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME"], "#8B5FBF");
 };
       </script>
     </section>
@@ -596,41 +596,41 @@ TAB_INITS["nasdaq"] = function () {
     <section class="panel tab-panel" id="tab-bitcoin" style="--accent: #E8871E">
       <div class="panel-head">
         <h2>Bitcoin</h2>
-        <span class="timestamp">as of 2026-11-10T21:42:22+00:00</span>
+        <span class="timestamp">as of 2026-11-11T05:02:17+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">+10.72</div>
-            <span class="delta">▲ +1.98 vs prior run</span>
+            <div class="score">+12.36</div>
+            <span class="delta">▲ +1.64 vs prior run</span>
           </div>
 
-          <div class="price-line">O 73,177.72 · H 73,962.60 · L 73,028.28 · C 73,758.55 <span class="muted">(BTC-USD, 4h bars)</span></div>
+          <div class="price-line">O 73,480.82 · H 73,792.77 · L 73,119.95 · C 73,677.98 <span class="muted">(BTC-USD, 4h bars)</span></div>
 
           <div class="breakdown">
             <div>
               <span class="label">Bullish coverage</span>
-              <span class="value">39 articles, tone +0.07 (finbert)</span>
+              <span class="value">38 articles, tone +0.08 (finbert)</span>
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">38 articles, tone +0.47 (finbert)</span>
+              <span class="value">33 articles, tone +0.51 (finbert)</span>
             </div>
           </div>
 
           <div class="headlines">
             <span class="label">Top bullish headlines this run</span>
             <ul><li><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxOcjRGYUZ1N0FTMjBSWUZKS3BUU2dhVVVxYzdLQ0lMRkhNZ0hua3c3Uzg2N3AyNThYb3JfR3BYQ09sWkl1Ni1Pd3R3UEFkNFRRUGtMNW9TTllKQ2huZ1c3UWN5ME85dHFOblprdVNjWk5GN2xvRXBXSU1HdTNyRmpyVUtZTUZDV08xVzN3dUJR?oc=5" target="_blank" rel="noopener">Bitcoin surges 22% for the week as investor optimism floods back - CNBC</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMi8wFBVV95cUxQTzFrMHhzdkRDZHljVzV0djBvc2RoTFB2WXNiYU5tQnEtNVhmZjVhLV9LYzNwY1V0NG9yTTd6TzZtS0R3Yml3cmZyTTNIQ1JhVEk5elExT1k2cDZzNTN3OW9CdTd2ay1EV0QtLVVQWktsVVVRejk0TjV2YUlfUVNndVl3M2RXLVVPYVI1VjBLeld2UjFkM2ozV09uZC1DNjBLZ0ZPeTZvSGUydTkyRk95N293OXVFTnZOclNrNURGcWQ0VFMwSlBvbHM1VFdRajJqMFhRaHJKNGFEWEw5Sjh3RkNuaE5WV3ZsSGRqLUROMG5paUE?oc=5" target="_blank" rel="noopener">Riot Platforms Jumps 12% as AI Data Center Bets Lift Bitcoin Miners Despite Flat Bitcoin; Hut 8 Surges 12%, MARA Climbs 4% - 24/7 Wall St.</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOYVg0QkZmc3p2MENoYl9xejdUYzd2NmxxWERxaWl2VGJNSTFIaVVQZzNOYS1fYVA4X0Y4RVc4QnR3ZjdCaGktTEtuSld3R2tQQ3ZGX19fc2YxcVZNRE1jd0kyOVlpNGZoYXVYVHRUNGt5Z0ZQWHNpUnFEMF8tVHI4N1Z0M2hvNXMteEd0T3g1NDVlSHNQZmRlSzNJNXg0eGNuajBXdzVRdmYzOVNnY2V1bkVUZlJwYXRyYlBMel9yR042VTRJMTlXTm01dw?oc=5" target="_blank" rel="noopener">Bitcoin Surges as Institutional Demand, Short Covering, Clarity Act Progress Converge - WSJ</a></li></ul>
+<li><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOYVg0QkZmc3p2MENoYl9xejdUYzd2NmxxWERxaWl2VGJNSTFIaVVQZzNOYS1fYVA4X0Y4RVc4QnR3ZjdCaGktTEtuSld3R2tQQ3ZGX19fc2YxcVZNRE1jd0kyOVlpNGZoYXVYVHRUNGt5Z0ZQWHNpUnFEMF8tVHI4N1Z0M2hvNXMteEd0T3g1NDVlSHNQZmRlSzNJNXg0eGNuajBXdzVRdmYzOVNnY2V1bkVUZlJwYXRyYlBMel9yR042VTRJMTlXTm01dw?oc=5" target="_blank" rel="noopener">Bitcoin Surges as Institutional Demand, Short Covering, Clarity Act Progress Converge - WSJ</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE9BRHhsSDNaZ2VlVnhzYmRsci1zNk1kQ2JWNHJxNTNVRHFDSHFqcmVoVFg2TkJxYTdZMUhfMEJpb1hFS3RabDlJcVZZWEh4M3VJUUpaX0JUSWtHd0pxNUctNzg3Nkx0Q2JoT21EN2cwV1ZtQQ?oc=5" target="_blank" rel="noopener">Bitcoin surged to an eight-month high above $85,000 as oil fell and ETF inflows returned - Quartz</a></li></ul>
           </div>
 
           <div class="headlines">
             <span class="label">Top bearish headlines this run</span>
             <ul><li><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PU3pBdGY0NWJMSWFUTFRDUGx3RklNQlNENWdlQjBiNG9meUo5andqSHFER0lkNlhEaFVwOXpLYWZseVJ1YVZsU2Q4RzBWT1RoeUhTM19YaFljM2ZHcm5yMHYxTlc?oc=5" target="_blank" rel="noopener">Today's Crypto News: Bitcoin, Ether and Altcoin Insights - Investing News Network</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxNSGtvQTlrMWsta0R1dERzWHp0cW13V1BWR1RFeHBEZTdfWlJSN25qVXpOSWRWMWJwWWdyR2h4bmREQVpMSTVORWZfRllBZEJORGpLaTA0NllmNjBWa2pZSkVSTVpRbVZXT1AxU3ZEaHY4LXYxWVpLdUlsX09kQnRmemNMaG95bkt2dkp0ME5VNGdOREVxM1A2UEpfYTBzenpSLWVNZXljYWxFd1JfZ2pFMm5icGUyTmhwdXFWcUQwNGdsaHVscVhnYzl5Q3gzdlczNGFVMFVwYy1wWDl2MG1BQ2k5eHA3c056dkFvTA?oc=5" target="_blank" rel="noopener">Bitcoin Traders Have Borrowed Into a Falling Market 5 Times Since October. How Did the First 4 End? - 24/7 Wall St.</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMi5wFBVV95cUxPb1Z0VTA0YWpvcTItUHZFc0Y1eUVCdFhfX1RCeEJGTVk4My1yNkVmaFFMdFJ5blhlcFVjcml3MjhBeEVpZzdTbk9BclVFVGZoMUlGUldIZUhHaVFEVWJKZV9QT0swMFFLQ0tLMEpyUWxQQjRWaHRUSHJmT09icWYtTWRBVTBadm83ODJUbWd1SDhDSGNBNl9OS1RxZFZzVDBraENHcW5tZkFaOVdpdl9HbDVleXF2WXZQeUpuZ3R4b3hOYWs4Tnowal96V0FYWEhQTjRuTHBCWjdZdDBYTHRxb1hoWlRGYjA?oc=5" target="_blank" rel="noopener">Bitcoin Miners Now Earn a Third of Their Revenue From AI. Will They Keep Selling Their Bitcoin? - 24/7 Wall St.</a></li></ul>
+<li><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxPeWdXdlhWSG9nRkVUbjJLaWZVYVdFQ0xyelBIS0ZVMGxiTmVTeXdOc3JaUEVmdUdqWkVEaC1vODFkZERtOXozR25mS0hWdnRINTNkNXZuOGFlbmhJQWV4eDlZZGlSLTNLckRUMUN4Y0dYdEJuWmh4alk2UmFWX1pEZ0w2dENqQdIBiwFBVV95cUxNLVF2VFlBUVBxWndQRjN3WkhWc0FHdWhCdGE3dU02b1NjbUlpZXJpcUVBYXRFWngybzRBdG1ZbXJORVNaRWRKZ0c3eGUwaURoNkVLSDVxa2RTVnl4dUhPaGlkYk5vU1BPbWEwWkxrck5uejNTc0dFTWFnQ244Q21zM2Q0anY4SHdfeEVV?oc=5" target="_blank" rel="noopener">Bitcoin Price Today Crashes Below $73,000 - Coinpedia</a></li></ul>
           </div>
         </div>
 
@@ -647,10 +647,10 @@ TAB_INITS["nasdaq"] = function () {
       <div class="signal" style="--sig: #8A8F9C">
         <div class="signal-head">
           <span class="status">No signal</span>
-          <span class="muted small">as of 2026-11-10 · 5-trading-day windows, normal range = 1 std dev of own history</span>
+          <span class="muted small">as of 2026-11-11 · 5-trading-day windows, normal range = 1 std dev of own history</span>
         </div>
         <div class="signal-note">At least one series is inside its normal 5-day range.</div>
-        <div class="signal-lines mono"><div>Score 5-day change -2.63 (normal range ±3.88) · Price 5-day change -3.12% (normal range ±3.93%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (58 of 60 days)</div></div>
+        <div class="signal-lines mono"><div>Score 5-day change +0.28 (normal range ±3.84) · Price 5-day change -2.74% (normal range ±3.91%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation insufficient data (59 of 60 days)</div></div>
         <div class="muted small signal-caveat">Descriptive context, not a tested or contrarian signal. News tends to trail price, and with this little history the normal range is a rough estimate.</div>
       </div>
     
@@ -661,9 +661,9 @@ TAB_INITS["nasdaq"] = function () {
       </div>
       <script>
 TAB_INITS["bitcoin"] = function () {
-  lineChart("chart-4h-bitcoin", ["11-03 11h", "11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h"], [10.864, 14.687, 17.358, 15.932, 13.261, 12.991, 12.774, 10.55, 14.424, 12.463, 10.442, 10.987, 8.065, 11.369, 14.436, 14.771, 11.232, 9.98, 8.611, 7.822, 7.991, 8.947, 8.742, 10.722], "#E8871E");
+  lineChart("chart-4h-bitcoin", ["11-03 19h", "11-04 00h", "11-04 11h", "11-04 19h", "11-05 00h", "11-05 11h", "11-05 19h", "11-06 00h", "11-06 11h", "11-06 19h", "11-06 23h", "11-07 04h", "11-07 14h", "11-07 19h", "11-07 23h", "11-08 04h", "11-08 14h", "11-08 20h", "11-09 05h", "11-09 18h", "11-10 02h", "11-10 12h", "11-10 21h", "11-11 05h"], [14.687, 17.358, 15.932, 13.261, 12.991, 12.774, 10.55, 14.424, 12.463, 10.442, 10.987, 8.065, 11.369, 14.436, 14.771, 11.232, 9.98, 8.611, 7.822, 7.991, 8.947, 8.742, 10.722, 12.359], "#E8871E");
   lineChart("chart-daily-bitcoin", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-17", "2026-10-18", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10"], [11.557, 13.311, 15.788, 16.694, 16.528, 14.607, 16.924, 16.031, 16.429, 13.456, 11.806, 10.958, 11.172, 11.804, 11.905, 16.634, 14.99, 12.648, 17.799, 16.492, 15.702, 13.888, 12.748, 15.517, 12.105, 12.079, 12.16, 9.941, 7.906, 9.47], "#E8871E");
-  priceChart("chart-price-bitcoin", ["2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-17", "2026-10-18", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10"], [11.557, 13.311, 15.788, 16.694, 16.528, 14.607, 16.924, 16.031, 16.429, 13.456, 11.806, 10.958, 11.172, 11.804, 11.905, 16.634, 14.99, 12.648, 17.799, 16.492, 15.702, 13.888, 12.748, 15.517, 12.105, 12.079, 12.16, 9.941, 7.906, 9.47], [82448.4375, 83180.8984, 81549.4375, 82384.7422, 81673.4922, 81120.7422, 81488.7812, 81957.0469, 82966.0312, 84348.8906, 81259.7578, 80717.75, 80358.9922, 80334.2812, 80014.8594, 80763.7969, 81078.5625, 78813.6016, 76766.8125, 77406.9531, 77607.4766, 76980.3594, 77434.9375, 80218.5625, 76135.7891, 75751.1406, 75696.4297, 75775.0391, 74383.1719, 73758.5469], ["BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD"], "#E8871E");
+  priceChart("chart-price-bitcoin", ["2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-17", "2026-10-18", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11"], [13.311, 15.788, 16.694, 16.528, 14.607, 16.924, 16.031, 16.429, 13.456, 11.806, 10.958, 11.172, 11.804, 11.905, 16.634, 14.99, 12.648, 17.799, 16.492, 15.702, 13.888, 12.748, 15.517, 12.105, 12.079, 12.16, 9.941, 7.906, 9.47, 12.359], [83180.8984, 81549.4375, 82384.7422, 81673.4922, 81120.7422, 81488.7812, 81957.0469, 82966.0312, 84348.8906, 81259.7578, 80717.75, 80358.9922, 80334.2812, 80014.8594, 80763.7969, 81078.5625, 78813.6016, 76766.8125, 77406.9531, 77607.4766, 76980.3594, 77434.9375, 80218.5625, 76135.7891, 75751.1406, 75696.4297, 75775.0391, 74383.1719, 73758.5469, 73677.9766], ["BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD"], "#E8871E");
 };
       </script>
     </section>
