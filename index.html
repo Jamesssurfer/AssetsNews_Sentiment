@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <body>
 <header>
   <h1>Asset sentiment &amp; price</h1>
-  <p>Last scan: 2026-11-21T12:14:23+00:00 UTC · Positive score = bullish pressure · Negative = bearish pressure</p>
+  <p>Last scan: 2026-11-21T21:30:10+00:00 UTC · Positive score = bullish pressure · Negative = bearish pressure</p>
 </header>
 <nav class="tabs">
     <button class="tab-btn" data-tab="gold" style="--accent: #C9A227">Gold</button>
@@ -216,14 +216,14 @@ document.addEventListener("DOMContentLoaded", function () {
     <section class="panel tab-panel active" id="tab-gold" style="--accent: #C9A227">
       <div class="panel-head">
         <h2>Gold</h2>
-        <span class="timestamp">as of 2026-11-21T12:14:23+00:00</span>
+        <span class="timestamp">as of 2026-11-21T21:30:10+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">+6.25</div>
-            <span class="delta">▲ +1.50 vs prior run</span>
+            <div class="score">+5.33</div>
+            <span class="delta">▼ -0.92 vs prior run</span>
           </div>
 
           <div class="price-line"><span class="muted">No price data this window (market likely closed) &mdash; GCZ26.CMX</span></div>
@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">40 articles, tone +0.21 (finbert)</span>
+              <span class="value">40 articles, tone +0.17 (finbert)</span>
             </div>
           </div>
 
@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="label">Top bearish headlines this run</span>
             <ul><li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNcGdBZURLclpjb21vODJwTDdrcndNR2ZCUGdqRGVoYXhkWkdFZEpHT2wyMnNORDJnRUtxcGhZTGxWcGxfNVhxLVpHNlh2c2VpbW5JOENUeFpJT1QxMnVCRWdsNFROQzZuYjNxbmptZGVWbTliMWJTcVBVU2hrMGs0Qlpkb2p6Y1hydWZJQVlWcS1kejhZTDZyU2UwQmVBNHpLMkp5UUxsNmJvV2c5ZU9vMEdNZk1Zdw?oc=5" target="_blank" rel="noopener">Gold market sees positive ETF inflows in July, ending two months of outflows - Kitco</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNeHVMRUNlb19xa2ZqWFEzQnNZdW5JUzBpaW1HTjFaM1NOdFhkTjQwaUJsM2ptWUwwQjVEVENmY3lMY2xmZHk1Uk1iUEh6WTlMMFdOcGpVVHJBZDdkZ1NIV3RyUUlRcFNYcVVwUUJWS1d4R1NiUUVhVHF6cG9UeXBwWUVsTF83dmpYdDRkUDlkLTRFV3AyWWM1RzJIcDdwNDllTmppM3l2bWFRbk5mOW0wSUdn?oc=5" target="_blank" rel="noopener">Gold vs Bitcoin: Gold Outperforms as ETF Outflows Pressure BTC - FXEmpire</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQNHFscngyWER3SEV1WlhpZkdyV1hKN2hGOTRPd3ptM1VTdWJEZXo4dVZqZ20wUmVMdDdvcllIUHZVQWtiUkhqMndSR1dlY19yVXYxNzNjZ0d4MGstZUp0eElDTHRTOXBHUkdiVDZwd2FtbnF4Tk1fQlRSUFQydjNuRm96aVJKZXVGelN5NXhFTmFEc1hjTmtPMllsRHh6dw?oc=5" target="_blank" rel="noopener">Gold breaks support at $4,000 and may be oversold for CMCMARKETS:GOLD by cmcmarkets - TradingView</a></li></ul>
+<li><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQOHNXNmFLNHM0dkNtZ0pwdGdBVFJrUExYemMwbjEwdVA5YXdLcGxkRUloR2d0aUJ2aWRzdlpkakhicjB5ZmprRGhGeTFhbkgtU2VQelNqVHJ5NGV3X3o2MDRabXlybjVsMGliOFFud2k2M0ZSb2RlZXUza2VhOGVjZFNoMEliX20xUVBhcGJFU0NMLXdQdzdUVklkLWt2RlNlY0EteC1uZy1lbG51Smc?oc=5" target="_blank" rel="noopener">Gold price faces a key test as $4,000 breaks and weekly support beckons - investingLive</a></li></ul>
           </div>
         </div>
 
@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
       <script>
 TAB_INITS["gold"] = function () {
-  lineChart("chart-4h-gold", ["11-13 00h", "11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h"], [5.812, 6.535, 8.005, 5.686, 5.571, 4.863, 7.469, 5.024, 5.279, 4.378, 0.923, 2.841, -3.208, -3.179, -3.65, 0.741, -3.153, -3.42, 2.479, 3.918, 2.592, 1.535, 4.743, 6.246], "#C9A227");
+  lineChart("chart-4h-gold", ["11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h", "11-21 21h"], [6.535, 8.005, 5.686, 5.571, 4.863, 7.469, 5.024, 5.279, 4.378, 0.923, 2.841, -3.208, -3.179, -3.65, 0.741, -3.153, -3.42, 2.479, 3.918, 2.592, 1.535, 4.743, 6.246, 5.326], "#C9A227");
   lineChart("chart-daily-gold", ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20", "2026-11-21"], [0.704, 3.511, 4.154, 3.659, 3.95, 6.643, 4.698, 4.967, 2.238, 4.509, 3.734, 3.949, 2.525, 6.817, 3.716, 4.97, 2.422, 1.922, 2.985, 3.217, 4.142, 6.784, 5.897, 4.894, 1.882, -3.346, -1.206, 0.992, 2.064, 4.743], "#C9A227");
   priceChart("chart-price-gold", ["2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20"], [4.442, 0.704, 3.659, 3.95, 6.643, 4.698, 4.967, 3.734, 3.949, 2.525, 6.817, 3.716, 1.922, 2.985, 3.217, 4.142, 6.784, 1.882, -3.346, -1.206, 0.992, 2.064], [4044.2, 4010.0, 4096.8999, 4073.8999, 4080.0, 4034.6001, 3889.8999, 3963.5, 3938.1001, 4072.3, 4110.6001, 4079.5, 4111.6001, 4035.3999, 3994.3, 3879.8, 3882.2, 3859.7, 3854.3999, 3746.6001, 3627.8999, 3552.1001], ["GCZ26.CMX", "GCZ26.CMX", "GCJ27.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX", "GCZ26.CMX"], "#C9A227");
 };
@@ -292,14 +292,14 @@ TAB_INITS["gold"] = function () {
     <section class="panel tab-panel" id="tab-oil" style="--accent: #8A5A3B">
       <div class="panel-head">
         <h2>Oil</h2>
-        <span class="timestamp">as of 2026-11-21T12:14:23+00:00</span>
+        <span class="timestamp">as of 2026-11-21T21:30:10+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">+6.32</div>
-            <span class="delta">▲ +0.58 vs prior run</span>
+            <div class="score">+4.49</div>
+            <span class="delta">▼ -1.83 vs prior run</span>
           </div>
 
           <div class="price-line"><span class="muted">No price data this window (market likely closed) &mdash; CLF27.NYM</span></div>
@@ -307,26 +307,26 @@ TAB_INITS["gold"] = function () {
           <div class="breakdown">
             <div>
               <span class="label">Bullish coverage</span>
-              <span class="value">40 articles, tone +0.10 (finbert)</span>
+              <span class="value">40 articles, tone +0.07 (finbert)</span>
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">40 articles, tone +0.21 (finbert)</span>
+              <span class="value">40 articles, tone +0.15 (finbert)</span>
             </div>
           </div>
 
           <div class="headlines">
             <span class="label">Top bullish headlines this run</span>
             <ul><li><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxPWEZfNE5GTnJ5ZUdSb0liQWVXZHZ0VHRzLUxOeWNzN1hUTmZIUHhNMmJzaC1mZEpWZ2ZRNUdwbEZ0SFFWRUN5dks0dUpjc1oyRS1JMER0dVJJYXNSR0pLTkFpcjZfSjV6MEtycF8tUUdfdTh4dzl4SXVKOE9peWNXU1lFNU1MbGJoV0tZeGdPMGUzVlUtUkRwdzJUdUNpNWdZV2ZBWmRmNzEzOHFma2J3d3FCV1ZXNUJKVmY4TnczRldSSnBwT0pDQWhHZDdiS1M4Y0J5ZzVmZw?oc=5" target="_blank" rel="noopener">Dialog Group sees growth opportunity in rising demand for strategic oil storage - The Star</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPNEJxV0FYQXJ4VjUxLVlrWDYxQ2JieVY0MTdEdjR1MWtFaklLSk9kX0dEa2JOWlBHbklMZTVocWVCbHh0LThxZ2Z0VEFXbGNPclN3SndpZlM4M3FNdF9LQ0FVRmlxMTUzWjFueG53a0Z4NnpmeXU5SFBROU53dmlJNHRGR0ZoTFRWcWlsemVSTUVPbGV0V202aE9QQkNHOHgzSnFCRklNVFg1LWNzbjI2TjhyTzhDcGduODBLZldoZ9IBxAFBVV95cUxPb1VMWi0xd21qazcyUXAxb3JBZWtGQnctNVJSM3B0LXBCWWdKM3E2aW5PYXFkU2Ntd1F0M1Q1N3puNWUxdXVhMVNlaVMtUXVhU1o0NTZCOG9nM1Q0NDZocnBqSkxnQWVGOWQyNTFWSVJhYnZYbVNHYmhzWWpOLU9LOGQzY04xb1dSREx5OGxrV2p0SEZNSjJWeVJXTGJxSXZONmM4eDkzeHRpT0M0UFBHamVPQlpNR0RaSVZ4SU5PQ3ozSjNM?oc=5" target="_blank" rel="noopener">Kuwait Oil Production Surges as OPEC Completes Output Cut Reversal - Crude Oil Prices Today | OilPrice.com</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPdnY1Y2d3T09FR1I3NTFPUGJKQ3VLLVVqalkyUUVKek1OSHVPcDQ1Q25OU201TGNFSFZaZ3JNbUs1bFBkZW9MZVdtYlE3dVdyOGxyQmhOZmJXN01MaGFBWVNZQ3A3Q1FqdVVWSVZIY2ltdmY3UDk1d21zZDBDZDBHa0xGRkN0MVZsT0hoNG1KUWYwSmpjQnUtUVU1Yk1aSHR2WV9VUTF3cW43Q2Uzb0JDc05zRWNyclVBOFNUNUMxbnBRcVhU?oc=5" target="_blank" rel="noopener">Natural Gas News: EIA Storage Report Tests Whether Heat Can Break Resistance - FXEmpire</a></li></ul>
+<li><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPVTlKVk5vOWlpYndFb2Flck9IczhtU2k5X1I3a0tlMjA2dkRmMEJncVFZdWctZW9wX05NaU9vUzNwMU5ld3UycklJMjhHaHB3WDdZVF81Z0t1WWNZak8tTFFwdDZtTHZvUnozMnVpUmtEanVsN2ZxM1A2QkxZS3IydDByTlQtd3RFYThzVnlwVmR0eGMyT1RQQldPZVp4VE1oSm5TcHBXVTd1dXM?oc=5" target="_blank" rel="noopener">Oil surges 6%, Brent and US crude both surpass $100 on more tanker attacks - Reuters</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPNEJxV0FYQXJ4VjUxLVlrWDYxQ2JieVY0MTdEdjR1MWtFaklLSk9kX0dEa2JOWlBHbklMZTVocWVCbHh0LThxZ2Z0VEFXbGNPclN3SndpZlM4M3FNdF9LQ0FVRmlxMTUzWjFueG53a0Z4NnpmeXU5SFBROU53dmlJNHRGR0ZoTFRWcWlsemVSTUVPbGV0V202aE9QQkNHOHgzSnFCRklNVFg1LWNzbjI2TjhyTzhDcGduODBLZldoZ9IBxAFBVV95cUxPb1VMWi0xd21qazcyUXAxb3JBZWtGQnctNVJSM3B0LXBCWWdKM3E2aW5PYXFkU2Ntd1F0M1Q1N3puNWUxdXVhMVNlaVMtUXVhU1o0NTZCOG9nM1Q0NDZocnBqSkxnQWVGOWQyNTFWSVJhYnZYbVNHYmhzWWpOLU9LOGQzY04xb1dSREx5OGxrV2p0SEZNSjJWeVJXTGJxSXZONmM4eDkzeHRpT0M0UFBHamVPQlpNR0RaSVZ4SU5PQ3ozSjNM?oc=5" target="_blank" rel="noopener">Kuwait Oil Production Surges as OPEC Completes Output Cut Reversal - Crude Oil Prices Today | OilPrice.com</a></li></ul>
           </div>
 
           <div class="headlines">
             <span class="label">Top bearish headlines this run</span>
             <ul><li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxQOUZvUWN3eUpBMnNacFJoSXlYeldaVmptMXZLN2JUYU4tMGpaQ2t2UDNUT1RfTm5QV1ZCQWlxNGx6V1dLRGRZZ0g1dWZQdG5BRWMxbEdBd1VMRGlpbDNDejhMdDE1VGZmY0M0Z3dLX0xCWFNBWGE1WUVoN1Rkbldmd0ktOXNoRkd3S0dyZmxwdFJwcXVud2d1eGdZRFk1V1JnbVBORURIcm82U2hHZWJKdzdDelIxQQ?oc=5" target="_blank" rel="noopener">Oil supply is recovering faster than demand – but strong supply does not mean low prices - Tomorrow's Affairs</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPY1FJeFM4MnVqdWlMNmZ5M3pqUDAtcm9PcVg0SFVxVHh0dW5SVmhSN21WWFB1MDQ5dDdsc3JNRGxPRXE2bDdhTFVZdHhXdExvSE1KSklESjRUeVZnTUdCR1ppU1FhaVN4WnZGc3BGUWZybUl2Tzk3V3BWTnNVczhYRzJkcDdBNmZGUmQ0NXlOYmNqa09MY2xXNWlrczk4ZWdSRHlQdlpWajQ4QQ?oc=5" target="_blank" rel="noopener">OPEC+ approves further oil output increase as Hormuz exports start to recover - Reuters</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxPZGdpMlBVbExibHozSndzcGVmRE9SOVdnMnJDbmFSX2NSbjRQamJhd3R6dEkxX2tlaTkwdWRjVlplWkpsQTJoamljRzhQcXZkUmhDTmgtRWY0U1RwRUlEYUdoRmVmVkktM3FDNWpyVXRFNkpEWGl5ZlhHaGNadmVKTUx5NlhlQXE1ejdTUlowM0dGM1lPRkdTb2xRV2pKczR6aWtoLXRMWG11RDlUaXRuZDc3eUh1SDBmQ2NZQ2laTzBXMGtVQ0NpVjNhU2FvZ1ItWDhQWV9n?oc=5" target="_blank" rel="noopener">Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed - Investor's Business Daily</a></li></ul>
+<li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNVU9VREhySl9sUTBrQ3Y0bE02Tk9fM1JUdVhKMk43XzFCSGJvM2pSMTNqNXhqTUJRaHc5eFhxNDBvUmRpUFB4QndDY1dZcVE1bUsyTzFxVk1GaVBET2ROa1ZEQWEySXBnYUp3WVJCT1JtMDhqcDJzM3Mya0c0dXdXOW5ZdGZzblNwVGY5ZXNpQi0zMnpvN0VJ?oc=5" target="_blank" rel="noopener">FTSE, Oil Forecast: Two trades to watch 181126 - StoneX</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE5yb0ZXTjFBZUZ0c1NqVGNKcWxQcnIwNXJvRFhZNGRFcGpBNUFYTDdNNEFpTC1lNnpOb3QxTTBEN0I3QVE0MjdnYkNJLXlyU1VmQlpNRDFSOWt3SC1iT29MU1pn?oc=5" target="_blank" rel="noopener">Current price of oil as of November 20, 2026 - Fortune</a></li></ul>
           </div>
         </div>
 
@@ -357,7 +357,7 @@ TAB_INITS["gold"] = function () {
       </div>
       <script>
 TAB_INITS["oil"] = function () {
-  lineChart("chart-4h-oil", ["11-13 00h", "11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h"], [3.585, 6.166, 7.688, 9.526, 6.342, 7.28, 7.683, 8.398, 8.494, 7.481, 7.495, 9.403, 1.629, 3.954, 3.966, -0.597, 2.365, 4.557, -0.827, 2.751, 5.609, 6.82, 5.741, 6.317], "#8A5A3B");
+  lineChart("chart-4h-oil", ["11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h", "11-21 21h"], [6.166, 7.688, 9.526, 6.342, 7.28, 7.683, 8.398, 8.494, 7.481, 7.495, 9.403, 1.629, 3.954, 3.966, -0.597, 2.365, 4.557, -0.827, 2.751, 5.609, 6.82, 5.741, 6.317, 4.489], "#8A5A3B");
   lineChart("chart-daily-oil", ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20", "2026-11-21"], [1.995, 1.471, 2.565, 1.378, 4.077, 5.073, 4.665, 3.836, 0.755, 4.607, 2.359, 6.699, 5.73, 6.066, 5.124, 6.115, 5.747, 5.727, 5.492, 3.521, 3.51, 5.813, 7.708, 8.124, 8.449, 3.183, 0.884, 2.16, 6.214, 5.741], "#8A5A3B");
   priceChart("chart-price-oil", ["2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20"], [0.95, 1.995, 1.378, 4.077, 5.073, 4.665, 3.836, 2.359, 6.699, 5.73, 6.066, 5.124, 5.727, 5.492, 3.521, 3.51, 5.813, 8.449, 3.183, 0.884, 2.16, 6.214], [98.99, 103.44, 101.4, 100.0, 102.01, 102.77, 104.0, 96.52, 95.98, 87.77, 90.59, 90.34, 87.75, 86.44, 86.42, 86.68, 88.51, 86.13, 84.52, 82.0, 83.16, 82.01], ["CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CL=F", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLZ26.NYM", "CLF27.NYM", "CLF27.NYM", "CLF27.NYM", "CLF27.NYM"], "#8A5A3B");
 };
@@ -368,14 +368,14 @@ TAB_INITS["oil"] = function () {
     <section class="panel tab-panel" id="tab-us-dollar" style="--accent: #4C9F70">
       <div class="panel-head">
         <h2>US Dollar</h2>
-        <span class="timestamp">as of 2026-11-21T12:14:23+00:00</span>
+        <span class="timestamp">as of 2026-11-21T21:30:10+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">+3.81</div>
-            <span class="delta">▼ -3.31 vs prior run</span>
+            <div class="score">+0.38</div>
+            <span class="delta">▼ -3.43 vs prior run</span>
           </div>
 
           <div class="price-line"><span class="muted">No price data this window (market likely closed) &mdash; DX-Y.NYB</span></div>
@@ -383,26 +383,26 @@ TAB_INITS["oil"] = function () {
           <div class="breakdown">
             <div>
               <span class="label">Bullish coverage</span>
-              <span class="value">40 articles, tone +0.03 (finbert)</span>
+              <span class="value">32 articles, tone +0.05 (finbert)</span>
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">39 articles, tone +0.14 (finbert)</span>
+              <span class="value">39 articles, tone +0.16 (finbert)</span>
             </div>
           </div>
 
           <div class="headlines">
             <span class="label">Top bullish headlines this run</span>
-            <ul><li><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOc21xRWxVRl9BLTBSWEo0UGVFT1lOX0VWZDkyNG9yeEd3Mkx2cnlCdGJTeXdxSWJ3dHRFbkk5dmYwR2oyc3N6N3l6aDhULWt0R1F4RDRHQ1YtM0dpSnNrZGdmdXdFMEVfVXJpWml1el9lMmVLZnR3eWVnTTlnRnJWS2xubDNTZWpVd3dPS04xNmFWWmhwQ3FxWEtB?oc=5" target="_blank" rel="noopener">AI-driven sell-off boosts safe-haven demand; yen and Swiss franc lead major currency gains, while the U.S. dollar weakens. - 富途牛牛</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQalFaeTZ2Tl9BS09vVjROdl84Z24tcVpyWWRLMVltR3hyQ1g5OThDMllnMGxscnZMWktXT2FxNVVMd1ZGTTVycFJMV0JVT202NFFncFh0MVRYUlBiLS1XWEVvUnI1dHNaMEt0TXgzanprZGp5MDRsRXl5cTVVRDZ0SjYwNXc0UUtGNWlMVDlQUE9MRk5EbDgzTFllcWlOZ3ZFWkM0MWFwOGYtYk9CRUl3bWNJVXk?oc=5" target="_blank" rel="noopener">US data buoys dollar as Fed hike expectations nudged higher - Reuters</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxPWVZ3cXpqU0pnYy05TVdXckNleEFQOUtDVkRnN0tRYTdrY2NrdVlmNi1VcHhlVktodU9xWWVubUh4WjFaOC1pbmh6Q2RSWHlCOXdxeW1JT0dKajdsc0duSHJhdzlINkVHZ0t4T3NlR09nOEdWNmRPb21rdllCSmtOb0VnMHdsMXc4T2FRTjM4UEJVLUtnNmZ4aVQ5d1hWc0VvM24weXJBbjhfNVlCMkJ2ai01YXlQd0tJdzQ3MGtHWjEzZ3BlbWFqcWRFN2lwV2c?oc=5" target="_blank" rel="noopener">The Weekly Spread: What Shaped US Treasury Yields And The Dollar This Week - TradingView</a></li></ul>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE01NkliMWktd1dwd09CWkl1TTI0QjlGV2dodnEtck1VNDdUdEdpUzlBQ3pVN1puQzlfbmF2RXJadnltYmhyTFczUHp4WVBJbkhqUlFvXzI0RVdsUXhlTHg2dnktdy1QZTl5UU1faXkwVQ?oc=5" target="_blank" rel="noopener">Dollar Nears 19-Month High, Bolstered by Demand for Safe-Haven Assets - صحيفة مال</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxPWVZ3cXpqU0pnYy05TVdXckNleEFQOUtDVkRnN0tRYTdrY2NrdVlmNi1VcHhlVktodU9xWWVubUh4WjFaOC1pbmh6Q2RSWHlCOXdxeW1JT0dKajdsc0duSHJhdzlINkVHZ0t4T3NlR09nOEdWNmRPb21rdllCSmtOb0VnMHdsMXc4T2FRTjM4UEJVLUtnNmZ4aVQ5d1hWc0VvM24weXJBbjhfNVlCMkJ2ai01YXlQd0tJdzQ3MGtHWjEzZ3BlbWFqcWRFN2lwV2c?oc=5" target="_blank" rel="noopener">The Weekly Spread: What Shaped US Treasury Yields And The Dollar This Week - TradingView</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxON1ZISmdPVlowTmxqald5T1FteE5UVVRZaDA3N3Q0aTZWY1RkZ3ZNTUdFZEk2dTV2V0RMeWQza1l5R1U0RWY2NS0zMGs5X1RJTFNtUzY0MUwtajV3RF9mWUVpSE15LWtoeGd1cHlGdU92cGw0bTFYM2FwdkZTSEw2WGdaTElvaFRfaHpfSm5hMHRBdGNvMFJvSWQ0TE10VjcyWTgxSFVMWTZiS0RndXhkdA?oc=5" target="_blank" rel="noopener">Canadian Dollar strengthens as Oil rebounds, hawkish Fed limits gains - FXStreet</a></li></ul>
           </div>
 
           <div class="headlines">
             <span class="label">Top bearish headlines this run</span>
-            <ul><li><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxNMFhIQzJGTGxlWUZlWk1pX0V4NHdKVTFEQWFWY3NNZGRLbTRhdmZoX1p4TWZ0dFlpQkZWQk9CVnZJdWRGSHFTT3JuRXV2QWtfWWVVckxKUWdWcGdBa1NzaF9IYXk1ZEFyWFhyNHZDeUlYOGJ3VlpFNGh6Zm5YNTlJYjZUc25FdU5QTmo1X0dXRmhRRnl5ODRGWlV4NXltNEZkUGJxNEJxUjBjRGVnSFo5QjItTzRQRTI3ek5BN0h5MEN0ZWhrV0ZIU3F1T2hvUVpSdGJoVmRBdHQxUQ?oc=5" target="_blank" rel="noopener">INDIA RUPEE-Rupee eyes mild relief with Asian peers buoyed by "modestly" dovish Fed - bfsi.economictimes.indiatimes.com</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE40a2VaeFhLYVo1WGUzdzFyRDB5cVZzTjU3MDNrUDh4czJrbjJSSDMxbHYwM3dRS3hCZ1k1WGFydjNLUTJQUEVxX2ZqX21aMXhfS3k5bHNlY1FVVWF3SkRHcGRTN2dXcWF6cnBldjYyTnJncW1lelE?oc=5" target="_blank" rel="noopener">Yen Rebounds in New York, First Gain in Three Sessions as AI Stock Rout Spurs Risk-Off Buying; Dollar at Lower 158 Yen Range - BigGo Finance</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE9hZlFpTWljQTB3bFhudTY3NW1yVEdYelJBVGNpZDI4NVp1T3pucGRfR1FLSl9GNFhHVVplNHB5TVN2UEd2TEVYVE56bGQ4YV9ONU9KZTl2RzFWTGdqeDNjdkZvS1liYnp2WFVlVWRlb0RvZVBKY1pSVXdYd0ltQQ?oc=5" target="_blank" rel="noopener">Gold Prices Hit 14-Month Low as Strong Dollar and Fed Rate Hike Bets Drive Weekly Sell-Off - Yahoo Finance UK</a></li></ul>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPZ1oySE8wUzZvS2VDSUk5MTVrTWJRYnNWa3RsNk1DdkdzVkN3THVPcnZoNDVxV2tfUnIyOXBoYzFiVy1sQlc1WHhxWkJZSy1NcHNGUUtLNDRHb3pGUXg3dVY1UG1jd2UxUzJ2QndjcUk3al9jay00ajFZV1VtYnBNbDBEY2s5UkU?oc=5" target="_blank" rel="noopener">USD exchange rate today, October 21, 2026: DXY falls to 101.71 points. - Vietnam.vn</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxNMFhIQzJGTGxlWUZlWk1pX0V4NHdKVTFEQWFWY3NNZGRLbTRhdmZoX1p4TWZ0dFlpQkZWQk9CVnZJdWRGSHFTT3JuRXV2QWtfWWVVckxKUWdWcGdBa1NzaF9IYXk1ZEFyWFhyNHZDeUlYOGJ3VlpFNGh6Zm5YNTlJYjZUc25FdU5QTmo1X0dXRmhRRnl5ODRGWlV4NXltNEZkUGJxNEJxUjBjRGVnSFo5QjItTzRQRTI3ek5BN0h5MEN0ZWhrV0ZIU3F1T2hvUVpSdGJoVmRBdHQxUQ?oc=5" target="_blank" rel="noopener">INDIA RUPEE-Rupee eyes mild relief with Asian peers buoyed by "modestly" dovish Fed - bfsi.economictimes.indiatimes.com</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPN1l1QW1EOEx6bkhqVUZMRGdoNnQ1U2loYkFHTW5RVVRacDNvWlZuTnRQYUtWSUpQU3lIRGpTNm5SNDFNRW1RV09aRnJHVERoaHhvMVAyaUk0RVBVdEtEQzFfZUs2VC1GUWE3RmxES3RWLUt4ekJ3dG1raGMzWlRiWE1UcENtZ3ZOY2k3UUtMUGZiMDRKV1FmSlVUTDAySHZyU0s4YzVYNjU?oc=5" target="_blank" rel="noopener">The bond market sell-off is helping the dollar - The Economist</a></li></ul>
           </div>
         </div>
 
@@ -433,7 +433,7 @@ TAB_INITS["oil"] = function () {
       </div>
       <script>
 TAB_INITS["us-dollar"] = function () {
-  lineChart("chart-4h-us-dollar", ["11-13 00h", "11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h"], [2.472, 0.579, 2.558, 1.053, 2.446, 0.358, -1.213, -0.469, -1.477, -0.347, -0.438, -0.467, -0.966, -1.653, 1.795, 0.057, -11.522, -0.284, 2.372, 3.677, 1.109, 3.629, 7.116, 3.805], "#4C9F70");
+  lineChart("chart-4h-us-dollar", ["11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h", "11-21 21h"], [0.579, 2.558, 1.053, 2.446, 0.358, -1.213, -0.469, -1.477, -0.347, -0.438, -0.467, -0.966, -1.653, 1.795, 0.057, -11.522, -0.284, 2.372, 3.677, 1.109, 3.629, 7.116, 3.805, 0.378], "#4C9F70");
   lineChart("chart-daily-us-dollar", ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20", "2026-11-21"], [5.309, 4.836, 7.865, 6.417, 2.387, 1.203, 0.923, -1.181, 0.074, -0.006, 2.248, 0.316, 0.732, -0.569, 1.186, -0.562, -3.473, -1.726, -1.504, 1.42, 2.22, 1.87, 0.661, -0.764, -0.452, -0.275, -5.732, 1.922, 2.369, 7.116], "#4C9F70");
   priceChart("chart-price-us-dollar", ["2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20"], [8.506, 5.309, 6.417, 2.387, 1.203, 0.923, -1.181, 2.248, 0.316, 0.732, -0.569, 1.186, -1.726, -1.504, 1.42, 2.22, 1.87, -0.452, -0.275, -5.732, 1.922, 2.369], [101.617, 101.752, 102.03, 102.365, 102.115, 101.851, 101.916, 101.669, 101.814, 101.567, 101.56, 102.279, 101.835, 102.237, 102.903, 103.178, 103.383, 103.544, 103.598, 103.849, 103.934, 103.744], ["DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB", "DX-Y.NYB"], "#4C9F70");
 };
@@ -444,14 +444,14 @@ TAB_INITS["us-dollar"] = function () {
     <section class="panel tab-panel" id="tab-s-p-500" style="--accent: #4C8CA8">
       <div class="panel-head">
         <h2>S&P 500</h2>
-        <span class="timestamp">as of 2026-11-21T12:14:23+00:00</span>
+        <span class="timestamp">as of 2026-11-21T21:30:10+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">+1.29</div>
-            <span class="delta">▼ -0.41 vs prior run</span>
+            <div class="score">+1.26</div>
+            <span class="delta">▼ -0.03 vs prior run</span>
           </div>
 
           <div class="price-line"><span class="muted">No price data this window (market likely closed) &mdash; ESZ26.CME</span></div>
@@ -459,18 +459,18 @@ TAB_INITS["us-dollar"] = function () {
           <div class="breakdown">
             <div>
               <span class="label">Bullish coverage</span>
-              <span class="value">39 articles, tone -0.15 (finbert)</span>
+              <span class="value">38 articles, tone -0.20 (finbert)</span>
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">35 articles, tone +0.12 (finbert)</span>
+              <span class="value">31 articles, tone +0.10 (finbert)</span>
             </div>
           </div>
 
           <div class="headlines">
             <span class="label">Top bullish headlines this run</span>
-            <ul><li><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQSjNJVXhtaXB0MGJmbEFycEtsQWtvanV3ckhyLVNsMGlQNTkxWjVTb1NkR2FSSkFWamRGelJrVXJMX3I5T0ZNX3dWZS1Ga0FFazJIcjFLYzdtc1VtcERZdzNxRG5uT3RSZkcxYW13WF82VDZUSUVfQ1ZTQkxOQmtNWWFLa1JnMzdpVlRsNTYwMEpoYzF2aEE?oc=5" target="_blank" rel="noopener">Will Supermicro stock break resistance after 78% earnings growth and strong backlog? - Traders Union</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNb1dPNzJaTGxMU1RJMk84cVN3SE9WWVBwdGRqckJ6ZkJVWXU0a1hTYU05VlV5bjVKbV9yMXRuYkpud2VOb0xmcGNSRXdLOWQyMllpLVF6RUI0VGlUTzdWczl3aS1TWEp4WXVzWWotV2tKRHZKekVES0NtYVNpNG1sb3lSbXlnUG5CRVhwWDZncEVzRGFrQ3BTSEg0eVk2aFMyY1hYZWk5TG1BQXM2VHVEdGZSUlVSZw?oc=5" target="_blank" rel="noopener">Anthropic stock surges 17% in Nasdaq debut following record-breaking $81 Billion IPO - KWXX - Hawaii</a></li>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNb1dPNzJaTGxMU1RJMk84cVN3SE9WWVBwdGRqckJ6ZkJVWXU0a1hTYU05VlV5bjVKbV9yMXRuYkpud2VOb0xmcGNSRXdLOWQyMllpLVF6RUI0VGlUTzdWczl3aS1TWEp4WXVzWWotV2tKRHZKekVES0NtYVNpNG1sb3lSbXlnUG5CRVhwWDZncEVzRGFrQ3BTSEg0eVk2aFMyY1hYZWk5TG1BQXM2VHVEdGZSUlVSZw?oc=5" target="_blank" rel="noopener">Anthropic stock surges 17% in Nasdaq debut following record-breaking $81 Billion IPO - KWXX - Hawaii</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxOOGc4dnJSVllYd1NGX1BjdExQSUhNcm1TS3l6amgySnpxcXItNXQtemp4bFNHT25uSktBNXBPaEVQb2hCNzk0RTNETWhvcm9Ibk90MjhUNU1PMlk4VV9JQmVwQVJoYVdwX1p1cTRSMUVGUF94V0lmOFh4ZmtuUmg3andfWS1RUjZ5cUpIbHAyV1RmSlNsTXdlSUxhal90Wm8?oc=5" target="_blank" rel="noopener">Why Morgan Stanley Says the S&P 500 Is Poised to Jump 18% - Business Insider</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNMjluZ2hqMnNHQ1pWQThNTW95NnNfWXJHb250akh3OXBJM0tyUFdTWHdRd0x1aXFmbTZ6bVVCRW1TTzBFbjlGd0Z4eGtXT3lxMm5NdldDVTYtalVkMXVIVFd0R2gteVNXNWY2OFYtRDVvTEZjWU9SNWNENFVPbVZkY2Y4M2lFMEZydFk4?oc=5" target="_blank" rel="noopener">Will Meta stock break resistance as Muse AI demand surge boosts growth outlook? - Traders Union</a></li></ul>
           </div>
 
@@ -478,7 +478,7 @@ TAB_INITS["us-dollar"] = function () {
             <span class="label">Top bearish headlines this run</span>
             <ul><li><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE0tY1RiS3BadWcwVVMwU2oteTAzRVdyVEpSeUwtUGJOU3RZV3BmOEJQRmtrT25udndSRVUxRDVpSkRCLUdCS2lDc3dTRm9Ja19qNzh3MlNXVDVDM0UwQXItVWgyMUJnaV9xY2RlWEJmbnBCWWE1ZEdz0gF8QVVfeXFMUDFCSzhsWkpPUEpfV1BiOTNJUkJCbGNwaFVlUmtCcm42WTNmaXF6RVdpbnNwcWJOV1V6QWRtSjVMdFBuLU5kSmFwM0Q5S0ZQOVdPdVVlMGh3dVQyQnAtY0lXcU9xbjN0NE5pYUU1MEM5cU1WN25lc3pYUmpJaQ?oc=5" target="_blank" rel="noopener">S&P 500 and Dow close in correction; Nasdaq erases 2026 gain as AI rout picks up steam - CNBC</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQenF6YlhQQ0d2S3BGblhRZ0hfWFl1WGktbGxaOWg2SGlrY2NuQTlSXzZLa1RncUdaMXpIRFFVZEcyT1hWYmxfRUVPU0IzdXNqQmo3UDBfUGdoeUFDbEM1eTJSMnlHRTNXeHF6NmVuV1VWdlBta2Zkd29sNmNsWVVoX3Rlb3I?oc=5" target="_blank" rel="noopener">The key S&P 500 level Wall Street is watching - CNBC</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPLUExMEVRMDV4d0UzTmhxMENqY1ZOWFlrUDdIX2pDVFNfdWxIb3lLUUthalFJQ3lGUG4wS05CeldYdTZ1ZEVrWkd4YmoyWmpnVTlXN2tad3UzeTV0WDVPRThQMklDQ3pXOE55d2NTWldWQ0dYWW9aWDVFV3JHbzhxWU1fUHM4THBTdWF6b3JjeHZZT3ppNk8xUW5tend0SFZBelV0LWxoNk5RWTJBUzNEVHdHVEFFWHF6a2VQLVdMVUg0Q0Ez?oc=5" target="_blank" rel="noopener">Stock market today: Dow and S&P 500 enter correction, Nasdaq sinks 5% to erase 2026 gains as AI trade melts down - Yahoo Finance</a></li></ul>
+<li><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPVUd5RzZ5ZVE5cnYtV3BVUEV5MkEtZExtelRVUUU2MFZBbHBSbmFieVlIM1NQRGh1N0dKWnJKSU9sUHI5VmxtbDVrQWhlZUlJY3ZoYTBzQ091TTk2U01yYnNWb05QaFpxaEdsLUV0bkVwa2F1OUNOQzdJN194ZE1CcUcybUFHbTFBNUJfVA?oc=5" target="_blank" rel="noopener">S&P 500 forecast for 2027: Wall Street expects a rebound after an 11.6% drop fueled by AI fears - Beinsure</a></li></ul>
           </div>
         </div>
 
@@ -509,7 +509,7 @@ TAB_INITS["us-dollar"] = function () {
       </div>
       <script>
 TAB_INITS["s-p-500"] = function () {
-  lineChart("chart-4h-s-p-500", ["11-13 00h", "11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h"], [0.435, -1.044, -2.77, -2.522, -8.046, -4.162, -4.467, -3.886, -3.448, -3.248, -4.601, -0.294, 0.866, -1.228, -1.18, -2.602, 1.967, 4.505, 1.18, 1.73, -0.41, 3.754, 1.695, 1.287], "#4C8CA8");
+  lineChart("chart-4h-s-p-500", ["11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h", "11-21 21h"], [-1.044, -2.77, -2.522, -8.046, -4.162, -4.467, -3.886, -3.448, -3.248, -4.601, -0.294, 0.866, -1.228, -1.18, -2.602, 1.967, 4.505, 1.18, 1.73, -0.41, 3.754, 1.695, 1.287, 1.258], "#4C8CA8");
   lineChart("chart-daily-s-p-500", ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20", "2026-11-21"], [2.62, 0.537, 3.051, 1.297, 5.354, -0.813, 3.208, 6.81, 8.224, 7.11, 4.658, 2.136, 1.349, 3.408, 4.212, 5.064, 5.411, 6.419, 2.785, -0.149, -0.899, -1.126, -4.799, -3.527, -2.448, -0.514, -0.317, 2.472, 1.672, 1.695], "#4C8CA8");
   priceChart("chart-price-s-p-500", ["2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20"], [1.578, 2.62, 1.297, 5.354, -0.813, 3.208, 6.81, 4.658, 2.136, 1.349, 3.408, 4.212, 6.419, 2.785, -0.149, -0.899, -1.126, -2.448, -0.514, -0.317, 2.472, 1.672], [7709.0, 7672.5, 7718.25, 7760.75, 7759.5, 7713.5, 7617.25, 7626.5, 7614.25, 7737.5, 7403.5, 7404.0, 7570.25, 7553.5, 7642.25, 7660.0, 7573.25, 7473.75, 7425.25, 7316.5, 7182.5, 7072.5], ["ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ES=F", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME", "ESZ26.CME"], "#4C8CA8");
 };
@@ -520,14 +520,14 @@ TAB_INITS["s-p-500"] = function () {
     <section class="panel tab-panel" id="tab-nasdaq" style="--accent: #8B5FBF">
       <div class="panel-head">
         <h2>Nasdaq</h2>
-        <span class="timestamp">as of 2026-11-21T12:14:23+00:00</span>
+        <span class="timestamp">as of 2026-11-21T21:30:10+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">+3.15</div>
-            <span class="delta">▼ -4.73 vs prior run</span>
+            <div class="score">+4.23</div>
+            <span class="delta">▲ +1.08 vs prior run</span>
           </div>
 
           <div class="price-line"><span class="muted">No price data this window (market likely closed) &mdash; NQZ26.CME</span></div>
@@ -535,26 +535,26 @@ TAB_INITS["s-p-500"] = function () {
           <div class="breakdown">
             <div>
               <span class="label">Bullish coverage</span>
-              <span class="value">40 articles, tone -0.03 (finbert)</span>
+              <span class="value">40 articles, tone -0.12 (finbert)</span>
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">38 articles, tone +0.14 (finbert)</span>
+              <span class="value">38 articles, tone +0.29 (finbert)</span>
             </div>
           </div>
 
           <div class="headlines">
             <span class="label">Top bullish headlines this run</span>
-            <ul><li><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPa2ZMZDI1MXptQlNHdTFXc3Uwa0lZcXZSR08zN2VGQlFJdE5iLXNtRl96cmZ4dUI5QXFFdnRrT3E4Y2pmMkxQaHB4R1ZfYlpFcHF1SVpEaVZIN2FXMnpiUm4xdWIwczB0dmJKTHpkMlotSkdDd1c4eHhLRmtsLVh0Y3pRSW5Da3c?oc=5" target="_blank" rel="noopener">CrowdStrike Eyes Zscaler Buy as Stock Surges 18% - The Tech Buzz</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNQTZPX3FUV2ZpQ1NIekg5VHBoTm85UFFqaFg5clBON19hejFFX2pPVlA1VjdKODAxWll5azI0cUpid2NsVVBiYmpILVFJRzFFeWV3N1pfLWMzV05Xb3VWc3BIUllaQXJPclFKU3g3bWNNa0ROcklaWEd4U2owRC1ZWlJpRGwzV0l3Smtzd2ItYmtWcXlWWGc?oc=5" target="_blank" rel="noopener">Nasdaq indices surge as buyers break above key resistance - investingLive</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNLTRtOGhqWkZmcVhtaUlHYW1INGxOOE1zOC14aU9ja2lUajZ4c2lnNXRybk5Vb0NjSzNHM2drMjk5WVJfWnVpRUVsS24yNE90RUpZY09BalZZZG1hOXBiUURQNGY2eFlwR0tCdy1hRGRVVXRVMXAyeXN3ZDFlVHhfd29FYkJZMHI5eHI3bDNWTQ?oc=5" target="_blank" rel="noopener">Tech Stocks Boosted by Cybersecurity Rally - WSJ</a></li></ul>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNeGktXzNOVUFadWhaNEF0aVVHMzMyQ2Y0RUxyd0I1dGY2N09NNDRBVnlYbmNqb1YwM2N4NGlZRTFtS0RRS2dUZmRhQ0JLaDNlSTRiLUVyeW1LWjJPbHNyM1gwRDhqWHRuOHMyVUZhSFdmdVF3a2FTYXB2bU5xbUtEbjFLeW5ZQldhamFMeVBfTHEybjBXYU81ZEExcUJxQQ?oc=5" target="_blank" rel="noopener">IBRX Breaks Above This Key Resistance — Stock On Track To Record Best Single-Day Gains In 6 Months - Yahoo Finance</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPSXVhVXRWMDBUeGEzZ3ZGUjRTU21kNHFLbVdsMURRb3lmV3dPOUR2eWVYV1JGR05qLUlNb202UnFuczluVHZOXzV6NlFIUHlfUl8wT2ZTajdIUVdlY2tEODRwNlZiZWZXaWthVFFqTTJiYTJyeGxPeEg5Z2ptbXNadFNfQmJlLXQxQVFNTmt1ZFVIQkQzc1dPSjNYclQxbUps?oc=5" target="_blank" rel="noopener">Soitec Shares Surge as AI Demand Boosts First-Half Results - Morningstar</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE9OV0ZNY283ODRRSnRZcGdUalA4SU1iUFlmR0N0VjZjcFhzSnlFX0dQY3A1TXY0UmdUektkZDdYTW56TkE5Qy1vbGstV2NNQ0M0RE43ZXBlVVlQZlE2NlFRQ3d3WkpTamROZTJaOGlUbkY1eE5LSUE?oc=5" target="_blank" rel="noopener">Anthropic Prices IPO at $83, Above Range; Nasdaq Futures Surge 523 Points as European Tech Stocks Rally - BigGo Finance</a></li></ul>
           </div>
 
           <div class="headlines">
             <span class="label">Top bearish headlines this run</span>
-            <ul><li><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE0tY1RiS3BadWcwVVMwU2oteTAzRVdyVEpSeUwtUGJOU3RZV3BmOEJQRmtrT25udndSRVUxRDVpSkRCLUdCS2lDc3dTRm9Ja19qNzh3MlNXVDVDM0UwQXItVWgyMUJnaV9xY2RlWEJmbnBCWWE1ZEdz0gF8QVVfeXFMUDFCSzhsWkpPUEpfV1BiOTNJUkJCbGNwaFVlUmtCcm42WTNmaXF6RVdpbnNwcWJOV1V6QWRtSjVMdFBuLU5kSmFwM0Q5S0ZQOVdPdVVlMGh3dVQyQnAtY0lXcU9xbjN0NE5pYUU1MEM5cU1WN25lc3pYUmpJaQ?oc=5" target="_blank" rel="noopener">S&P 500 and Dow close in correction; Nasdaq erases 2026 gain as AI rout picks up steam - CNBC</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNREVEM3ZIUVhnRU8waTduc05RTS00SnBNYkpmdWtVVmhqUGNlOVdNUFRtMXRISjhwajAyYVBGNlEwZDRMcUpMbFBEQ2VTTWtvZXY2Q29VMW05T21uNHd6dTZPQW80UmdRcjVTY2lsd2Q0b3o1Mm5FQVdaVUFwSW1KTloyWV81WjliTENSNXhKc0ZOeHlOWGc?oc=5" target="_blank" rel="noopener">Micron Just Broke Support, So Buy MUU Into Strength (NASDAQ:MU) - Seeking Alpha</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR29JWlBzT0hXWHlkQ0I0ZFRtVl9hQUxXNk9QclFaSWozRWNET1NrdVZWaHh2WEtzZHRoa2tjbTlTYjNVYWZLTnloU2trNWtMZkktcDE1WnpXbnZ5cnktb0dWNFBPQ2lISFNjQWVteHpPWHY4QzNhdWFWNjVyVXB5SXBXWWtyYW5xRHhj?oc=5" target="_blank" rel="noopener">Tech stocks analyst on worst stock market week in over a year: 'Dark day in tech' - CNN</a></li></ul>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxOam9yUlhjeXdQYldnSlpuMlRsWjJsLXFYUGxaM3ZVc21qbTEyUG9Ja2x1aVpZRDU4amVMaTFsZVh0dWlYLXRWV1BJbGtoTkdfUjFkVlhvTnduWGFIY1VKcGNTRWRjTTNlQ1c5Z0FrazRudjFKOFVMYXVhMGNjYmVrMEpFSnpJa09jTHNDX0xrdG95NHl3ckRDc0RLZW9SQXNnSWdF?oc=5" target="_blank" rel="noopener">Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day of trading - The Guardian</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxObDJaNXRFdFZIWkwxWDRYUVg1U0N3MmpzMHN5aFlMd0ZJTGdBN3lhamZQSGpqbUY2UERnTGhKeVhzYUtsY0Q4V280cDR3WU9qNGtTVm0tdFIzZ0xXTFFxM0NFUjNhSkJLeHhfMG96Wi0xYVBxT2wzQVJPNXdCUEx3MF91QU5ZT2s?oc=5" target="_blank" rel="noopener">Stock Market News, Nov. 20, 2026: Tech Rout Deepens as Nvidia, Anthropic Slide - WSJ</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxPWmxxTG9xVmtTTGttZEwwMEtlWXZCSlZzd0Vjejl6dTFTM2VXZGhkbnZyUjAyY2RzY19LM1JxVFJhQkI2cXJIZzJacGZrb1o2R2ZUSk8zNVdaS29DSDBqbkhCdmdGYnNaSzM1Y3dEN0M5UU1pbU9wZnRRZnhoaWZkS3Nacw?oc=5" target="_blank" rel="noopener">Mapping the Market: Nasdaq selloff breaks key support levels after Fed - Reuters</a></li></ul>
           </div>
         </div>
 
@@ -585,7 +585,7 @@ TAB_INITS["s-p-500"] = function () {
       </div>
       <script>
 TAB_INITS["nasdaq"] = function () {
-  lineChart("chart-4h-nasdaq", ["11-13 00h", "11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h"], [-0.573, -0.993, -1.037, 2.091, 1.312, -0.561, 0.038, -0.77, 0.095, 2.777, 4.743, 3.428, -2.492, 5.686, 1.382, 11.381, -0.099, 2.316, 0.094, -2.34, -2.091, 1.77, 7.885, 3.153], "#8B5FBF");
+  lineChart("chart-4h-nasdaq", ["11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h", "11-21 21h"], [-0.993, -1.037, 2.091, 1.312, -0.561, 0.038, -0.77, 0.095, 2.777, 4.743, 3.428, -2.492, 5.686, 1.382, 11.381, -0.099, 2.316, 0.094, -2.34, -2.091, 1.77, 7.885, 3.153, 4.233], "#8B5FBF");
   lineChart("chart-daily-nasdaq", ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20", "2026-11-21"], [3.082, 1.581, 0.774, -0.435, -4.659, -0.841, -1.111, 4.007, 4.865, 3.095, 1.944, 0.62, -2.735, -1.139, 4.642, 5.552, 7.002, 4.82, -1.541, -1.254, -1.538, -0.868, 0.72, 0.701, 4.085, 1.525, 5.641, 0.023, -0.161, 7.885], "#8B5FBF");
   priceChart("chart-price-nasdaq", ["2026-10-22", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20"], [-0.652, 3.082, -0.435, -4.659, -0.841, -1.111, 4.007, 1.944, 0.62, -2.735, -1.139, 4.642, 4.82, -1.541, -1.254, -1.538, -0.868, 4.085, 1.525, 5.641, 0.023, -0.161], [29110.75, 29175.0, 29506.0, 29831.0, 29723.25, 29214.25, 28540.0, 28498.25, 28376.25, 28670.0, 26893.5, 27107.5, 27919.0, 27869.0, 28444.25, 28557.75, 28010.75, 27443.75, 27518.25, 26960.75, 26505.5, 25705.5], ["NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQ=F", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME", "NQZ26.CME"], "#8B5FBF");
 };
@@ -596,41 +596,41 @@ TAB_INITS["nasdaq"] = function () {
     <section class="panel tab-panel" id="tab-bitcoin" style="--accent: #E8871E">
       <div class="panel-head">
         <h2>Bitcoin</h2>
-        <span class="timestamp">as of 2026-11-21T12:14:23+00:00</span>
+        <span class="timestamp">as of 2026-11-21T21:30:10+00:00</span>
       </div>
 
       <div class="panel-body">
         <div class="panel-left">
           <div class="score-row">
-            <div class="score">+8.87</div>
-            <span class="delta">▲ +3.69 vs prior run</span>
+            <div class="score">+10.56</div>
+            <span class="delta">▲ +1.69 vs prior run</span>
           </div>
 
-          <div class="price-line">O 57,719.32 · H 58,500.95 · L 57,656.23 · C 58,268.57 <span class="muted">(BTC-USD, 4h bars)</span></div>
+          <div class="price-line">O 59,968.39 · H 60,392.39 · L 59,961.90 · C 60,261.67 <span class="muted">(BTC-USD, 4h bars)</span></div>
 
           <div class="breakdown">
             <div>
               <span class="label">Bullish coverage</span>
-              <span class="value">39 articles, tone +0.02 (finbert)</span>
+              <span class="value">37 articles, tone +0.00 (finbert)</span>
             </div>
             <div>
               <span class="label">Bearish coverage</span>
-              <span class="value">33 articles, tone +0.33 (finbert)</span>
+              <span class="value">32 articles, tone +0.50 (finbert)</span>
             </div>
           </div>
 
           <div class="headlines">
             <span class="label">Top bullish headlines this run</span>
-            <ul><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPcTRyZVp1Q3k5bkIteW5mcF9Mak9GY0V3R096N3k3YXNDMGZDRnpBUU9wdy1yMGFidGU1VlZEOHU0MFhVc2JjSmMwWHBYT2xOOGNQSGhaclBQODRHbXk0eDV4Yy0zZHJocFJYWEF0eHBGR3VianhSRFRpZzEtenNzYUsxbnFjMTBRY3hMNTF1M0dRWVNzRkJvRFZwMG0?oc=5" target="_blank" rel="noopener">Goldman Sachs boosts Bitcoin ETF holdings to $1.28B as Ether exposure surges - Crypto News</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOa1ZCU1J1S0NtWDRycjljSE9RdTBhUnQ0X0htS3NBa2ROV2VqRDRweDFsQW9MZlR4cDNTWndHVTlSZFo2ZUt5UjdIZmltc2VVWnR5T185MGJYWTVfRTdNbGIwekNtdEtpdUVkeHN4RkZ0eTluOXFGMFRySHhiMkJpalQ2WjNmNmlRS1dVdWlMT08tQUI5eEUwSGN4NVlxUUo1ZDRTMi1NRjBNWVI2?oc=5" target="_blank" rel="noopener">Crypto Weekly Digest | Bitcoin Surges 23% to $77.6K; Record $2.7B Short Squeeze; US Regulation Breakthrough Expected - Moomoo</a></li>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcWRqZU1XQmtEWEVwNUZva184a3FMSWoxZ1cxai1HM3hrNmQxLUJfRzlleW5JZFZaMXpzMGkzZ000S2E1b09FOEFmZWpZNnN2U29RR2ZlTEI0bTNVX0RVYzc0N2pZRWh5V29xR0VCbmpJbkktbWdTS241X3RPVms3RVR1bUJpNXVJTkU0cXp0LTd6OGlMWjZNVFNlUmpUYjhkc2ZkN3lic3FGYUZ1YXRJT1ZyR29Cd1pyTnpCZ08xUm0?oc=5" target="_blank" rel="noopener">Bitcoin Surges Over 3% to Touch $80,000, Reaching More Than 3-Month High - TradingKey</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxOcjRGYUZ1N0FTMjBSWUZKS3BUU2dhVVVxYzdLQ0lMRkhNZ0hua3c3Uzg2N3AyNThYb3JfR3BYQ09sWkl1Ni1Pd3R3UEFkNFRRUGtMNW9TTllKQ2huZ1c3UWN5ME85dHFOblprdVNjWk5GN2xvRXBXSU1HdTNyRmpyVUtZTUZDV08xVzN3dUJR0gGTAUFVX3lxTE91YXlLVVY1aGtjTzVEU05mWTU4c0pFT0I4ZW5OOHltMk1zV0FwNTVQZnZrQzlVazVIOTgtWkp6d3lxTmljc0ptZUwtU05oUEs0MXNRYXlDVmpjUHVuRnFMdzBEbGMzWDFrekdnbmY2ajl1TzRkQ09TcDZTWlBYWlJGak4xOFkzMElveWZOVzBKcEpxWQ?oc=5" target="_blank" rel="noopener">Bitcoin surges 22% for the week as investor optimism floods back - CNBC</a></li>
 <li><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOYVg0QkZmc3p2MENoYl9xejdUYzd2NmxxWERxaWl2VGJNSTFIaVVQZzNOYS1fYVA4X0Y4RVc4QnR3ZjdCaGktTEtuSld3R2tQQ3ZGX19fc2YxcVZNRE1jd0kyOVlpNGZoYXVYVHRUNGt5Z0ZQWHNpUnFEMF8tVHI4N1Z0M2hvNXMteEd0T3g1NDVlSHNQZmRlSzNJNXg0eGNuajBXdzVRdmYzOVNnY2V1bkVUZlJwYXRyYlBMel9yR042VTRJMTlXTm01dw?oc=5" target="_blank" rel="noopener">Bitcoin Surges as Institutional Demand, Short Covering, Clarity Act Progress Converge - WSJ</a></li></ul>
           </div>
 
           <div class="headlines">
             <span class="label">Top bearish headlines this run</span>
-            <ul><li><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PU3pBdGY0NWJMSWFUTFRDUGx3RklNQlNENWdlQjBiNG9meUo5andqSHFER0lkNlhEaFVwOXpLYWZseVJ1YVZsU2Q4RzBWT1RoeUhTM19YaFljM2ZHcm5yMHYxTlc?oc=5" target="_blank" rel="noopener">Today's Crypto News: Bitcoin, Ether and Altcoin Insights - Investing News Network</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTFA3Y3hVaUJUeV9YZUYyU3A3bnVKNlNVSi1wZ0NZZTctMG96WkptWW9CQ0ltNl9FbV94Q3k4X0xkMjF5RDlnZGp1ZFhfbDI3dTVpeTFSZjFTTGZVY0dOOGUzc191U09EelhwbVJFcWtSTG9WN0ZXcmRiSA?oc=5" target="_blank" rel="noopener">Nvidia and SanDisk Bets Joined Bitcoin in a $1.76 Billion Liquidation Wave - BeInCrypto</a></li>
-<li><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE9pQXpqMGlxMjM0b1RZQWdnWTF5a053MWozeUVSeTh3LWtWaDJnLXBuWmZiWWdqVndQU0FuS3pUN0Y3MVhZNXdzOXRpaTlKaG9PSTk0a0lmNGZSeGJuQW5UcFFWOTdYN0tEZGlTTGRSRkFRMGRCRjJzLTdCM3k?oc=5" target="_blank" rel="noopener">Robert Kiyosaki Cheers the Bitcoin, Gold, and Silver Crash. Here is Why - BeInCrypto</a></li></ul>
+            <ul><li><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxPZVY4NDRHelFyRmVMRWhDRGtOOUtoUDBxbERkdTIwMG1lOHF6dENzTDhqMkFsZDh0b3NkcEVDN0lTcGtBQXgyUFRkRmdqdnd6RS1DTDdpTXE0OUQ1VVkyTnhtN3B5X3IwMGRJdFFraUh2Z0xYdlpGR3BBamlGLXgxMkdTbFNOd2VXZ1hKODJDbk5QWjRFVUxEWGtaVzdfLThpT1ctRGVOSlhUeHNWVmVzVmhWS1h6OXNPeTVIandiZ0tlTzB4ODE3SExROA?oc=5" target="_blank" rel="noopener">Bitcoin clears its largest liquidation cluster between $59K and $62K - TradingView</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PU3pBdGY0NWJMSWFUTFRDUGx3RklNQlNENWdlQjBiNG9meUo5andqSHFER0lkNlhEaFVwOXpLYWZseVJ1YVZsU2Q4RzBWT1RoeUhTM19YaFljM2ZHcm5yMHYxTlc?oc=5" target="_blank" rel="noopener">Today's Crypto News: Bitcoin, Ether and Altcoin Insights - Investing News Network</a></li>
+<li><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQeEtfcFVLa1VXbTlfXzhxYjRDSlJNeVVteDlBTWxvdDNKMEdtS0VRVFYwMjBmYU5tUHEwbDByMDBUTEdabEgybGJLd081UFdJLTQ2bGJMU21Fckp0Q3FFY3czbFFjN3ltb1ptVDlrOThPMUozblhSdUNxVGtLd3MwcjJiQWJGYkRQX2lHaHJOTTdURm9FN2RwcEpaM2ZXcDVJVmd3NVY5WkVvYjNLODVBV0RUS2FLZE1ITUlUTnV4MFE?oc=5" target="_blank" rel="noopener">Bitcoin Crashes Below $56,000 as $2.7 Billion Crypto Liquidation Wipes Out Traders - 24/7 Wall St.</a></li></ul>
           </div>
         </div>
 
@@ -650,7 +650,7 @@ TAB_INITS["nasdaq"] = function () {
           <span class="muted small">as of 2026-11-21 · 5-trading-day windows, normal range = 1 std dev of own history</span>
         </div>
         <div class="signal-note">Score and price both moved beyond normal, in the expected direction.</div>
-        <div class="signal-lines mono"><div>Score 5-day change -6.53 (normal range ±3.98) · Price 5-day change -10.03% (normal range ±5.04%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation -0.22 over 13 non-overlapping 5-day windows</div></div>
+        <div class="signal-lines mono"><div>Score 5-day change -6.53 (normal range ±3.98) · Price 5-day change -6.95% (normal range ±4.98%)</div><div>Expected sign +1 (price rises with the score) · Realized correlation -0.28 over 13 non-overlapping 5-day windows</div></div>
         <div class="muted small signal-caveat">Descriptive context, not a tested or contrarian signal. News tends to trail price, and with this little history the normal range is a rough estimate.</div>
       </div>
     
@@ -661,9 +661,9 @@ TAB_INITS["nasdaq"] = function () {
       </div>
       <script>
 TAB_INITS["bitcoin"] = function () {
-  lineChart("chart-4h-bitcoin", ["11-13 00h", "11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h"], [13.811, 15.301, 13.692, 13.98, 12.503, 12.646, 12.837, 10.708, 14.143, 12.534, 11.61, 11.8, 14.387, 11.248, 14.876, 1.965, 11.551, 11.481, 10.705, 5.303, 9.313, 4.645, 5.18, 8.867], "#E8871E");
+  lineChart("chart-4h-bitcoin", ["11-13 11h", "11-13 19h", "11-14 00h", "11-14 11h", "11-14 17h", "11-14 23h", "11-15 05h", "11-15 15h", "11-15 20h", "11-16 05h", "11-16 18h", "11-17 02h", "11-17 12h", "11-17 23h", "11-18 06h", "11-18 17h", "11-19 01h", "11-19 12h", "11-19 22h", "11-20 06h", "11-20 16h", "11-21 01h", "11-21 12h", "11-21 21h"], [15.301, 13.692, 13.98, 12.503, 12.646, 12.837, 10.708, 14.143, 12.534, 11.61, 11.8, 14.387, 11.248, 14.876, 1.965, 11.551, 11.481, 10.705, 5.303, 9.313, 4.645, 5.18, 8.867, 10.557], "#E8871E");
   lineChart("chart-daily-bitcoin", ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20", "2026-11-21"], [10.958, 11.172, 11.804, 11.905, 16.634, 14.99, 12.648, 17.799, 16.492, 15.702, 13.888, 12.748, 15.517, 12.105, 12.079, 12.16, 9.941, 7.906, 9.47, 10.52, 10.323, 14.268, 12.992, 12.462, 11.705, 13.504, 6.758, 9.163, 6.979, 5.18], "#E8871E");
-  priceChart("chart-price-bitcoin", ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20", "2026-11-21"], [10.958, 11.172, 11.804, 11.905, 16.634, 14.99, 12.648, 17.799, 16.492, 15.702, 13.888, 12.748, 15.517, 12.105, 12.079, 12.16, 9.941, 7.906, 9.47, 10.52, 10.323, 14.268, 12.992, 12.462, 11.705, 13.504, 6.758, 9.163, 6.979, 5.18], [80717.75, 80358.9922, 80334.2812, 80014.8594, 80763.7969, 81078.5625, 78813.6016, 76766.8125, 77406.9531, 77607.4766, 76980.3594, 77434.9375, 80218.5625, 76135.7891, 75751.1406, 75696.4297, 75775.0391, 74383.1719, 73758.5469, 74157.7734, 71613.8281, 68939.1016, 63587.5117, 65075.0703, 64763.9609, 64921.6289, 62767.0703, 62118.2109, 59416.2695, 58268.5703], ["BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD"], "#E8871E");
+  priceChart("chart-price-bitcoin", ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20", "2026-11-21"], [10.958, 11.172, 11.804, 11.905, 16.634, 14.99, 12.648, 17.799, 16.492, 15.702, 13.888, 12.748, 15.517, 12.105, 12.079, 12.16, 9.941, 7.906, 9.47, 10.52, 10.323, 14.268, 12.992, 12.462, 11.705, 13.504, 6.758, 9.163, 6.979, 5.18], [80717.75, 80358.9922, 80334.2812, 80014.8594, 80763.7969, 81078.5625, 78813.6016, 76766.8125, 77406.9531, 77607.4766, 76980.3594, 77434.9375, 80218.5625, 76135.7891, 75751.1406, 75696.4297, 75775.0391, 74383.1719, 73758.5469, 74157.7734, 71613.8281, 68939.1016, 63587.5117, 65075.0703, 64763.9609, 64921.6289, 62767.0703, 62118.2109, 59416.2695, 60261.6719], ["BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD", "BTC-USD"], "#E8871E");
 };
       </script>
     </section>
